@@ -1,11 +1,16 @@
 import React from "react";
 import logo from '../assets/ddclogo.png';
 import language from '../assets/blacklanguage.png';
+import '../CSS/navbar.css';
 
 export const Navbar = () => {
     return (
         <nav>
-            <div>
+            <div className="navbar">
+                <div className="logo">
+                    <img src={logo} alt="DDC Logo" />
+                </div>
+                
                 <ul>
                     <li>
                         <a href="#home" className="hover:text-primary transition-colors">الرئيسية</a>
@@ -21,13 +26,9 @@ export const Navbar = () => {
                     </li>
                 </ul>
 
-                <div>
+                <div className="language">
                     <img src={language} alt="language" />
                     <span> English</span>
-                </div>
-
-                <div>
-                    <img src={logo} alt="DDC Logo" />
                 </div>
             </div>
         </nav>

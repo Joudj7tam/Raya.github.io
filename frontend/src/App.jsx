@@ -7,7 +7,7 @@ import { Navbar } from "./Components/navbar";
 function App() {
   return (
     <>
-    <HomeNavbar />
+    <Navbar />
 
       <section className="hero">
         <img src={hero} alt="hero" />
