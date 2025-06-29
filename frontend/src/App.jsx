@@ -2,10 +2,13 @@ import React from "react";
 import hero from "./assets/hero.png";
 import camels from "./assets/camels.png";
 import HomeNavbar from "./Components/homeNavbar";
+import { Navbar } from "./Components/navbar";
+
 function App() {
   return (
     <>
     <HomeNavbar />
+
       <section className="hero">
         <img src={hero} alt="hero" />
         <h1>إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ</h1>
