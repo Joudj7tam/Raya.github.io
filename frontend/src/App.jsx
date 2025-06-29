@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import React from "react";
+import hero from "./assets/hero.png";
+import camels from "./assets/camels.png";
+import HomeNavbar from "./Components/homeNavbar";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <HomeNavbar />
+      <section className="hero">
+        <img src={hero} alt="hero" />
+        <h1>إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ</h1>
+        <h5>[الصف: 4 - 4]</h5>
+      </section>
+      <section className="about">
+        <h3>
+          هنا تُروى الغزوات والفتوحات الإسلامية، لا كصفحات في كتاب... بل كتجربة تفاعلية حيّة تحكي القصة، تكشف الأسباب، وتعرض النتائج. تعلّم، استكشف، وتأمّل... كيف صُنعت لحظات غيرت مجرى التاريخ.
+        </h3>
+        <img src={camels} alt="الجمال" />
+      </section>
+      <section className="timeline">
+        <h2>الخط الزمني</h2>
+      </section>
+      <section className="map">
+        <h2>الخريطة التفاعلية</h2>
+      </section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
