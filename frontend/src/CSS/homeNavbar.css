@@ -3,7 +3,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2.5rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
   position: absolute;
   top: 0;
@@ -13,22 +12,22 @@
 }
 
 .navbar .logo {
-  width: 15rem;
+  width: 12rem;
   height: auto;
-  margin-top: 0.5rem;
+  margin: 1.5rem;
   min-width: 5rem;
 }
 
 .navbar .nav-links {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 4rem;
   font-size: 1.125rem; 
   margin-right: 5rem;
 }
 
 .navbar .nav-links a {
-  color: white;
+  color: #FDFDED;
   text-decoration: none;
   transition: color 0.3s;
 }
