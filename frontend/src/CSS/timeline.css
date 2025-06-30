@@ -1,0 +1,71 @@
+.timeline-wrapper {
+  text-align: right;
+  margin: 3rem 1rem;
+}
+
+.years-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
+  border-bottom: 2px solid #ccc;
+}
+
+.year-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  position: relative;
+  color: #FDFDED;
+}
+
+.year-button.active {
+  font-weight: bold;
+  border-bottom: 4px solid #FDFDED;
+  color: #FDFDED;
+}
+
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  max-width: 400px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 1rem 0 0.5rem;
+  color: #FDFDED;
+}
+
+.card p {
+  color: #FDFDED;
+  font-size: 1rem;
+}
+
+.arrow {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #FDFDED;
+  padding: 0 1rem;
+}
+
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
