@@ -1,0 +1,24 @@
+.header-banner{
+    background-image: url(../assets/storyHeaderPic.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+}
+
+.banner-title, .navigation-title{
+    color: white;
+}
+
+.play-button{
+    width: fit-content;
+    height: fit-content;
+    background-color: transparent;
+    border: none;
+}
+
+.play-icon{
+    width: 100px;
+}
