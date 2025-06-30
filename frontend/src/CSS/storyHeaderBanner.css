@@ -3,13 +3,36 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 100vw;
     height: 300px;
     margin: 0px;
+    padding: 0px;
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    align-items: center;
+    overflow: hidden;
 }
 
 .banner-title, .navigation-title{
     color: white;
+}
+
+.banner-title{
+    margin: 0% 5% 0% 3%;
+    font-size: 5vmax;
+}
+
+.navigation-title{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 5% 10%;
+    text-decoration: none;
+}
+
+.navigation-title:hover{
+    color: #facc15; 
 }
 
 .play-button{
@@ -20,5 +43,5 @@
 }
 
 .play-icon{
-    width: 100px;
+    width: 8vmax;
 }

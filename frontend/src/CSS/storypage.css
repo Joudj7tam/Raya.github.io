@@ -1,0 +1,29 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+div{
+    margin: 0px;
+    padding: 0px;
+}
+
+.the-story{
+    margin: 7% 8%;
+    padding: 2% 5%;
+    text-align: right;
+    font-weight: 300;
+    line-height: 2.3;
+    border-radius: 30px;
+    background-color: #76768016;
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.the-story:hover{
+    transform: scale(1.02); /* Slightly enlarge the box (2%) */
+    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
+    background-color: linear-gradient(to bottom right, #563312, #ffffff); /* Optional: Darken the background slightly */
+}
