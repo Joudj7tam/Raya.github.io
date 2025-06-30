@@ -4,7 +4,7 @@ import camels from "./assets/camels.png";
 import HomeNavbar from "./Components/homeNavbar";
 import { Footer } from "./Components/footer";
 import HomeContent from "./Pages/Homepage.jsx";
-import Story from "./Pages/story.jsx";
+import Story from "./Pages/storypage.jsx";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
