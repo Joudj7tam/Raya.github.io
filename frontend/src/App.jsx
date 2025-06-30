@@ -1,8 +1,7 @@
-import React from "react";
+import HomeContent from "./Pages/Homepage.jsx";
+import Story from "./Pages/story.jsx";
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import hero from "./assets/hero.png";
-import camels from "./assets/camels.png";
-import HomeNavbar from "./Components/homeNavbar";
 function App() {
   return (
     <Router>

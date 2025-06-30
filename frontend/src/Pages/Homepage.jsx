@@ -1,7 +1,6 @@
-import React from "react";
-import hero from "./assets/hero.png";
-import camels from "./assets/camels.png";
-import HomeNavbar from "./Components/homeNavbar";
+import hero from "../assets/hero.png";
+import camels from "../assets/camels.png";
+import HomeNavbar from "../Components/homeNavbar";
 import "../CSS/home.css";
 
 function HomePage() {
@@ -13,6 +12,7 @@ function HomePage() {
         <h1>إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ</h1>
         <h5>[الصف: 4 - 4]</h5>
       </section>
+      <div className="flex-container">
       <section className="about">
         <h3 className="text">
           هنا تُروى الغزوات والفتوحات الإسلامية، لا كصفحات في كتاب... بل كتجربة تفاعلية حيّة تحكي القصة، تكشف الأسباب، وتعرض النتائج. تعلّم، استكشف، وتأمّل... كيف صُنعت لحظات غيرت مجرى التاريخ.
@@ -25,8 +25,9 @@ function HomePage() {
       <section className="map">
         <h2>الخريطة التفاعلية</h2>
       </section>
+      </div>
     </>
   );
 }
 
-export default HompePage;
+export default HomePage;
