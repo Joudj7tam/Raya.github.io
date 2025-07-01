@@ -3,32 +3,32 @@ import "../CSS/timeline.css";
 
 const timelineData = [
   {
-    year: 2,
+    year: "2 هـ ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
   {
-    year: 3,
+    year: "3 هـ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
   {
-    year: 4,
+    year: "4 هـ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
   {
-    year: 5,
+    year: "5 هـ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
   {
-    year: 6,
+    year: "6 هـ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
   {
-    year: 7,
+    year: "7 هـ",
     title: "عهد عمر بن الخطاب",
     description: "غزوة - غزوة - غزوة - غزوة",
   },
@@ -50,33 +50,44 @@ export default function Timeline() {
   };
 
   return (
-    <div className="timeline-wrapper">
-      <div className="years-nav">
-        {timelineData.map((item, index) => (
-          <button
-            key={item.year}
-            className={`year-button ${index === currentIndex ? "active" : ""}`}
-            onClick={() => setCurrentIndex(index)}
-          >
-            {item.year}
-          </button>
-        ))}
+   <div className="timeline-wrapper">
+  <div className="years-nav-line">
+    <div className="years-line"></div>
+    {timelineData.map((item, index) => (
+      <div
+        key={item.year}
+        className={`year-circle ${index === currentIndex ? "active" : ""}`}
+        onClick={() => setCurrentIndex(index)}
+      >
+        <div className="year-text">{item.year}</div>
+        <div className="circle"> <div className="inside-circle"></div>
       </div>
-
-      <div className="timeline-content">
-        <button className="arrow left" onClick={goPrev} disabled={currentIndex === 0}>
-          ‹
-        </button>
-
-        <div className="card">
-          <h3>{timelineData[currentIndex].title}</h3>
-          <p>{timelineData[currentIndex].description}</p>
-        </div>
-
-        <button className="arrow right" onClick={goNext} disabled={currentIndex === timelineData.length - 1}>
-          ›
-        </button>
       </div>
+    ))}
+  </div>
+
+  <div className="timeline-content">
+    <button className="arrow left" onClick={goPrev} disabled={currentIndex === 0}>
+      ‹
+    </button>
+    <div className="prev-card">
+      <h3>{timelineData[currentIndex].title}</h3>
+      <p>{timelineData[currentIndex].description}</p>
     </div>
+    <div className="card">
+      <h3>{timelineData[currentIndex].title}</h3>
+      <p>{timelineData[currentIndex].description}</p>
+    </div>
+    <div className="next-card">
+      <h3>{timelineData[currentIndex].title}</h3>
+      <p>{timelineData[currentIndex].description}</p>
+    </div>
+
+    <button className="arrow right" onClick={goNext} disabled={currentIndex === timelineData.length - 1}>
+      ›
+    </button>
+  </div>
+</div>
+
   );
 }

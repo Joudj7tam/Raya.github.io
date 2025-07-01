@@ -1,35 +1,24 @@
 import React from "react";
 import logo from '../assets/ddclogo.png';
-import language from '../assets/blacklanguage.png';
+import lang from "../assets/blacklanguage.png";
 import '../CSS/navbar.css';
 
 const Navbar = () => {
     return (
-        <nav>
-            <div className="navbar">
-                <div className="logo">
-                    <img src={logo} alt="DDC Logo" />
-                </div>
+        <nav className="navbar2">
+            <div className="logo-container">
+                <img src={logo} alt="الشعار" className="logo" />
+            </div>
 
-                <ul>
-                    <li>
-                        <a href="#home" className="hover:text-primary transition-colors">الرئيسية</a>
-                    </li>
-                    <li>
-                        <a href="#events" className="hover:text-primary transition-colors">الأحداث</a>
-                    </li>
-                    <li>
-                        <a href="#map" className="hover:text-primary transition-colors">الخريطة التفاعلية</a>
-                    </li>
-                    <li>
-                        <a href="#contact" className="hover:text-primary transition-colors">تواصل معنا</a>
-                    </li>
-                </ul>
-
-                <div className="language">
-                    <img src={language} alt="language" />
-                    <span> English</span>
-                </div>
+            <div className="nav-links2">
+                <a href="#">تواصل معنا</a>
+                <a href="#">الخريطة التفاعلية</a>
+                <a href="#">الأحداث</a>
+                <a href="#">الرئيسة</a>
+                <a href="#" className="lang-link2">
+                    <img src={lang} alt="اللغة" className="lang-icon" />
+                    <span> English </span>
+                </a>
             </div>
         </nav>
     );

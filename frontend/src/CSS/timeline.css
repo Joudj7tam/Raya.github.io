@@ -1,68 +1,106 @@
 .timeline-wrapper {
-  text-align: right;
-  margin: 3rem 1rem;
+  padding: 3rem 1rem;
+  background-color: #654B42;
+  color: #FDFDED;
+  direction: rtl;
+  text-align: center;
+  font-family: 'lama sans', sans-serif;
 }
 
-.years-nav {
+.years-nav-line {
+  position: relative;
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  align-items: center;
+  gap: 4rem;
   margin-bottom: 2rem;
-  position: relative;
-  border-bottom: 2px solid #ccc;
 }
 
-.year-button {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
+.years-line {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #FDFDED;
+  z-index: 0;
+}
+
+.year-circle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
   cursor: pointer;
-  position: relative;
-  color: #FDFDED;
 }
 
-.year-button.active {
-  font-weight: bold;
-  border-bottom: 4px solid #FDFDED;
-  color: #FDFDED;
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #654B42;
+  border: 2px solid #FDFDED;
+  border-radius: 50%;
+  margin: 0.2rem 0;
+  transition: transform 0.3s ease;
+}
+.inside-circle {
+  width: 15px;
+  height: 15px;
+  background-color: #FDFDED;
+  border: 3px solid #654B42;
+  border-radius: 50%;
+  margin: 0px;
+  transition: transform 0.3s ease;
+}
+.year-circle.active .circle,.year-circle:hover .circle {
+  transform: scale(1.4);
+ 
+  background-color: #FDFDED;
 }
 
+.year-text {
+  font-size: 1rem;
+}
 
 .timeline-content {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 2rem;
 }
 
 .card {
+  background-color: #FDFDED;
+  color: #654B42;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  min-width: 300px;
   max-width: 400px;
-  padding: 1rem;
-  text-align: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.prev-card,.next-card {
+  color: #654B42;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  min-width: 200px;
+  max-width: 300px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.card img {
-  width: 100%;
-  border-radius: 8px;
+.prev-card{
+    background: linear-gradient(to right, #fdfded7b, #654B42);
 }
 
-.card h3 {
-  margin: 1rem 0 0.5rem;
-  color: #FDFDED;
-}
-
-.card p {
-  color: #FDFDED;
-  font-size: 1rem;
+.next-card{
+    background: linear-gradient(to left, #fdfded7b, #654B42);
 }
 
 .arrow {
   font-size: 2rem;
   background: none;
   border: none;
-  cursor: pointer;
   color: #FDFDED;
-  padding: 0 1rem;
+  cursor: pointer;
 }
 
 .arrow:disabled {
