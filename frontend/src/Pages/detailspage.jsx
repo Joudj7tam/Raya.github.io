@@ -1,6 +1,6 @@
 import React from 'react';
 import StoryHeaderBanner from '../Components/storyHeaderBanner.jsx';
-import {Navbar} from '../Components/navbar.jsx'
+//import {Navbar} from '../Components/navbar.jsx'
 import '../CSS/detailspage.css';
 
 const details = () => {
