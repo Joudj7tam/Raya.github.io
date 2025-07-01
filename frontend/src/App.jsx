@@ -1,7 +1,4 @@
 import React from "react";
-import hero from "./assets/hero.png";
-import camels from "./assets/camels.png";
-import HomeNavbar from "./Components/homeNavbar";
 import Footer from "./Components/footer";
 import HomeContent from "./Pages/Homepage.jsx";
 import Events from "./Pages/eventspage.jsx"

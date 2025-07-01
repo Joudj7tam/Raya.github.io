@@ -5,6 +5,7 @@ import '../CSS/storypage.css';
 const Story = () => {
     return (
         <div>
+            <Navbar/>
             <StoryHeaderBanner
                 title="غزوة بدر"
                 showPlayButton={true}
