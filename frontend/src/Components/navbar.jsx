@@ -3,14 +3,14 @@ import logo from '../assets/ddclogo.png';
 import language from '../assets/blacklanguage.png';
 import '../CSS/navbar.css';
 
-export const Navbar = () => {
+const Navbar = () => {
     return (
         <nav>
             <div className="navbar">
                 <div className="logo">
                     <img src={logo} alt="DDC Logo" />
                 </div>
-                
+
                 <ul>
                     <li>
                         <a href="#home" className="hover:text-primary transition-colors">الرئيسية</a>
@@ -34,3 +34,5 @@ export const Navbar = () => {
         </nav>
     );
 };
+
+export default Navbar;
