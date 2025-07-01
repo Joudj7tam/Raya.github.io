@@ -14,17 +14,19 @@ body{
     align-items: center;
 }
 .hero {
-  width: 100%;         /* يغطي عرض الشاشة بالكامل */
+  width: 100%;
+  height: 720px;
   position: relative;
+  background-image: url("../assets/hero.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* هذا يجعل البارالكس يعمل */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 
-.hero img {
-  width: 100%;
-  height: 720px;
-  object-fit: cover;
-  display: block;
-}
 .hero-text {
   position: absolute;
   top: 50%;

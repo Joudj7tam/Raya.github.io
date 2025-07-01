@@ -1,4 +1,3 @@
-import hero from "../assets/hero.png";
 import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
@@ -7,18 +6,17 @@ import "../CSS/home.css";
 function HomePage() {
   return (
     <>
-    <HomeNavbar />
+     <HomeNavbar />
       <section className="hero">
-        <img src={hero} alt="hero"/>
         <div className="hero-text">
-            <h1>إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ</h1>
+            <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
             <h5>[الصف: 4 - 4]</h5>
         </div>
       </section>
-
+      
       <div className="flex-container">
       <section className="about">
-        <h3 className="about-text">
+        <h3 className="about-text" dir="rtl" lang="ar">
           هنا تُروى الغزوات والفتوحات الإسلامية، لا كصفحات في كتاب... بل كتجربة تفاعلية حيّة تحكي القصة، تكشف الأسباب، وتعرض النتائج. تعلّم، استكشف، وتأمّل... كيف صُنعت لحظات غيرت مجرى التاريخ.
         </h3>
         <img src={camels} alt="الجمال" />
