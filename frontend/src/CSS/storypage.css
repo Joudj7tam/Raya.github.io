@@ -17,13 +17,15 @@ div{
     font-weight: 300;
     line-height: 2.3;
     border-radius: 30px;
-    background-color: #76768016;
+    background: linear-gradient(to bottom left, #bead9d3f, #ffffff42);
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    transition: all 0.5s ease; 
+    background-size: 200% 200%;
 }
 
 .the-story:hover{
-    transform: scale(1.02); /* Slightly enlarge the box (2%) */
-    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.4); /* Stronger shadow on hover */
-    background-color: linear-gradient(to bottom right, #563312, #ffffff); /* Optional: Darken the background slightly */
+    transform: scale(1.03); 
+    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.4); 
+    background: linear-gradient(to top right, #bead9d76, #ffffff76); 
+    background-position: 100% 100%;
 }

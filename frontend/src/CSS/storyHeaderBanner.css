@@ -1,10 +1,10 @@
 .header-banner{
-    background-image: url(../assets/storyHeaderPic.png);
+    background-image: url(../assets/hero.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 100vw;
-    height: 300px;
+    height: 270px;
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -23,14 +23,6 @@
     font-size: 5vmax;
 }
 
-.navigation-title{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    margin: 5% 10%;
-    text-decoration: none;
-}
-
 .navigation-title:hover{
     color: #facc15; 
 }
@@ -44,4 +36,37 @@
 
 .play-icon{
     width: 8vmax;
+}
+
+/* Add these styles to your existing CSS */
+.segmented-control {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 3% 6%;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 4px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.segment {
+  padding: 8px 16px;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.segment.active {
+  background-color: white;
+  color: #000;
+  font-weight: 500;
+}
+
+.segment:not(.active):hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }

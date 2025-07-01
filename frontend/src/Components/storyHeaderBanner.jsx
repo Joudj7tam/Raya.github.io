@@ -1,10 +1,27 @@
+import React from 'react';
 import playButton from '../assets/playButton.png';
-import storyHeaderPic from '../assets/storyHeaderPic.png';
-import '../CSS/storyHeaderBanner.css'
+import '../CSS/storyHeaderBanner.css';
+import { useLocation, Link } from 'react-router-dom';
 
-const HeaderBanner = ({ title, navigationTitle, showPlayButton, onPlayClick }) =>{
+const HeaderBanner = ({ title, showPlayButton, onPlayClick }) => {
+  const location = useLocation();
+  
   return (
     <div className="header-banner">
+      <div className="segmented-control">
+        <Link 
+          to="/story" 
+          className={`segment ${location.pathname === '/story' ? 'active' : ''}`}
+        >
+          القصة
+        </Link>
+        <Link 
+          to="/details" 
+          className={`segment ${location.pathname === '/details' ? 'active' : ''}`}
+        >
+          تفاصيل القصة
+        </Link>
+      </div>
 
       <h1 className="banner-title">{title}</h1>
       
@@ -13,8 +30,6 @@ const HeaderBanner = ({ title, navigationTitle, showPlayButton, onPlayClick }) =
           <img src={playButton} alt="Play" className="play-icon" />
         </button>
       )}
-
-      <a href="#" className="navigation-title" >{navigationTitle}</a>
 
     </div>
   );
