@@ -1,0 +1,93 @@
+.search-box {
+    background-color: #654B42;
+    color: #fefae0;
+    padding: 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    direction: rtl;
+    font-family: 'Lama Sans', sans-serif;
+}
+
+.filters {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.filters select {
+    background-color: #fefae0;
+    color: #1a1a1a;
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.date-range {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.range-slider {
+    accent-color: #1f2937;
+    height: 3px;
+    width: 120px;
+}
+
+.search-and-sort {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+}
+
+.search-input {
+    position: relative;
+    width: 200px;
+}
+
+.search-input input {
+    width: 100%;
+    padding: 0.4rem 2rem 0.4rem 0.6rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #fefae0;
+    color: #1a1a1a;
+    font-size: 0.9rem;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0.6rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    pointer-events: none;
+}
+
+.sort-options {
+    padding-right: 10px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.85rem;
+    color: #fefae0;
+}
+
+.sort-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.label {
+    font-size: 0.8rem;
+    color: #fefae0;
+    margin-top: 0.2rem;
+}

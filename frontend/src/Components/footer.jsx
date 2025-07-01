@@ -3,7 +3,7 @@ import logo from "../assets/ddclogo-white.png";
 import "../CSS/footer.css";
 import { FaLinkedinIn, FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
 
-export const Footer = () => {
+const Footer = () => {
     return (
         <footer className="footer">
             <div className="footer-container">
@@ -38,3 +38,5 @@ export const Footer = () => {
         </footer>
     );
 };
+
+export default Footer;
