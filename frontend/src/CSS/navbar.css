@@ -1,5 +1,5 @@
 
-.navbar {
+.navbar2 {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -10,14 +10,14 @@
     font-family: 'Lama Sans', sans-serif;
 }
 
-.navbar .logo {
+.navbar2 .logo {
     width: 12rem;
     height: auto;
     margin: 1.5rem;
     min-width: 5rem;
 }
 
-.navbar .nav-links {
+.navbar2 .nav-links2 {
     display: flex;
     align-items: center;
     gap: 4rem;
@@ -25,14 +25,14 @@
     margin-right: 5rem;
 }
 
-.navbar .nav-links a {
+.navbar2 .nav-links2 a {
     color: black;
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.navbar .nav-links a:hover {
+.navbar2 .nav-links2 a:hover {
     color: #654B42;
 }
 
@@ -40,12 +40,12 @@ span {
     font-weight: 600;
 }
 
-.navbar .lang-icon {
-    width: 1.25rem;
-    height: 1.25rem;
+.navbar2 .lang-icon2 {
+    width: 1px;
+    height: auto;
 }
 
-.lang-link {
+.lang-link2 {
     display: flex;
     align-items: center;
     gap: 0.25rem;

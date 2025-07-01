@@ -5,17 +5,17 @@ import '../CSS/navbar.css';
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
+        <nav className="navbar2">
             <div className="logo-container">
                 <img src={logo} alt="الشعار" className="logo" />
             </div>
 
-            <div className="nav-links">
+            <div className="nav-links2">
                 <a href="#">تواصل معنا</a>
                 <a href="#">الخريطة التفاعلية</a>
                 <a href="#">الأحداث</a>
                 <a href="#">الرئيسة</a>
-                <a href="#" className="lang-link">
+                <a href="#" className="lang-link2">
                     <img src={lang} alt="اللغة" className="lang-icon" />
                     <span> English </span>
                 </a>
