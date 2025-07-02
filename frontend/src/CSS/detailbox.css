@@ -1,4 +1,4 @@
-.detail-card{
+.detail-card {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
@@ -9,44 +9,76 @@
     margin: 2%;
     padding: 1%;
     padding-right: 2%;
-    background-color:#76768031;
+    background-color: #76768010;
     border-radius: 30px;
     position: relative;
     bottom: 0;
     right: 0;
     box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease; 
+    transition: all 0.5s ease;
+     overflow: hidden;
 }
 
-.detail-card:hover{
+.detail-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(0deg,
+            transparent,
+            transparent 30%,
+            rgba(255, 255, 255, 0.3));
+    transform: rotate(-45deg);
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.detail-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(135, 134, 134, 0.3);
+    color: white;
+    box-shadow: 8px 8px 13px 0px rgba(0, 0, 0, 0.3);
+    background-color: #654B42;
+}
+
+.detail-card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+/*.detail-card:hover{
     transform: scale(1.05); 
-    background-color:#7676802a;
+    background-color:#76768016;
     box-shadow: 8px 8px 13px 0px rgba(0, 0, 0, 0.3);
     color: white;
-}
+}*/
 
-.detail-card img{
+.detail-card img {
     max-width: 60px;
     max-height: 60px;
     margin-left: 20px;
-    transition: 0.3s ease; 
+    transition: 0.5s ease;
 }
 
 .detail-card:hover img {
     filter: brightness(0) invert(1);
-    transform: rotate(5deg);
+    transform: rotatey(360deg);
 }
 
-.text-box{
+.text-box {
     display: flex;
     flex-direction: column;
     justify-content: right;
-    max-width: 450px; /* adjust as needed */
+    max-width: 450px;
+    /* adjust as needed */
     word-wrap: break-word;
 }
 
-.text-box h3, p{
+.text-box h3,
+p {
     font-size: 130%;
     margin: 10px;
-    transition: color 0.3s ease; 
+    transition: color 0.3s ease;
 }
