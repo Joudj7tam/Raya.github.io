@@ -13,31 +13,9 @@ const timelineData = [
 export default function Timeline() {
   const [active, setActive] = useState(3);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const timelineRef = useRef(null);
 
-  // Scroll animation trigger
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.2 }
-    );
-
-    if (timelineRef.current) {
-      observer.observe(timelineRef.current);
-    }
-
-    return () => {
-      if (timelineRef.current) {
-        observer.unobserve(timelineRef.current);
-      }
-    };
-  }, []);
+  
 
   const goNext = () => {
     if (!isAnimating && active < timelineData.length - 1) {
@@ -57,7 +35,7 @@ export default function Timeline() {
 
   return (
     <div 
-      className={`timeline-wrapper ${isVisible ? "visible" : ""}`} 
+      className={`timeline-wrapper }`} 
       ref={timelineRef}
     >
       <div className="years-nav-line">

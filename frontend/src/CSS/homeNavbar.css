@@ -9,31 +9,35 @@
   z-index: 50;
   color: white;
   font-family: 'Lama Sans', sans-serif;
+  padding: 1rem 0;
 }
 
 .navbar .logo {
   width: 12rem;
   height: auto;
-  margin: 1.5rem;
+  margin-left: 1.5rem;
   min-width: 5rem;
+  transition: width 0.3s ease;
 }
 
 .navbar .nav-links {
   display: flex;
   align-items: center;
   gap: 4rem;
-  font-size: 1.125rem; 
+  font-size: 1.125rem;
   margin-right: 5rem;
+  transition: all 0.3s ease;
 }
 
 .navbar .nav-links a {
   color: #FDFDED;
   text-decoration: none;
   transition: color 0.3s;
+  white-space: nowrap;
 }
 
 .navbar .nav-links a:hover {
-  color: #facc15; 
+  color: #facc15;
 }
 
 .navbar .lang-icon {
@@ -46,30 +50,83 @@
   align-items: center;
   gap: 0.25rem;
 }
-@media screen and (max-width: 977px) {
-  .navbar .nav-links {
-    gap: 1rem; /* smaller gap for mobile */
-    font-size: 1rem; /* or whatever you prefer for readability */
-    margin-right: 1rem; /* reduce margin for smaller screens */
-   
-  }
-  .navbar .logo {
-    width: 10rem;
-    height: auto;
-    margin-top: 0.5rem;
-}
-}
-@media screen and (max-width: 695px) {
-  .navbar .nav-links {
-    gap: 1rem; /* smaller gap for mobile */
-    font-size: 0.85rem; /* or whatever you prefer for readability */
-    margin-right: 0.75rem; /* reduce margin for smaller screens */
-   
-  }
-  .navbar .logo {
-    width: 7rem;
-    height: auto;
-    margin-top: 0.5rem;
-}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: #FDFDED;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  z-index: 100;
 }
 
+@media screen and (max-width: 1024px) {
+  .navbar .nav-links {
+    gap: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0;
+  }
+  
+  .navbar .logo {
+    width: 8rem;
+    margin-left: 1rem;
+  }
+  
+  .mobile-menu-button {
+    display: block;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    transition: right 0.3s ease;
+  }
+  
+  .nav-links.open {
+    right: 0;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .navbar .logo {
+    width: 6rem;
+  }
+  
+  .nav-links {
+    width: 80%;
+  }
+  
+  .nav-links a {
+    font-size: 1rem;
+  }
+  
+  .lang-link {
+    font-size: 0.9rem;
+  }
+  
+  .mobile-menu-button {
+    font-size: 1.2rem;
+  }
+}
