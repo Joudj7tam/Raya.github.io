@@ -20,7 +20,7 @@ body{
   background-image: url("../assets/hero.png");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* هذا يجعل البارالكس يعمل */
+  background-attachment: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +57,6 @@ body{
   margin-right: 20%;
   margin-top: 7%;
 }
-
 .about img {
   width: 100%;
   height: auto;
@@ -72,6 +71,7 @@ body{
     background-color: #654B42;
     color: #FDFDED;
 }
+
 .timeline h2, .map h2{
     margin-right: 5%;
 }
