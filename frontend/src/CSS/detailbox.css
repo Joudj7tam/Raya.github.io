@@ -4,8 +4,8 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: right;
-    width: 270px;
-    max-height: 155px;
+    max-width: 600px;
+    height: auto;
     margin: 2%;
     padding: 1%;
     padding-right: 2%;
@@ -20,30 +20,32 @@
 
 .detail-card:hover{
     transform: scale(1.05); 
-    background-color:#76768063;
+    background-color:#7676802a;
     box-shadow: 8px 8px 13px 0px rgba(0, 0, 0, 0.3);
     color: white;
-}
-
-.detail-card:hover img {
-    filter: brightness(0) invert(1);
 }
 
 .detail-card img{
     max-width: 60px;
     max-height: 60px;
     margin-left: 20px;
-    transition: filter 0.3s ease; 
+    transition: 0.3s ease; 
+}
+
+.detail-card:hover img {
+    filter: brightness(0) invert(1);
+    transform: rotate(5deg);
 }
 
 .text-box{
     display: flex;
     flex-direction: column;
-    align-items: right;
     justify-content: right;
+    max-width: 450px; /* adjust as needed */
+    word-wrap: break-word;
 }
 
-h3, p{
+.text-box h3, p{
     font-size: 130%;
     margin: 10px;
     transition: color 0.3s ease; 

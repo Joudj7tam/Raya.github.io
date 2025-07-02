@@ -6,8 +6,8 @@ const DetailsBox = ({icon, title, text}) => {
         <div className="detail-card">
             <img src={icon} alt="detail-icon"/>
             <div className="text-box"> 
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <h3 dir="rtl" lang="ar" >{title}</h3>
+                <p dir="rtl" lang="ar">{text}</p>
             </div>
         </div>
     );
