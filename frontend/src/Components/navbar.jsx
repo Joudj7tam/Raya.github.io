@@ -16,7 +16,7 @@ const Navbar = () => {
                 <a href="#">الأحداث</a>
                 <a href="#">الرئيسة</a>
                 <a href="#" className="lang-link2">
-                    <img src={lang} alt="اللغة" className="lang-icon" />
+                    <img src={lang} alt="اللغة" className="lang-icon2" />
                     <span> English </span>
                 </a>
             </div>
