@@ -1,6 +1,5 @@
 import React from 'react';
-import StoryHeaderBanner from '../Components/storyHeaderBanner.jsx';
-import DetailsBox from '../Components/detailbox.jsx';
+import DetailsBox from './detailbox.jsx';
 import sword_icon from '../assets/swords.png';
 import army_icon from '../assets/army.png';
 import calender_icon from '../assets/calendar.png';
@@ -9,18 +8,11 @@ import flag_icon from '../assets/flag.png';
 import muslim_icon from '../assets/muslim.png';
 import question_icon from '../assets/question.png';
 import mountain_icon from '../assets/mountain.png';
-import Navbar from '../Components/navbar.jsx'
-import '../CSS/detailspage.css';
+import '../CSS/details.css';
 
 const details = () => {
     return (
         <div className='body'>
-            <Navbar />
-            <StoryHeaderBanner
-                title="غزوة بدر"
-                showPlayButton={false}
-                showToggleButton={true}
-            />
             <div className='page-content-container'>
                 <DetailsBox dir="rtl" lang="ar"
                     icon={sword_icon}

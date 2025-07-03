@@ -1,31 +1,57 @@
-body, html {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    overflow-x: hidden; 
+/* togglePage.css */
+.tab-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 20px auto;
 }
 
-div{
-    margin: 0px;
-    padding: 0px;
+.tab-switcher button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  background-color: #ddd;
+  transition: background-color 0.3s ease;
 }
 
-.the-story{
-    margin: 7% 8%;
-    padding: 2% 5%;
-    text-align: right;
-    font-weight: 300;
-    line-height: 2.3;
-    border-radius: 30px;
-    background: linear-gradient(to bottom left, #bead9d3f, #ffffff42);
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
-    transition: all 0.5s ease; 
-    background-size: 200% 200%;
+.tab-switcher button.active {
+  background-color: #2196F3;
+  color: white;
 }
 
-.the-story:hover{
-    transform: scale(1.03); 
-    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.4); 
-    background: linear-gradient(to top right, #bead9d76, #ffffff76); 
-    background-position: 100% 100%;
+.slide-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.slide-content {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s ease;
+}
+
+.slide-content.show {
+  opacity: 1;
+  transform: translateX(0%);
+  position: relative;
+  z-index: 2;
+}
+
+.slide-content.hide-left {
+  transform: translateX(-100%);
+  opacity: 0;
+  z-index: 1;
+}
+
+.slide-content.hide-right {
+  transform: translateX(100%);
+  opacity: 0;
+  z-index: 1;
 }

@@ -1,0 +1,31 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+div{
+    margin: 0px;
+    padding: 0px;
+}
+
+.the-story{
+    margin: 7% 8%;
+    padding: 2% 5%;
+    text-align: right;
+    font-weight: 300;
+    line-height: 2.3;
+    border-radius: 30px;
+    background: linear-gradient(to bottom left, #bead9d3f, #ffffff42);
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease; 
+    background-size: 200% 200%;
+}
+
+.the-story:hover{
+    transform: scale(1.03); 
+    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.4); 
+    background: linear-gradient(to top right, #bead9d76, #ffffff76); 
+    background-position: 100% 100%;
+}
