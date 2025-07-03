@@ -8,14 +8,15 @@ const timelineData = [
   { year: "5 هـ", title: "عهد علي بن أبي طالب", description: ["غزوة بني المصطلق", "غزوة الحديبية", "غزوة خيبر", "غزوة ذات الرقاع"] },
   { year: "6 هـ", title: "عهد النبي محمد", description: ["غزوة مؤتة", "فتح مكة", "غزوة حنين", "غزوة الطائف"] },
   { year: "7 هـ", title: "عهد عمر بن الخطاب", description: ["غزوة تبوك", "حجة الوداع", "سرية أسامة", "وفاة الرسول"] },
+  { year: "5 هـ", title: "عهد علي بن أبي طالب", description: ["غزوة بني المصطلق", "غزوة الحديبية", "غزوة خيبر", "غزوة ذات الرقاع"] },
+  { year: "6 هـ", title: "عهد النبي محمد", description: ["غزوة مؤتة", "فتح مكة", "غزوة حنين", "غزوة الطائف"] },
+  { year: "7 هـ", title: "عهد عمر بن الخطاب", description: ["غزوة تبوك", "حجة الوداع", "سرية أسامة", "وفاة الرسول"] },
 ];
 
 export default function Timeline() {
-  const [active, setActive] = useState(3);
+  const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef(null);
-
-  
 
   const goNext = () => {
     if (!isAnimating && active < timelineData.length - 1) {
@@ -34,38 +35,35 @@ export default function Timeline() {
   };
 
   return (
-    <div 
-      className={`timeline-wrapper }`} 
-      ref={timelineRef}
-    >
+    <div className="timeline-wrapper" ref={timelineRef}>
       <div className="years-nav-line">
-        <div className="years-line"></div>
-        {timelineData.map((item, index) => (
-          <div
-            key={index}
-            className={`year-circle ${index === active ? "active" : ""}`}
-            onClick={() => {
-              if (!isAnimating) {
-                setIsAnimating(true);
-                setActive(index);
-                setTimeout(() => setIsAnimating(false), 600);
-              }
-            }}
-          >
-            <div className="year-text">{item.year}</div>
-            <div className="circle">
-              <div className="inside-circle"></div>
-            </div>
-          </div>
-        ))}
+  <div className="years-line"></div>
+  {timelineData.map((item, index) => {
+    const offset = index - active;
+    const absOffset = Math.abs(offset);
+    if (absOffset > 2) return null;
+
+    return (
+      <div
+        key={index}
+        className={`year-circle ${index === active ? "active" : ""}`}
+        onClick={() => !isAnimating && setActive(index)}
+        style={{
+          transform: `scale(${1 - 0.2 * absOffset})`,
+          opacity: `${1 - 0.3 * absOffset}`,
+          filter: absOffset === 2 ? "blur(1px)" : "none",
+        }}
+      >
+        <div className="year-text">{item.year}</div>
+        <div className="circle"><div className="inside-circle"></div></div>
       </div>
+    );
+  })}
+</div>
+
 
       <div className="timeline-content">
-        <button 
-          className="arrow left" 
-          onClick={goPrev} 
-          disabled={active === 0 || isAnimating}
-        >
+        <button className="arrow left" onClick={goPrev} disabled={active === 0 || isAnimating}>
           ‹
         </button>
 
@@ -104,11 +102,7 @@ export default function Timeline() {
           })}
         </div>
 
-        <button 
-          className="arrow right" 
-          onClick={goNext} 
-          disabled={active === timelineData.length - 1 || isAnimating}
-        >
+        <button className="arrow right" onClick={goNext} disabled={active === timelineData.length - 1 || isAnimating}>
           ›
         </button>
       </div>
