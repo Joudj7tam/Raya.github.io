@@ -1,5 +1,5 @@
 .header-banner{
-    background-image: url(../assets/hero.png);
+    background-image: url(../assets/islamic-war.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,11 +14,22 @@
     overflow: hidden;
 }
 
-.banner-title{
-    color: white;
+.header-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .banner-title{
+    z-index: 1;
+    color: white;
     margin: 0% 5% 0% 3%;
     font-size: 5vmax;
 }
@@ -28,10 +39,12 @@
     height: fit-content;
     background-color: transparent;
     border: none;
+    z-index: 1;
 }
 
 .play-icon{
     width: 8vmax;
+    z-index: 1;
 }
 
 /* Add these styles to your existing CSS */
