@@ -3,10 +3,10 @@
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: right;
+    justify-content: center;
     direction: rtl;
     min-width: 200px;
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
     margin: 2%;
     padding: 1%;
@@ -16,9 +16,11 @@
     position: relative;
     bottom: 0;
     right: 0;
-    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 5px 5px 10px 0px #654b4276;
     transition: all 0.5s ease;
     overflow: hidden;
+    will-change: transform;
+    z-index: 1;
 }
 
 .detail-card::before {
@@ -37,11 +39,12 @@
     opacity: 0;
 }
 
-.detail-card:hover {
+.detail-card:hover{
     transform: scale(1.05);
     color: white;
-    box-shadow: 8px 8px 13px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 8px 8px 13px 0px #654b42;
     background-color: #654b42d2;
+    z-index: 10;
 }
 
 .detail-card:hover::before {
