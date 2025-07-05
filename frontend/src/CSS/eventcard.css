@@ -1,70 +1,89 @@
 .event-card {
-    width: 320px;
-    background-color: #60453d;
-    border-radius: 2rem;
+    position: relative;
+    width: 250px;
+    height: 320px;
+    border-radius: 10px 50px;
     overflow: hidden;
-    color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    text-align: center;
-    direction: rtl;
-}
-
-.image-container {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .event-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
+    transition: opacity 0.4s ease;
 }
 
+/* Overlay container for text & button */
 .event-content {
-    padding: 1rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    /* padding: 0px; */
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-}
-
-.event-header {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    justify-content: center;
     align-items: center;
-}
-
-.era-tag {
-    border: 1px solid #ccc;
-    border-radius: 999px;
-    padding: 0.3rem 1rem;
-    font-size: 0.85rem;
-    background-color: transparent;
-    color: #fefae0;
-    font-weight: 400;
+    background: rgba(0, 0, 0, 0);
+    /* transparent until hover */
+    transition: background 0.4s ease;
 }
 
 .event-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 0;
     color: white;
+    font-size: 30px;
+    margin: 0;
+    text-align: center;
+    text-shadow: 1px 1px 3px #000;
+    font-weight: 600;
+    padding: 20px;
 }
 
-.details-button {
+.era-tag {
     background-color: transparent;
-    color: #fefae0;
-    border: 1px solid #fefae0;
-    padding: 0.5rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    padding: 4px 10px;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 300;
 }
 
-.details-button:hover {
-    background-color: #fefae0;
-    color: #60453d;
+/* Hidden button initially */
+.details-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid white;
+    border-radius: 8px;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-weight: 400;
+}
+
+/* Hover Effects */
+.event-card:hover .event-image {
+    opacity: 1;
+}
+
+.event-card:hover {
+    /* transform: translateY(-10px); */
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+
+.event-card:hover .details-button {
+    opacity: 1;
+}
+
+.event-card:hover .event-content {
+    background: #654b426c;
 }

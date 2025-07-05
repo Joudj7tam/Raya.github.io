@@ -1,5 +1,6 @@
 // SearchBox.jsx
 import React from 'react';
+import { IoSearch } from "react-icons/io5";
 import '../CSS/searchbox.css';
 
 const SearchBox = () => {
@@ -9,7 +10,7 @@ const SearchBox = () => {
             <div className="search-and-sort">
                 <div className="search-input">
                     <input type="text" placeholder="البحث عن غزوة.." />
-                    <span className="search-icon">🔍</span>
+                    <IoSearch className="search-icon"/>
                 </div>
 
                 <div className="sort-options">

@@ -1,15 +1,19 @@
+*{
+    font-family: 'Lama Sans', sans-serif;
+}
+
 .search-box {
     background-color: #654B42;
     color: #fefae0;
-    padding: 3rem;
+    padding: 2rem;
+    width: 100%;
     /* margin-top: px; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    gap: 1.5rem;
+    gap: 1rem;
     direction: rtl;
-    font-family: 'Lama Sans', sans-serif;
 }
 
 .filters {
@@ -45,6 +49,7 @@
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
+    padding-right: 60px;
 }
 
 .search-input {
@@ -66,7 +71,7 @@
     position: absolute;
     right: 0.6rem;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
     color: #555;
     pointer-events: none;
 }
