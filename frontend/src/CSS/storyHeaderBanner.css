@@ -1,5 +1,5 @@
 .header-banner{
-    background-image: url(../assets/hero.png);
+    background-image: url(../assets/islamic-war.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -14,17 +14,24 @@
     overflow: hidden;
 }
 
-.banner-title, .navigation-title{
-    color: white;
+.header-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
 }
 
 .banner-title{
+    z-index: 1;
+    color: white;
     margin: 0% 5% 0% 3%;
     font-size: 5vmax;
-}
-
-.navigation-title:hover{
-    color: #facc15; 
 }
 
 .play-button{
@@ -32,41 +39,69 @@
     height: fit-content;
     background-color: transparent;
     border: none;
+    z-index: 1;
 }
 
 .play-icon{
     width: 8vmax;
+    z-index: 1;
 }
 
 /* Add these styles to your existing CSS */
 .segmented-control {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 3% 6%;
+  bottom: 20px;
+  left: 30px;
   display: flex;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 4px;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Sliding background */
+.segmented-control::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  border-radius: 16px;
+  background-color: white;
+  z-index: 0;
+  transition: transform 0.4s ease;
+  transform: translateX(0%);
+}
+
+/* Move to second tab */
+.segmented-control[data-active='details']::before {
+  transform: translateX(100%);
 }
 
 .segment {
+  position: relative;
+  z-index: 1;
   padding: 8px 16px;
+  background-color: transparent;
   color: white;
   text-decoration: none;
+  border: none;
   border-radius: 20px;
   transition: all 0.3s ease;
   font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .segment.active {
-  background-color: white;
-  color: #000;
+  color: black;
   font-weight: 500;
 }
 
 .segment:not(.active):hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
+

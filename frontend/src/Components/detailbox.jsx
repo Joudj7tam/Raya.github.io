@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "../CSS/detailbox.css";
 
-const DetailsBox = ({icon, title, text}) => {
+const DetailsBox = ({ icon, title, text}) => {
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
     return (
-        <div className="detail-card">
+        <div className="detail-card" data-aos="fade-up">
             <img src={icon} alt="detail-icon"/>
             <div className="text-box"> 
-                <h3>{title}</h3>
-                <p>{text}</p>
+                <h3 dir="rtl" lang="ar" >{title}</h3>
+                <p dir="rtl" lang="ar">{text}</p>
             </div>
-        </div>
+        </div >
     );
 };
 
