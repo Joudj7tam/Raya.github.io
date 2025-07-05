@@ -1,9 +1,16 @@
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
 import "../CSS/home.css";
 
 function HomePage() {
+  useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
   return (
     <>
       <HomeNavbar />
@@ -16,7 +23,7 @@ function HomePage() {
 
       <div className="flex-container">
         <section className="about">
-          <h3 className="about-text" dir="rtl" lang="ar">
+          <h3 className="about-text" data-aos="fade-up" dir="rtl" lang="ar">
             هنا تُروى الغزوات والفتوحات الإسلامية، لا كصفحات في كتاب... بل كتجربة تفاعلية حيّة تحكي القصة، تكشف الأسباب، وتعرض النتائج. تعلّم، استكشف، وتأمّل... كيف صُنعت لحظات غيرت مجرى التاريخ.
           </h3>
           <img src={camels} alt="الجمال" />
