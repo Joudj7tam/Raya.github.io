@@ -5,8 +5,6 @@ import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
 import "../CSS/home.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
 
 function HomePage() {
   useEffect(() => {
