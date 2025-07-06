@@ -10,7 +10,7 @@ const SearchBox = () => {
             <div className="search-and-sort">
                 <div className="search-input">
                     <input type="text" placeholder="البحث عن غزوة.." />
-                    <IoSearch className="search-icon"/>
+                    <IoSearch className="search-icon" />
                 </div>
 
                 <div className="sort-options">
@@ -26,7 +26,37 @@ const SearchBox = () => {
             </div>
 
             <div className="filters">
-                <select defaultValue="">
+                <div className="filter-dropdown">
+                    <button className="filter-button">العهد الإسلامي</button>
+                    <div className="dropdown-menu">
+                        <div>عهد النبي محمد</div>
+                        <div>عهد الخليفة ابو بكر الصديق</div>
+                        <div>عهد الخليفة عمر بن الخطاب</div>
+                        <div>عهد الخليفة عثمان بن عفان</div>
+                        <div>عهد الخليفة علي بن ابي طالب</div>
+                    </div>
+                </div>
+
+                <div className="filter-dropdown">
+                    <button className="filter-button">نوع الحدث</button>
+                    <div className="dropdown-menu">
+                        <div>فتح</div>
+                        <div>معركة</div>
+                        <div>غزوة</div>
+                    </div>
+                </div>
+
+                <div className="filter-dropdown">
+                    <button className="filter-button">النتيجة النهائية</button>
+                    <div className="dropdown-menu">
+                        <div>انتصار</div>
+                        <div>هزيمة</div>
+                        <div>لم يحدث قتال</div>
+                    </div>
+                </div>
+
+
+                {/* <select defaultValue="">
                     <option value="" disabled>العهد الإسلامي</option>
                     <option>عهد النبي محمد</option>
                     <option> عهد الخليفة ابو بكر الصديق</option>
@@ -47,7 +77,7 @@ const SearchBox = () => {
                     <option>انتصار</option>
                     <option>هزيمة</option>
                     <option>لم يحدث قتال</option>
-                </select>
+                </select> */}
             </div>
 
             <div className="date-range">

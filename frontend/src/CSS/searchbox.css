@@ -1,4 +1,4 @@
-*{
+* {
     font-family: 'Lama Sans', sans-serif;
 }
 
@@ -7,7 +7,6 @@
     color: #fefae0;
     padding: 2rem;
     width: 100%;
-    /* margin-top: px; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -20,9 +19,10 @@
     display: flex;
     gap: 0.75rem;
     align-items: center;
+
 }
 
-.filters select {
+/* .filters select {
     background-color: #fefae0;
     color: #1a1a1a;
     border: none;
@@ -30,6 +30,54 @@
     border-radius: 6px;
     font-size: 0.9rem;
     cursor: pointer;
+} */
+
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-button {
+    background-color: #fefae0;
+    color: #1a1a1a;
+    padding: 0.4rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* القائمة المنسدلة */
+.dropdown-menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: #654B42;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10;
+    min-width: 160px;
+}
+
+.dropdown-menu div {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dropdown-menu div:hover {
+    background-color: #77766a;
+}
+
+/* عند تحويم المستخدم على الفلتر */
+.filter-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 .date-range {
@@ -83,6 +131,7 @@
     align-items: center;
     font-size: 0.85rem;
     color: #fefae0;
+    padding-right: 0;
 }
 
 .sort-options label {
@@ -96,4 +145,59 @@
     font-size: 0.8rem;
     color: #fefae0;
     margin-top: 0.2rem;
+}
+
+/* 1024px and below (tablet landscape) */
+@media screen and (max-width: 1170px) {
+    .search-box {
+        flex-direction: column;
+        /* align-items: flex-start; */
+    }
+
+    .search-and-sort {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sort-options {
+        flex-wrap: wrap;
+        padding-right: 0;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
+
+    .date-range {
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
+}
+
+/* 768px and below (tablet portrait) */
+@media screen and (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-and-sort {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sort-options {
+        flex-wrap: wrap;
+        padding-right: 0;
+    }
+
+    .filters {
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
+
+    .date-range {
+        flex-wrap: wrap;
+        margin-right: 60px;
+    }
 }
