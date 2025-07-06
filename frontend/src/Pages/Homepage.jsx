@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
@@ -7,10 +9,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 function HomePage() {
-
   useEffect(() => {
-    AOS.init({ duration: 1000 });
-  }, []);
+        AOS.init({ duration: 1000 });
+    }, []);
 
   return (
     <>

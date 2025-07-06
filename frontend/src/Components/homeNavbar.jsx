@@ -25,7 +25,7 @@ function HomeNavbar() {
         <a href="#" onClick={() => setIsOpen(false)}>تواصل معنا</a>
         <a href="#" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
         <a href="#" onClick={() => setIsOpen(false)}>الأحداث</a>
-        <a href="#" onClick={() => setIsOpen(false)}>الرئيسة</a>
+        <a href="#" onClick={() => setIsOpen(false)}>الرئيسية</a>
         <a href="#" className="lang-link" onClick={() => setIsOpen(false)}>
           <img src={lang} alt="اللغة" className="lang-icon" />
           English

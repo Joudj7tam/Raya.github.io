@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "../CSS/timeline.css";
 
 const timelineData = [
@@ -14,6 +16,10 @@ const timelineData = [
 ];
 
 export default function Timeline() {
+  useEffect(() => {
+        AOS.init({ duration: 2000 });
+    }, []);
+
   const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef(null);
@@ -36,7 +42,7 @@ export default function Timeline() {
 
   return (
     <div className="timeline-wrapper" ref={timelineRef}>
-      <div className="years-nav-line">
+      <div className="years-nav-line" data-aos="slide-left">
   <div className="years-line"></div>
   {timelineData.map((item, index) => {
     const offset = index - active;
@@ -62,7 +68,7 @@ export default function Timeline() {
 </div>
 
 
-      <div className="timeline-content">
+      <div className="timeline-content" data-aos="fade-up">
         <button className="arrow left" onClick={goPrev} disabled={active === 0 || isAnimating}>
           ‹
         </button>
