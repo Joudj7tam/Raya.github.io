@@ -6,7 +6,7 @@ import '../CSS/storyHeaderBanner.css';
 const HeaderBanner = ({ title, showPlayButton, onPlayClick, activeTab, setActiveTab }) => {
   return (
     <div className="header-banner">
-      {
+      {/*
       <video 
         className="header-video" 
         autoPlay 
@@ -17,7 +17,7 @@ const HeaderBanner = ({ title, showPlayButton, onPlayClick, activeTab, setActive
         <source src={islamic_war_video} type="video/mp4" />
         Your browser does not support HTML5 video.
       </video> 
-         }
+         */}
       <div className="segmented-control" data-active={activeTab}>
         <button
           className={`segment ${activeTab === 'story' ? 'active' : ''}`}

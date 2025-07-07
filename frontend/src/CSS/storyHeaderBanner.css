@@ -1,5 +1,5 @@
 .header-banner{
-    /*background-image: url(../assets/islamic-war.jpeg);*/
+    background-image: url(../assets/islamic-war.jpeg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -40,6 +40,7 @@
     background-color: transparent;
     border: none;
     z-index: 1;
+    cursor: pointer;
 }
 
 .play-icon{

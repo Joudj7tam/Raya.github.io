@@ -8,19 +8,15 @@
     min-width: fit-content;
     max-width: 100%;
     height: auto;
-    margin: 2%;
+    margin: 4% 2%;
     padding: 0% 5%;
     padding-right: 2%;
-    background-color: #76768010;
     border-radius: 17px;
     position: relative;
     bottom: 0;
     right: 0;
-    box-shadow: 5px 5px 10px 0px #654b4276;
     transition: all 0.5s ease;
     overflow: hidden;
-    will-change: transform;
-    z-index: 1;
 }
 
 .detail-card::before {
@@ -33,7 +29,7 @@
     background: linear-gradient(0deg,
             transparent,
             transparent 30%,
-            rgba(255, 255, 255, 0.3));
+            #654b4256);
     transform: rotate(-45deg);
     transition: all 0.5s ease;
     opacity: 0;
@@ -41,9 +37,8 @@
 
 .detail-card:hover{
     transform: scale(1.05);
-    color: white;
-    box-shadow: 8px 8px 13px 0px #654b42;
-    background-color: #654b42d2;
+    color: black;
+    background-color: #654b4200;
     z-index: 10;
 }
 
@@ -61,13 +56,12 @@
 }
 
 .detail-card:hover img {
-    filter: brightness(0) invert(1);
     transform: rotatey(360deg);
 }
 
 .text-box {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: right;
     max-width: 85%;
     word-wrap: break-word;
@@ -75,7 +69,7 @@
 }
 
 .text-box h3, p {
-    font-size: 70%;
+    font-size: 90%;
     margin: 10px;
     transition: color 0.3s ease;
 } 
