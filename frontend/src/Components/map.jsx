@@ -8,9 +8,8 @@ const MapView = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
 
     const getCountryName = (feature) => {
-        // Some files use `properties.admin`, others `properties.name`
-        return feature.properties.admin || feature.properties.name;
-    };
+    return feature.properties.name_ar || feature.properties.name || feature.properties.admin;
+};
 
     const regionColors = [
         "#b3584a",
@@ -30,22 +29,22 @@ const MapView = () => {
     ];
 
     const saudiRegions = [
-        "Riyadh",
-        "Makkah",
-        "Madinah",
-        "Qassim",
-        "Eastern",
-        "Asir",
-        "Tabuk",
-        "Hail",
-        "Northern Borders",
-        "Jazan",
-        "Najran",
-        "Bahah",
-        "Jawf",
-        "Eastern Region",
-        "Northern Region",
-        "Jizan"
+        "الرياض",
+        "مكة المكرمة",
+        "المدينة المنورة",
+        "القصيم",
+        "الشرقية",
+        "عسير",
+        "تبوك",
+        "حائل",
+        "الحدود الشمالية",
+        "جازان",
+        "نجران",
+        "الباحة",
+        "الجوف",
+        "المنطقة الشرقية",
+        "المنطقة الشمالية",
+        "جيزان"
     ];
 
     const getColorForCountry = (name) => {
