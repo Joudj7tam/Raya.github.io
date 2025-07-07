@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
+import MapView from "../Components/map";
 import "../CSS/home.css";
 
 function HomePage() {
@@ -34,6 +35,7 @@ function HomePage() {
         </section>
         <section className="map">
           <h2>الخريطة التفاعلية</h2>
+          <MapView />
         </section>
       </div>
     </>
