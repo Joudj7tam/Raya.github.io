@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import worldBattlesGeoJSON  from "../data/Geo.json";
-import battleByCountry  from "../data/battleByCountry";
+import worldBattlesGeoJSON from "../data/Geo.json";
+import battleByCountry from "../data/battleByCountry";
 
 const MapView = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
@@ -10,6 +10,50 @@ const MapView = () => {
     const getCountryName = (feature) => {
         // Some files use `properties.admin`, others `properties.name`
         return feature.properties.admin || feature.properties.name;
+    };
+
+    const regionColors = [
+        "#b3584a",
+        "#d8b36f",
+        "#5e6659",
+        "#c7c0ae",
+        "#7682a4",
+        "#d2b6a2",
+        "#c3a28d",
+        "#a0522d",
+        "#9ba88d",
+        "#c1b5aa",
+        "#826f66",
+        "#b0a395",
+        "#89735b",
+        "#e2c4a0",
+    ];
+
+    const saudiRegions = [
+        "Riyadh",
+        "Makkah",
+        "Madinah",
+        "Qassim",
+        "Eastern",
+        "Asir",
+        "Tabuk",
+        "Hail",
+        "Northern Borders",
+        "Jazan",
+        "Najran",
+        "Bahah",
+        "Jawf",
+        "Eastern Region",
+        "Northern Region",
+        "Jizan"
+    ];
+
+    const getColorForCountry = (name) => {
+        if (saudiRegions.includes(name)) {
+            return "#2e8b57"; // Saudi green
+        }
+        const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+        return regionColors[hash % regionColors.length];
     };
 
     const onEachCountry = (feature, layer) => {
@@ -25,7 +69,7 @@ const MapView = () => {
 
         layer.setStyle({
             color: "#333",
-            fillColor: "#d4f1f4",
+            fillColor: getColorForCountry(countryName),
             fillOpacity: 0.6,
             weight: 1,
         });
@@ -36,9 +80,15 @@ const MapView = () => {
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
-                style={{ height: "600px", width: "100%" }}
+                style={{ height: "500px", width: "100%", backgroundColor: "transparent" }}
+                zoomControl={false}
+                doubleClickZoom={false}
+                scrollWheelZoom={false}
+                dragging={false}
+                touchZoom={false}
+                keyboard={false}
+                attributionControl={false}
             >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                 <GeoJSON data={worldBattlesGeoJSON} onEachFeature={onEachCountry} />
             </MapContainer>
 
