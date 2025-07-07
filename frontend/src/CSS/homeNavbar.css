@@ -62,6 +62,10 @@
   z-index: 100;
 }
 
+.map {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 1024px) {
   .navbar .nav-links {
     gap: 2rem;
