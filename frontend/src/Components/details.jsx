@@ -48,12 +48,6 @@ const details = () => {
 
             </div>
 
-            <DetailsBox className="result" dir="rtl" lang="ar"
-                icon={flag_icon}
-                title="النتيجة"
-                text="انتصار المسلمين"
-            />
-
             <DetailsBox dir="rtl" lang="ar"
                 icon={question_icon}
                 title="أسبابها"
@@ -64,6 +58,13 @@ const details = () => {
                 title="آثارها"
                 text=" بداية مرحلة جديدة في تاريخ الإسلام, زيادة العداوة بين المسلمين و قريش, أصبح للمسلمين مصدرٌ جديدٌ للدخل وهو غنائم المعارك، وبذلك تحسّن حالُ المسلمين الماديّ والاقتصاديّ والمعنويّ."
             />
+
+             <DetailsBox className="result" dir="rtl" lang="ar"
+                icon={flag_icon}
+                title="النتيجة"
+                text="انتصار المسلمين"
+            />
+            
         </div>
     );
 }
