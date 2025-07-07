@@ -27,22 +27,22 @@ const MapView = () => {
     ];
 
     const saudiRegions = [
-        "Riyadh",
-        "Makkah",
-        "Madinah",
-        "Qassim",
-        "Eastern",
-        "Asir",
-        "Tabuk",
-        "Hail",
-        "Northern Borders",
-        "Jazan",
-        "Najran",
-        "Bahah",
-        "Jawf",
-        "Eastern Region",
-        "Northern Region",
-        "Jizan"
+        "الرياض",
+        "مكة المكرمة",
+        "المدينة المنورة",
+        "القصيم",
+        "الشرقية",
+        "عسير",
+        "تبوك",
+        "حائل",
+        "الحدود الشمالية",
+        "جازان",
+        "نجران",
+        "الباحة",
+        "الجوف",
+        "المنطقة الشرقية",
+        "المنطقة الشمالية",
+        "جيزان"
     ];
 
     const getCountryName = (feature) => {
