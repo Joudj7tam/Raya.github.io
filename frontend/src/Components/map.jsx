@@ -1,51 +1,58 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import regionData from "../data/SA_regions.json";
-import ghazawatByRegion from "../data/ghazawatByRegion";
+import worldBattlesGeoJSON  from "../data/Geo.json";
+import battleByCountry  from "../data/battleByCountry";
 
 const MapView = () => {
-    const [selectedRegion, setSelectedRegion] = useState(null);
+    const [selectedCountry, setSelectedCountry] = useState(null);
 
-    const onEachRegion = (feature, layer) => {
-        const regionName = feature.properties.name;
+    const getCountryName = (feature) => {
+        // Some files use `properties.admin`, others `properties.name`
+        return feature.properties.admin || feature.properties.name;
+    };
+
+    const onEachCountry = (feature, layer) => {
+        const countryName = getCountryName(feature);
+
         layer.on({
             click: () => {
-                setSelectedRegion(regionName);
+                setSelectedCountry(countryName);
             }
         });
 
-        layer.bindTooltip(regionName, { sticky: true });
+        layer.bindTooltip(countryName, { sticky: true });
 
         layer.setStyle({
-            color: "#000",
+            color: "#333",
+            fillColor: "#d4f1f4",
+            fillOpacity: 0.6,
             weight: 1,
-            fillColor: "#8ecae6",
-            fillOpacity: 0.5,
         });
-
     };
 
     return (
         <div className="flex flex-col md:flex-row gap-4">
-            <MapContainer center={[23.8859, 45.0792]} zoom={5.2} style={{ height: "600px", width: "100%" }}>
+            <MapContainer
+                center={[25, 45]}
+                zoom={4}
+                style={{ height: "600px", width: "100%" }}
+            >
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-                <GeoJSON data={regionData} onEachFeature={onEachRegion} />
+                <GeoJSON data={worldBattlesGeoJSON} onEachFeature={onEachCountry} />
             </MapContainer>
 
-            {selectedRegion && (
+            {selectedCountry && (
                 <div className="p-4 bg-white rounded shadow w-full md:w-1/3">
-                    <h2 className="text-xl font-bold mb-3">
-                        الغزوات في منطقة {selectedRegion}
+                    <h2 className="text-xl font-bold mb-3 text-right">
+                        الغزوات والفتوحات في {selectedCountry}
                     </h2>
                     <ul className="list-disc pl-5 text-right">
-                        {(ghazawatByRegion[selectedRegion] || []).map((g, i) => (
-                            <li key={i}>
-                                {g.name} – {g.year}
-                            </li>
+                        {(battleByCountry[selectedCountry] || []).map((b, i) => (
+                            <li key={i}>{b.name} – {b.year}</li>
                         ))}
-                        {(!ghazawatByRegion[selectedRegion] || ghazawatByRegion[selectedRegion].length === 0) && (
-                            <li>لا توجد غزوات مسجلة في هذه المنطقة</li>
+                        {(!battleByCountry[selectedCountry] || battleByCountry[selectedCountry].length === 0) && (
+                            <li>لا توجد أحداث مسجلة</li>
                         )}
                     </ul>
                 </div>
