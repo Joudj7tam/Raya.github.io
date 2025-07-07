@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
+import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import worldBattlesGeoJSON  from "../data/Geo.json";
 import battleByCountry  from "../data/battleByCountry";
@@ -36,9 +36,14 @@ const MapView = () => {
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
-                style={{ height: "600px", width: "100%" }}
-            >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                style={{ height: "500px", width: "100%", backgroundColor: "transparent" }}
+                zoomControl={false}       
+                doubleClickZoom={false}   
+                scrollWheelZoom={false}   
+                dragging={false}          
+                touchZoom={false}        
+                keyboard={false}         
+                >
                 <GeoJSON data={worldBattlesGeoJSON} onEachFeature={onEachCountry} />
             </MapContainer>
 
