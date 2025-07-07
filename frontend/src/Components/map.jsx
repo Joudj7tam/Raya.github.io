@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback} from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import worldBattlesGeoJSON from "../data/Geo.json";
 import battleByCountry from "../data/battleByCountry";
+import "../CSS/map.css";
 
 const MapView = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
-
-    const getCountryName = (feature) => {
-        // Some files use `properties.admin`, others `properties.name`
-        return feature.properties.admin || feature.properties.name;
-    };
+    const mapRef = useRef();
 
     const regionColors = [
         "#b3584a",
@@ -48,6 +45,10 @@ const MapView = () => {
         "Jizan"
     ];
 
+    const getCountryName = (feature) => {
+        return feature.properties.admin || feature.properties.name;
+    };
+
     const getColorForCountry = (name) => {
         if (saudiRegions.includes(name)) {
             return "#2e8b57"; // Saudi green
@@ -59,20 +60,27 @@ const MapView = () => {
     const onEachCountry = (feature, layer) => {
         const countryName = getCountryName(feature);
 
-        layer.on({
-            click: () => {
-                setSelectedCountry(countryName);
-            }
+        layer.on("click", (e) => {
+            e.originalEvent.stopPropagation(); // Prevent event from bubbling to map
+            setSelectedCountry(countryName);
+            const bounds = layer.getBounds();
+            mapRef.current?.fitBounds(bounds.pad(1.5));
         });
 
         layer.bindTooltip(countryName, { sticky: true });
+    };
 
-        layer.setStyle({
+    const styleFeature = (feature) => {
+        const countryName = getCountryName(feature);
+        const isSelected = selectedCountry === countryName;
+
+        return {
             color: "#333",
-            fillColor: getColorForCountry(countryName),
-            fillOpacity: 0.6,
             weight: 1,
-        });
+            fillColor: getColorForCountry(countryName),
+            fillOpacity: selectedCountry ? (isSelected ? 1 : 0.2) : 0.6,
+            className: isSelected ? "country-shape selected" : selectedCountry ? "country-shape dimmed" : "country-shape",
+        };
     };
 
     return (
@@ -80,7 +88,7 @@ const MapView = () => {
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
-                style={{ height: "500px", width: "100%", backgroundColor: "transparent" }}
+                style={{ height: "700px", width: "100%", backgroundColor: "transparent" }}
                 zoomControl={false}
                 doubleClickZoom={false}
                 scrollWheelZoom={false}
@@ -88,8 +96,14 @@ const MapView = () => {
                 touchZoom={false}
                 keyboard={false}
                 attributionControl={false}
+                whenCreated={(mapInstance) => (mapRef.current = mapInstance)}
             >
-                <GeoJSON data={worldBattlesGeoJSON} onEachFeature={onEachCountry} />
+                <GeoJSON
+                    key={selectedCountry || "all"}
+                    data={worldBattlesGeoJSON}
+                    onEachFeature={onEachCountry}
+                    style={styleFeature}
+                />
             </MapContainer>
 
             {selectedCountry && (
@@ -112,4 +126,3 @@ const MapView = () => {
 };
 
 export default MapView;
-
