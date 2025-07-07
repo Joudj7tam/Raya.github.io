@@ -36,11 +36,8 @@ body {
 
 .hero-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: #FDFDED;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
   width: 90%;
   max-width: 1000px;
   padding: 0 20px;
@@ -79,17 +76,33 @@ body {
 }
 
 .timeline {
-  width: 100%;
+  width: 90%;
   text-align: right;
-  background-color: #654B42;
-  color: #FDFDED;
-  padding: 60px 0;
+  background-color: #654b42e7;
+  color: white;
+  padding: 10px 0px 10px 0px;
+  margin-top: 5%;
+  border-radius: 30px;
+  box-shadow: 15px 15px 20px #654b42b4;
 }
 
 .timeline h2 {
   margin-right: 5%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   padding: 0 15px;
+  position: relative
+}
+
+.timeline h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0%;
+  width: 7px;
+  background-color: white;
+  border-radius: 2px;
+
 }
 
 .map {
@@ -109,7 +122,7 @@ body {
   .about-text {
     margin: 7% 5% 0;
   }
-  
+
   .hero {
     height: 80vh;
   }
@@ -121,13 +134,14 @@ body {
     min-height: 500px;
     background-attachment: scroll;
   }
-  
+
   .about-text {
     margin: 15% 5% 0;
     line-height: 1.6;
   }
-  
-  .timeline, .map {
+
+  .timeline,
+  .map {
     padding: 40px 0;
   }
 }
@@ -137,18 +151,19 @@ body {
     height: 60vh;
     min-height: 400px;
   }
-  
+
   .hero h1 {
     line-height: 1.4;
     margin-bottom: 0.5rem;
   }
-  
+
   .about-text {
     margin: 20% 3% 0;
     font-size: 1rem;
   }
-  
-  .timeline h2, .map h2 {
+
+  .timeline h2,
+  .map h2 {
     margin-right: 3%;
     font-size: 1.3rem;
   }

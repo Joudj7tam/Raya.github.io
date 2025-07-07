@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import eventImage from '../assets/card.jpeg';
 import '../CSS/eventcard.css';
 
 const EventCard = ({ title, era }) => {
+
+    useEffect(() => {
+            AOS.init({ duration: 1000 });
+        }, []);
+
     return (
-        <div className="event-card">
+        <div className="event-card" data-aos="fade-up">
             <img src={eventImage} alt="غزوة بدر" className="event-image" />
             <div className="event-content">
                 <div className="event-header">

@@ -16,7 +16,7 @@ function HomePage() {
     <>
       <HomeNavbar />
       <section className="hero">
-        <div className="hero-text">
+        <div className="hero-text" data-aos="fade-right">
           <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
           <h5>[الصف: 4 - 4]</h5>
         </div>
@@ -29,8 +29,8 @@ function HomePage() {
           </h3>
           <img src={camels} alt="الجمال" />
         </section>
-        <section className="timeline">
-          <h2>الخط الزمني</h2>
+        <section className="timeline" data-aos="fade-up">
+          <h2 data-aos="fade-up">استعرض أبرز الغزوات والفتوحات، حسب ترتيبها الزمني</h2>
           <Timeline />
         </section>
         <section className="map">
