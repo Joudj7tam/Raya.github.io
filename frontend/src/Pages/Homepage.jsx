@@ -15,7 +15,7 @@ function HomePage() {
     <>
       <HomeNavbar />
       <section className="hero">
-        <div className="hero-text" data-aos="fade-right">
+        <div className="hero-text" data-aos="fade">
           <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
           <h5>[الصف: 4 - 4]</h5>
         </div>
