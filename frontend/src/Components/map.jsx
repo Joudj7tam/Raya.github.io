@@ -87,6 +87,7 @@ const MapView = () => {
                 dragging={false}
                 touchZoom={false}
                 keyboard={false}
+                attributionControl={false}
             >
                 <GeoJSON data={worldBattlesGeoJSON} onEachFeature={onEachCountry} />
             </MapContainer>
