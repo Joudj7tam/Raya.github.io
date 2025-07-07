@@ -4,6 +4,7 @@ import 'aos/dist/aos.css';
 import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
+import MapView from "../Components/map";
 import "../CSS/home.css";
 
 function HomePage() {
@@ -15,7 +16,7 @@ function HomePage() {
     <>
       <HomeNavbar />
       <section className="hero">
-        <div className="hero-text" data-aos="fade-right">
+        <div className="hero-text" data-aos="fade">
           <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
           <h5>[الصف: 4 - 4]</h5>
         </div>
@@ -34,6 +35,7 @@ function HomePage() {
         </section>
         <section className="map">
           <h2>الخريطة التفاعلية</h2>
+          <MapView />
         </section>
       </div>
     </>
