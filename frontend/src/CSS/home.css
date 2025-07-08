@@ -10,6 +10,10 @@ body {
   min-height: 100vh;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -115,6 +119,26 @@ body {
   margin-right: 5%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   padding: 0 15px;
+}
+
+.contact {
+  width: 100%;
+  text-align: right;
+  padding: 60px 0;
+}
+
+.contact h2 {
+  margin-right: 5%;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  padding: 0 15px;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 50;
+  transition: all 0.3s ease-in-out;
 }
 
 
