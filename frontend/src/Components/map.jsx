@@ -46,8 +46,8 @@ const MapView = () => {
     ];
 
     const getCountryName = (feature) => {
-        return feature.properties.admin || feature.properties.name;
-    };
+    return feature.properties.name_ar || feature.properties.name || feature.properties.admin;
+};
 
     const getColorForCountry = (name) => {
         if (saudiRegions.includes(name)) {
