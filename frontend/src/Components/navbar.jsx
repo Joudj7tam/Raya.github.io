@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import logo from '../assets/ddclogo.png';
 import lang from "../assets/blacklanguage.png";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import '../CSS/navbar.css';
 
 const Navbar = () => {
@@ -24,10 +25,10 @@ const Navbar = () => {
             </button>
 
             <div className={`nav-links2 ${isOpen ? "open" : ""}`}>
-                <a href="#" onClick={() => setIsOpen(false)}>تواصل معنا</a>
-                <a href="#" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
-                <a href="#" onClick={() => setIsOpen(false)}>الأحداث</a>
-                <a href="#" onClick={() => setIsOpen(false)}>الرئيسية</a>
+                <a href="#contact" onClick={() => setIsOpen(false)}>تواصل معنا</a>
+                <a href="#map" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
+                <Link to="/events" onClick={() => setIsOpen(false)}>الأحداث</Link>
+                <Link to="/" onClick={() => setIsOpen(false)}>الرئيسية</Link>
                 <a href="#" className="lang-link2" onClick={() => setIsOpen(false)}>
 
                     <img src={lang} alt="اللغة" className="lang-icon2" />

@@ -12,6 +12,7 @@
     flex-direction: row-reverse;
     align-items: center;
     overflow: hidden;
+    margin-top: 110px;
 }
 
 .header-video {

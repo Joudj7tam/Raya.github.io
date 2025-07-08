@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import worldBattlesGeoJSON from "../data/Geo.json";
 import battleByCountry from "../data/battleByCountry";
 import "../CSS/map.css";
+import EventCard from "../Components/eventcard.jsx"
 
 const MapView = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
@@ -46,8 +47,8 @@ const MapView = () => {
     ];
 
     const getCountryName = (feature) => {
-        return feature.properties.admin || feature.properties.name;
-    };
+    return feature.properties.name_ar || feature.properties.name || feature.properties.admin;
+};
 
     const getColorForCountry = (name) => {
         if (saudiRegions.includes(name)) {
@@ -84,7 +85,7 @@ const MapView = () => {
     };
 
     return (
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="map-container">
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
@@ -105,18 +106,27 @@ const MapView = () => {
                     style={styleFeature}
                 />
             </MapContainer>
-
             {selectedCountry && (
-                <div className="p-4 bg-white rounded shadow w-full md:w-1/3">
-                    <h2 className="text-xl font-bold mb-3 text-right">
+                <div className="info-container">
+                    <h3 className="map-header">
                         الغزوات والفتوحات في {selectedCountry}
-                    </h2>
-                    <ul className="list-disc pl-5 text-right">
+                    </h3>
+                    <ul>
                         {(battleByCountry[selectedCountry] || []).map((b, i) => (
                             <li key={i}>{b.name} – {b.year}</li>
                         ))}
                         {(!battleByCountry[selectedCountry] || battleByCountry[selectedCountry].length === 0) && (
-                            <li>لا توجد أحداث مسجلة</li>
+                            <> 
+                            <li><EventCard
+                                title="kjlhygtf"
+                                era="jhg"/></li>
+                                <li><EventCard
+                                title="kjlhygtf"
+                                era="jhg"/></li>
+                                <li><EventCard
+                                title="kjlhygtf"
+                                era="jhg"/></li>
+                                </>
                         )}
                     </ul>
                 </div>
