@@ -4,7 +4,7 @@ const gazwaSchema = new mongoose.Schema({
     name: { type: String},
     type: { type: String, enum: ['غزوة', 'فتح', 'معركة', 'معركة لفتح']},
     area_to_open: { type: String},
-    year: { type: String},
+    year: { type: Number},
     leader_of_muslims: { type: String},
     era: { type: String, enum: ['النبي محمد ﷺ', 'أبو بكر الصديق رضي الله عنه', 'عمر بن الخطاب رضي الله عنه', 'عثمان بن عفان رضي الله عنه', 'علي بن أبي طالب رضي الله عنه']},
     location: { type: String},
@@ -17,7 +17,7 @@ const gazwaSchema = new mongoose.Schema({
     cause: { type: String},
     effect: { type: String},
     source: { type: String}
-  });
+  }, { collection: "gazwa" } );
 
 const gazwaModel = mongoose.models.gazwa || mongoose.model("gazwa", gazwaSchema)
 

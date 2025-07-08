@@ -1,6 +1,7 @@
 .country-shape {
     transition: transform 0.3s ease, fill-opacity 0.3s ease;
     transform-origin: center;
+    transform-box: fill-box;
 }
 
 .country-shape.selected {
@@ -8,6 +9,7 @@
     opacity: 1;
     position: relative;
     animation: centerCountry 0.9s forwards;
+    transform-origin: center center;
 }
 
 @keyframes centerCountry {
@@ -17,8 +19,10 @@
     }
     to {
         opacity: 1;
-        transform: scale(1.3) translate(50px, 50px);
-        /*translate: calc(5% - 5px) calc(14% - 0px);*/
+        transform: scale(1.5);
+        position: relative;
+        left: 50%;
+        top: 50%;
     }
 }
 
