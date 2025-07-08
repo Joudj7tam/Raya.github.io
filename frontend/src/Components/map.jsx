@@ -85,7 +85,7 @@ const MapView = () => {
     };
 
     return (
-        <div className="map-container">
+        <div className="map-container" onClick={() => setSelectedCountry(null)}>
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
