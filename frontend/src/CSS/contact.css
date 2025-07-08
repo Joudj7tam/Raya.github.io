@@ -1,0 +1,122 @@
+.contact-section {
+    background-color: #654B42;
+    /* background of page */
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* .contact-container {
+    background-color: #7a564b;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    direction: rtl;
+    color: #fff;
+} */
+
+.contact-container {
+    background-color: rgba(255, 255, 255, 0.086);
+    /* semi-transparent */
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    /* for Safari */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    width: 100%;
+    direction: rtl;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* optional for glass border */
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.contact-form .row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    margin-bottom: 8px;
+    font-weight: normal;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #fff;
+    color: #333;
+}
+
+.input-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    outline: 2px solid #c0a28d;
+}
+
+.phone-input {
+    display: flex;
+    gap: 10px;
+}
+
+.phone-input select {
+    width: 80px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.required {
+    color: red;
+    margin-right: 4px;
+}
+
+.submit-button {
+    background-color: #e6d5c3;
+    color: #333;
+    font-weight: bold;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #d5c1ae;
+}
+
+@media (max-width: 768px) {
+    .contact-form .row {
+        flex-direction: column;
+    }
+}
