@@ -4,6 +4,7 @@ import SearchBox from '../Components/Searchbox.jsx'
 import EventCard from '../Components/eventcard.jsx'
 import '../CSS/eventspage.css'
 
+
 const Events = () => {
 
     return (
