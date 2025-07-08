@@ -1,12 +1,17 @@
-import React, { useState, useRef, useCallback} from "react";
+import React, { useState, useRef, useCallback,useEffect} from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import worldBattlesGeoJSON from "../data/Geo.json";
 import battleByCountry from "../data/battleByCountry";
 import "../CSS/map.css";
 import EventCard from "../Components/eventcard.jsx"
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const MapView = () => {
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     const [selectedCountry, setSelectedCountry] = useState(null);
     const mapRef = useRef();
 
@@ -111,7 +116,7 @@ const MapView = () => {
                     <h3 className="map-header">
                         الغزوات والفتوحات في {selectedCountry}
                     </h3>
-                    <ul>
+                    <ul data-aos="fade-up">
                         {(battleByCountry[selectedCountry] || []).map((b, i) => (
                             <li key={i}>{b.name} – {b.year}</li>
                         ))}
