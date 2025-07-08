@@ -1,6 +1,5 @@
-
 /* Page wrapper */
-.body {
+.body-event {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +11,8 @@
 .events-container {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row-reverse; /* RTL layout */
+    flex-direction: row-reverse;
+    /* RTL layout */
     justify-content: center;
     gap: 50px;
     margin-top: 40px;

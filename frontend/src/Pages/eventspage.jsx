@@ -7,10 +7,10 @@ import '../CSS/eventspage.css'
 const Events = () => {
 
     return (
-        <div className='page'>
-            <Navbar />
+        <div id="events" className='page'>
+            <Navbar/>
             <SearchBox />
-            <div className='body'>
+            <div className='body-event'>
                 <div className="events-container">
                     <EventCard
                         title="غزوة بدر"

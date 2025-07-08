@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../CSS/homeNavbar.css";
 import logo from "../assets/whiteLogo.png";
 import lang from "../assets/language.svg";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 function HomeNavbar() {
   const [isOpen, setIsOpen] = useState(false);
-
+  
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -22,10 +23,10 @@ function HomeNavbar() {
       </button>
 
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
-        <a href="#" onClick={() => setIsOpen(false)}>تواصل معنا</a>
-        <a href="#" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
-        <a href="#" onClick={() => setIsOpen(false)}>الأحداث</a>
-        <a href="#" onClick={() => setIsOpen(false)}>الرئيسية</a>
+        <a href="#contact" onClick={() => setIsOpen(false)}>تواصل معنا</a>
+        <a href="#map" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
+        <Link to="/events" onClick={() => setIsOpen(false)}>الأحداث</Link>
+        <a href="#home" onClick={() => setIsOpen(false)}>الرئيسية</a>
         <a href="#" className="lang-link" onClick={() => setIsOpen(false)}>
           <img src={lang} alt="اللغة" className="lang-icon" />
           English
