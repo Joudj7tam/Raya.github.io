@@ -5,6 +5,7 @@ import camels from "../assets/camels.png";
 import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
 import MapView from "../Components/map";
+import Contact from "../Components/contact";
 import "../CSS/home.css";
 
 function HomePage() {
@@ -42,7 +43,7 @@ function HomePage() {
         </section>
 
         <section id="contact" className="contact">
-          <h2>تواصل معنا </h2>
+          <Contact />
         </section>
       </div>
     </>
