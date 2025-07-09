@@ -90,15 +90,13 @@ const MapView = () => {
     };
 
     return (
-        <div className="map-container" onClick={() => setSelectedCountry(null)}>
+        <div className="map-container">
             <MapContainer
                 center={[25, 45]}
                 zoom={4}
                 style={{ height: "700px", width: "100%", backgroundColor: "transparent" }}
-                zoomControl={false}
                 doubleClickZoom={false}
                 scrollWheelZoom={false}
-                dragging={false}
                 touchZoom={false}
                 keyboard={false}
                 attributionControl={false}
@@ -113,6 +111,7 @@ const MapView = () => {
             </MapContainer>
             {selectedCountry && (
                 <div className="info-container">
+                    <button className="close-btn" onClick={() => setSelectedCountry(null)}>✕</button>
                     <h3 className="map-header">
                         الغزوات والفتوحات في {selectedCountry}
                     </h3>

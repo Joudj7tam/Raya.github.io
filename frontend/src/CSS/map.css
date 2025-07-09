@@ -36,6 +36,8 @@
 }
 .map-container {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   position: relative;
   transition: transform 0.4s ease-out;
 }
@@ -65,6 +67,7 @@
   font-size: 20px;
   color: white;
   margin-bottom: 20px;
+  position: sticky;
 }
 
 .info-container ul {
@@ -87,4 +90,39 @@
 .info-container::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.3);
   border-radius: 4px;
+}
+.close-btn {
+  position: sticky;
+  top: 10px;
+  left: 10px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 20;
+}
+
+@media (max-width: 1080px) {
+  .map-container {
+    flex-direction: column;
+    align-items: center;
+    transform: none !important;
+  }
+
+  .info-container {
+    position: relative;
+    right: auto;
+    width: 70%;
+    height: 450px;
+    margin-top: 20px;
+    border-radius: 20px;
+    box-shadow: none;
+    padding: 15px;
+  }
+
+  .map-container:has(.info-container) .info-container {
+    right: auto;
+  }
+
 }
