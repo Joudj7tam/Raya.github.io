@@ -18,7 +18,8 @@ const addGazwa = async (req, res) => {
         result: req.body.result,
         cause: req.body.cause,
         effect: req.body.effect,
-        source: req.body.source
+        source: req.body.source,
+        country: req.body.country
     });
     
     try {

@@ -30,7 +30,8 @@ const run = async () => {
       result: row["النتيجة النهائية"],
       cause: row["أسبابها"],
       effect: row["آثارها"],
-      source: row["المصدر"]
+      source: row["المصدر"],
+      country: row["الدولة"]
     }));
 
     let successCount = 0;
