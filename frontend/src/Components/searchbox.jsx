@@ -9,7 +9,7 @@ const SearchBox = () => {
 
             <div className="search-and-sort">
                 <div className="search-input">
-                    <input type="text" placeholder="البحث عن غزوة.." />
+                    <input type="text" placeholder="البحث عن حدث..." />
                     <IoSearch className="search-icon" />
                 </div>
 
@@ -81,10 +81,10 @@ const SearchBox = () => {
             </div>
 
             <div className="date-range">
+                <span className="label">التاريخ</span>
                 <span>هـ 2</span>
                 <input type="range" min="2" max="39" className="range-slider" />
                 <span>هـ 39</span>
-                <span className="label">التاريخ</span>
             </div>
 
         </div>
