@@ -16,7 +16,8 @@ const gazwaSchema = new mongoose.Schema({
     result: { type: String, enum: ['صلح', 'لم يحدث قتال', 'انتصار', 'هزيمة']},
     cause: { type: String},
     effect: { type: String},
-    source: { type: String}
+    source: { type: String},
+    country: {type: String}
   }, { collection: "gazwa" } );
 
 const gazwaModel = mongoose.models.gazwa || mongoose.model("gazwa", gazwaSchema)
