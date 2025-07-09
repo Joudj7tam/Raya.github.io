@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback,useEffect} from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import worldBattlesGeoJSON from "../data/Geo.json";
-import battleByCountry from "../data/battleByCountry";
+import worldBattlesGeoJSON from "../mapGeoJson/Geo.json";
+import battleByCountry from "../mapGeoJson/battleByCountry.js";
 import "../CSS/map.css";
 import EventCard from "../Components/eventcard.jsx"
 import AOS from 'aos';
@@ -92,7 +92,7 @@ const MapView = () => {
     return (
         <div className="map-container">
             <MapContainer
-                center={[25, 45]}
+                center={[25, 40]}
                 zoom={4}
                 style={{ height: "700px", width: "100%", backgroundColor: "transparent" }}
                 doubleClickZoom={false}
