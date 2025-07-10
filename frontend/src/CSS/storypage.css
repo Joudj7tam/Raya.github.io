@@ -1,26 +1,6 @@
-/* togglePage.css */
-.tab-switcher {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 20px auto;
-}
-
-.tab-switcher button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  background-color: #ddd;
-  transition: background-color 0.3s ease;
-}
-
-.tab-switcher button.active {
-  background-color: #2196F3;
-  color: white;
-}
-
 .slide-container {
+  display: flex;
+  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
@@ -59,3 +39,12 @@
   opacity: 0;
   z-index: 1;
 }
+
+.slide-container h4{
+  margin-bottom: 3%;
+}
+
+.slide-container span{
+  font-weight: 400;
+}
+

@@ -41,4 +41,14 @@ const getAllGazwa = async (req, res) => {
     }
 };
 
-export { addGazwa, getAllGazwa };
+// search for gazwa by id 
+const getGazwaById = async (req, res) => {
+    try {
+        const gazwa = await gazwaModel.findById(req.params.id);
+        res.json({ success: true, data: gazwa });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export { addGazwa, getAllGazwa, getGazwaById };

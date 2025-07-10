@@ -81,7 +81,8 @@ const Events = () => {
                     {filteredEvents.length > 0 ? (
                         filteredEvents.map((event, index) => (
                             <EventCard
-                                key={index}
+                                key={event._id}
+                                id={event._id}
                                 title={event.name}
                                 era={`عهد ${event.era}`}
                             />

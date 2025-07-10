@@ -10,39 +10,39 @@ import question_icon from '../assets/question.png';
 import mountain_icon from '../assets/mountain.png';
 import '../CSS/details.css';
 
-const details = () => {
+const details = ({ gazwa }) => {
     return (
         <div className='body'>
             <div className='page-content-container'>
                 <DetailsBox dir="rtl" lang="ar"
                     icon={sword_icon}
-                    title="نوع الغزوة"
-                    text="هجومية"
+                    title="نوع الحدث"
+                    text={gazwa.type}
                 />
                 <DetailsBox dir="rtl" lang="ar"
                     icon={calender_icon}
                     title="التاريخ"
-                    text="2هـ 17 رمضان "
+                    text={`${gazwa.year} هـ`}
                 />
                 <DetailsBox dir="rtl" lang="ar"
                     icon={muslim_icon}
                     title="قائد السلمين"
-                    text="النبي محمد ﷺ"
+                    text={gazwa.leader_of_muslims}
                 />
                 <DetailsBox dir="rtl" lang="ar"
                     icon={army_icon}
                     title="عدد المسلمين"
-                    text="نحو 313"
+                    text={gazwa.number_of_muslims}
                 />
                 <DetailsBox dir="rtl" lang="ar"
                     icon={enemy_icon}
-                    title="قائد المشركين"
-                    text="أبو جهل بن هشام"
+                    title="قائد الأعداء"
+                    text={gazwa.leader_of_enemy}
                 />
                 <DetailsBox dir="rtl" lang="ar"
                     icon={army_icon}
-                    title="عدد المشركين"
-                    text="من 900 إلى 1000"
+                    title="عدد الأعداء"
+                    text={gazwa.number_of_enemy}
                 />
 
 
@@ -51,18 +51,18 @@ const details = () => {
             <DetailsBox dir="rtl" lang="ar"
                 icon={question_icon}
                 title="أسبابها"
-                text=" بدأت المعركة بمحاولة المسلمين القضاء على الخطر المحدق المتمثل باعتراضَ عيرٍ لقريشٍ متوجهةٍ من الشام إلى مكة يقودها أبو سفيان بن حرب، ولكن أبا سفيان تمكن من الفرار بالقافلة، وأرسل رسولاً إلى قريش في مكة يطلب عونهم ونجدتهم. "
+                text={gazwa.cause}
             />
             <DetailsBox dir="rtl" lang="ar"
                 icon={mountain_icon}
                 title="آثارها"
-                text=" بداية مرحلة جديدة في تاريخ الإسلام, زيادة العداوة بين المسلمين و قريش, أصبح للمسلمين مصدرٌ جديدٌ للدخل وهو غنائم المعارك، وبذلك تحسّن حالُ المسلمين الماديّ والاقتصاديّ والمعنويّ."
+                text={gazwa.effect}
             />
 
              <DetailsBox className="result" dir="rtl" lang="ar"
                 icon={flag_icon}
                 title="النتيجة"
-                text="انتصار المسلمين"
+                text={gazwa.result}
             />
             
         </div>
