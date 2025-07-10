@@ -8,8 +8,8 @@ const EventCard = ({ title, era }) => {
             <img src={eventImage} alt="غزوة بدر" className="event-image" />
             <div className="event-content">
                 <div className="event-header">
-                    <h2 className="event-title">غزوة بدر</h2>
-                    <span className="era-tag">ﷺ عهد النبي محمد</span>
+                    <h2 className="event-title">{title}</h2>
+                    <span className="era-tag">{era}</span>
                 </div>
                 <button className="details-button">الاطلاع على التفاصيل</button>
             </div>

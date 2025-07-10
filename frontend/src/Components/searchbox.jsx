@@ -3,23 +3,45 @@ import React from 'react';
 import { IoSearch } from "react-icons/io5";
 import '../CSS/searchbox.css';
 
-const SearchBox = () => {
+const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
+    sortOrder, setSortOrder,
+    selectedEra, setSelectedEra,
+    selectedType, setSelectedType,
+    selectedResult, setSelectedResult }) => {
     return (
         <div className="search-box" dir="rtl">
 
             <div className="search-and-sort">
                 <div className="search-input">
-                    <input type="text" placeholder="البحث عن حدث..." />
+                    <input
+                        type="text"
+                        placeholder="البحث عن حدث..."
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        onKeyDown={handleKeyDown}
+                    />
                     <IoSearch className="search-icon" />
                 </div>
 
                 <div className="sort-options">
                     <label>
-                        <input type="checkbox" />
+                        <input
+                            type="radio"
+                            name="sort"
+                            value="asc"
+                            checked={sortOrder === 'asc'}
+                            onChange={(e) => setSortOrder(e.target.value)}
+                        />
                         من الأقدم إلى الأحدث
                     </label>
                     <label>
-                        <input type="checkbox" />
+                        <input
+                            type="radio"
+                            name="sort"
+                            value="desc"
+                            checked={sortOrder === 'desc'}
+                            onChange={(e) => setSortOrder(e.target.value)}
+                        />
                         من الأحدث إلى الأقدم
                     </label>
                 </div>
@@ -29,55 +51,34 @@ const SearchBox = () => {
                 <div className="filter-dropdown">
                     <button className="filter-button">العهد الإسلامي</button>
                     <div className="dropdown-menu">
-                        <div>عهد النبي محمد</div>
-                        <div>عهد الخليفة ابو بكر الصديق</div>
-                        <div>عهد الخليفة عمر بن الخطاب</div>
-                        <div>عهد الخليفة عثمان بن عفان</div>
-                        <div>عهد الخليفة علي بن ابي طالب</div>
+                        <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد</div>
+                        <div onClick={() => setSelectedEra('أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
+                        <div onClick={() => setSelectedEra('عمر بن الخطاب رضي الله عنه')}>عهد الخليفة عمر بن الخطاب</div>
+                        <div onClick={() => setSelectedEra('عثمان بن عفان رضي الله عنه')}>عهد الخليفة عثمان بن عفان</div>
+                        <div onClick={() => setSelectedEra('علي بن أبي طالب رضي الله عنه')}>عهد الخليفة علي بن ابي طالب</div>
+                        <div onClick={() => setSelectedEra('')}>إلغاء التصفية</div>
                     </div>
                 </div>
 
                 <div className="filter-dropdown">
                     <button className="filter-button">نوع الحدث</button>
                     <div className="dropdown-menu">
-                        <div>فتح</div>
-                        <div>معركة</div>
-                        <div>غزوة</div>
+                        <div onClick={() => setSelectedType('فتح')}>فتح</div>
+                        <div onClick={() => setSelectedType('معركة')}>معركة</div>
+                        <div onClick={() => setSelectedType('غزوة')}>غزوة</div>
+                        <div onClick={() => setSelectedType('')}>إلغاء التصفية</div>
                     </div>
                 </div>
 
                 <div className="filter-dropdown">
                     <button className="filter-button">النتيجة النهائية</button>
                     <div className="dropdown-menu">
-                        <div>انتصار</div>
-                        <div>هزيمة</div>
-                        <div>لم يحدث قتال</div>
+                        <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
+                        <div onClick={() => setSelectedResult('هزيمة')}>هزيمة</div>
+                        <div onClick={() => setSelectedResult('لم يحدث قتال')}>لم يحدث قتال</div>
+                        <div onClick={() => setSelectedResult('')}>إلغاء التصفية</div>
                     </div>
                 </div>
-
-
-                {/* <select defaultValue="">
-                    <option value="" disabled>العهد الإسلامي</option>
-                    <option>عهد النبي محمد</option>
-                    <option> عهد الخليفة ابو بكر الصديق</option>
-                    <option> عهد الخليفة عمر بن الخطاب</option>
-                    <option> عهد الخليفة عثمان بن عفان</option>
-                    <option> عهد الخليفة علي بن ابي طالب</option>
-                </select>
-
-                <select defaultValue="">
-                    <option value="" disabled>نوع الحدث</option>
-                    <option>فتح</option>
-                    <option>معركة</option>
-                    <option>غزوة</option>
-                </select>
-
-                <select defaultValue="">
-                    <option value="" disabled>النتيجة النهائية</option>
-                    <option>انتصار</option>
-                    <option>هزيمة</option>
-                    <option>لم يحدث قتال</option>
-                </select> */}
             </div>
 
             <div className="date-range">

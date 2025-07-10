@@ -21,13 +21,24 @@ const addGazwa = async (req, res) => {
         source: req.body.source,
         country: req.body.country
     });
-    
+
     try {
         await gazwa.save();
-        res.json({success: true, message: "Gazwa Added Successfully"});
+        res.json({ success: true, message: "Gazwa Added Successfully" });
     } catch (error) {
-        res.json({success: false, message: error.message});
+        res.json({ success: false, message: error.message });
     }
 }
 
-export { addGazwa };
+
+// bring all the gazwat
+const getAllGazwa = async (req, res) => {
+    try {
+        const gazwat = await gazwaModel.find({});
+        res.json({ success: true, data: gazwat });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+};
+
+export { addGazwa, getAllGazwa };
