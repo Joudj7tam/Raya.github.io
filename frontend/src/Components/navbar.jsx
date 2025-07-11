@@ -25,8 +25,8 @@ const Navbar = () => {
             </button>
 
             <div className={`nav-links2 ${isOpen ? "open" : ""}`}>
-                <a href="/#contact" onClick={() => setIsOpen(false)}>تواصل معنا</a>
-                <a href="/#map" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
+                <Link to="/" state={{ scrollTo: 'contact' }} onClick={() => setIsOpen(false)}>تواصل معنا</Link>
+                <Link to="/" state={{ scrollTo: 'map' }} onClick={() => setIsOpen(false)}>الخريطة التفاعلية</Link>
                 <Link to="/events" onClick={() => setIsOpen(false)}>الأحداث</Link>
                 <Link to="/" onClick={() => setIsOpen(false)}>الرئيسية</Link>
                 <a href="#" className="lang-link2" onClick={() => setIsOpen(false)}>

@@ -1,4 +1,5 @@
-import React, { useEffect , useRef} from "react";
+import { useEffect, useRef } from "react";
+import { useLocation } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import camels from "../assets/camels.png";
@@ -9,9 +10,25 @@ import Contact from "../Components/contact";
 import "../CSS/home.css";
 
 function HomePage() {
+  const location = useLocation();
+  const contactRef = useRef(null);
+  const mapRef = useRef(null);
+
   useEffect(() => {
-        AOS.init({ duration: 1000 });
-    }, []);
+    AOS.init({ duration: 1000 });
+
+    // Check if we have a scroll target in location state
+    if (location.state?.scrollTo) {
+      const target = location.state.scrollTo;
+      setTimeout(() => {
+        if (target === 'contact' && contactRef.current) {
+          contactRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (target === 'map' && mapRef.current) {
+          mapRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Small delay to ensure page is loaded
+    }
+  }, [location.state]);
 
   return (
     <>
@@ -37,12 +54,12 @@ function HomePage() {
           <Timeline />
         </section>
 
-        <section id="map" className="map">
+        <section id="map" className="map" ref={mapRef}>
           <h2>الخريطة التفاعلية</h2>
           <MapView />
         </section>
 
-        <section id="contact" className="contact">
+        <section id="contact" className="contact" ref={contactRef}>
           <Contact />
         </section>
       </div>

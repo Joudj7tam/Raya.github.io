@@ -51,7 +51,7 @@ const getGazwaById = async (req, res) => {
     }
 };
 
-// إرجاع الغزوات حسب اسم الدولة
+// search for gazwa by country
 const getGazwaByCountry = async (req, res) => {
     try {
         const country = req.query.country;

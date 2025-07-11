@@ -151,11 +151,12 @@ const MapView = () => {
                                         key={event._id}
                                         id={event._id}
                                         title={event.name}
-                                        era={`عهد ${event.era}`} />
+                                        era={`عهد ${event.era}`}
+                                        enableAnimation={false} />
                                 </li>
                             ))
                         ) : (
-                            <li style={{ textAlign: 'center', color: '#666', fontSize: '1.2rem' }}>
+                            <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
                                 لا توجد أحداث مسجلة في هذه المنطقة
                             </li>
                         )}
