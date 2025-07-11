@@ -1,19 +1,22 @@
-import React, { useState, useRef, useCallback,useEffect} from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { MapContainer, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import worldBattlesGeoJSON from "../mapGeoJson/Geo.json";
-import battleByCountry from "../mapGeoJson/battleByCountry.js";
 import "../CSS/map.css";
-import EventCard from "../Components/eventcard.jsx"
+import EventCard from "../Components/eventcard.jsx";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const MapView = () => {
+
     useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
-    const [selectedCountry, setSelectedCountry] = useState(null);
+
     const mapRef = useRef();
+    const [selectedCountry, setSelectedCountry] = useState(null);
+    const [eventsByLocation, setEventsByLocation] = useState([]);
+    const [eventsByCountry, setEventsByCountry] = useState([]);
 
     const regionColors = [
         "#b3584a",
@@ -52,8 +55,8 @@ const MapView = () => {
     ];
 
     const getCountryName = (feature) => {
-    return feature.properties.name_ar || feature.properties.name || feature.properties.admin;
-};
+        return feature.properties.name_ar || feature.properties.name || feature.properties.admin;
+    };
 
     const getColorForCountry = (name) => {
         if (saudiRegions.includes(name)) {
@@ -89,6 +92,31 @@ const MapView = () => {
         };
     };
 
+    //fetch gazwat based location
+    useEffect(() => {
+        const fetchEventsByCountry = async () => {
+            if (!selectedCountry) return;
+
+            console.log("📍 selectedCountry:", selectedCountry); // Debug
+
+            try {
+                const response = await fetch(`http://localhost:4000/api/gazwa/by-country?country=${selectedCountry}`);
+                const data = await response.json();
+                if (data.success) {
+                    setEventsByLocation(data.data);
+                } else {
+                    setEventsByLocation([]);
+                    console.error("❌ Failed:", data.message);
+                }
+            } catch (err) {
+                console.error("🚨 Fetch Error:", err.message);
+                setEventsByLocation([]);
+            }
+        };
+
+        fetchEventsByCountry();
+    }, [selectedCountry]);
+
     return (
         <div className="map-container">
             <MapContainer
@@ -116,21 +144,20 @@ const MapView = () => {
                         الغزوات والفتوحات في {selectedCountry}
                     </h3>
                     <ul data-aos="fade-up">
-                        {(battleByCountry[selectedCountry] || []).map((b, i) => (
-                            <li key={i}>{b.name} – {b.year}</li>
-                        ))}
-                        {(!battleByCountry[selectedCountry] || battleByCountry[selectedCountry].length === 0) && (
-                            <> 
-                            <li><EventCard
-                                title="kjlhygtf"
-                                era="jhg"/></li>
-                                <li><EventCard
-                                title="kjlhygtf"
-                                era="jhg"/></li>
-                                <li><EventCard
-                                title="kjlhygtf"
-                                era="jhg"/></li>
-                                </>
+                        {eventsByLocation.length > 0 ? (
+                            eventsByLocation.map((event, index) => (
+                                <li key={index}>
+                                    <EventCard
+                                        key={event._id}
+                                        id={event._id}
+                                        title={event.name}
+                                        era={`عهد ${event.era}`} />
+                                </li>
+                            ))
+                        ) : (
+                            <li style={{ textAlign: 'center', color: '#666', fontSize: '1.2rem' }}>
+                                لا توجد أحداث مسجلة في هذه المنطقة
+                            </li>
                         )}
                     </ul>
                 </div>

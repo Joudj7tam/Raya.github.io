@@ -51,4 +51,24 @@ const getGazwaById = async (req, res) => {
     }
 };
 
-export { addGazwa, getAllGazwa, getGazwaById };
+// إرجاع الغزوات حسب اسم الدولة
+const getGazwaByCountry = async (req, res) => {
+    try {
+        const country = req.query.country;
+
+        if (!country) {
+            return res.status(400).json({ success: false, message: "country is required in query" });
+        }
+
+        const gazwat = await gazwaModel.find({
+            country: { $regex: country, $options: "i" }  // بحث غير حساس لحالة الأحرف
+        });
+
+        res.json({ success: true, data: gazwat });
+    } catch (err) {
+        console.error("❌ Error in getGazwaByCountry:", err.message);
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
+
+export { addGazwa, getAllGazwa, getGazwaById, getGazwaByCountry };
