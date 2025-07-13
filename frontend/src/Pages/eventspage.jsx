@@ -13,6 +13,7 @@ const Events = () => {
     const [selectedEra, setSelectedEra] = useState('');
     const [selectedType, setSelectedType] = useState('');
     const [selectedResult, setSelectedResult] = useState('');
+    const [loading, setLoading] = useState(true); // 👈 Add this
 
     useEffect(() => {
         const fetchEvents = async () => {
@@ -20,12 +21,14 @@ const Events = () => {
                 const response = await fetch('http://localhost:4000/api/gazwa/all');
                 const data = await response.json();
                 if (data.success) {
-                    setEvents(data.data); // نضع الغزوات في الستيت
+                    setEvents(data.data);
                 } else {
                     console.error("Error loading events:", data.message);
                 }
             } catch (error) {
                 console.error("Fetch error:", error);
+            } finally {
+                setLoading(false); //Set loading to false
             }
         };
 
@@ -78,8 +81,10 @@ const Events = () => {
 
             <div className='body-event'>
                 <div className="events-container">
-                    {filteredEvents.length > 0 ? (
-                        filteredEvents.map((event, index) => (
+                    {loading ? (
+                        <div class="loader"></div>
+                    ) : filteredEvents.length > 0 ? (
+                        filteredEvents.map((event) => (
                             <EventCard
                                 key={event._id}
                                 id={event._id}
@@ -91,6 +96,7 @@ const Events = () => {
                         <div className="no-results">لا توجد نتائج</div>
                     )}
                 </div>
+
 
             </div>
         </div>

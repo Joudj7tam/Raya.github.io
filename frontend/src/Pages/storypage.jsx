@@ -9,6 +9,7 @@ import '../CSS/storypage.css';
 const StoryPage = () => {
   const [activeTab, setActiveTab] = useState('story');
   const [gazwa, setGazwa] = useState(null);
+  const [loading, setLoading] = useState(true); // ✅ new loading state
   const { id } = useParams();
 
   useEffect(() => {
@@ -17,26 +18,26 @@ const StoryPage = () => {
         const res = await fetch(`http://localhost:4000/api/gazwa/${id}`);
         const data = await res.json();
         if (data.success) {
-          console.log("Fetched gazwa:", data.data); // 👈 Logs the data
+          console.log("Fetched gazwa:", data.data);
           setGazwa(data.data);
         } else {
           console.error("Error fetching gazwa:", data.message);
         }
       } catch (error) {
         console.error("Fetch error:", error);
+      } finally {
+        setLoading(false); // ✅ ensure loading state is updated
       }
     };
 
     fetchGazwa();
   }, [id]);
 
-  if (!gazwa) return <div>Loading...</div>;
-
   return (
     <div>
       <Navbar />
       <StoryHeaderBanner
-        title={gazwa.name}
+        title={gazwa ? gazwa.name : '...'}
         showPlayButton={activeTab === 'story'}
         onPlayClick={() => console.log('Play clicked')}
         activeTab={activeTab}
@@ -44,12 +45,20 @@ const StoryPage = () => {
       />
 
       <div className="slide-container">
-        <div className={`slide-content ${activeTab === 'story' ? 'show' : 'hide-left'}`}>
-          <StoryContent gazwa={gazwa} />
-        </div>
-        <div className={`slide-content ${activeTab === 'details' ? 'show' : 'hide-right'}`}>
-          <DetailsContent gazwa={gazwa} />
-        </div>
+        {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <>
+            <div className={`slide-content ${activeTab === 'story' ? 'show' : 'hide-left'}`}>
+              <StoryContent gazwa={gazwa} />
+            </div>
+            <div className={`slide-content ${activeTab === 'details' ? 'show' : 'hide-right'}`}>
+              <DetailsContent gazwa={gazwa} />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
