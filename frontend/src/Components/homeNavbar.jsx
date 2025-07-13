@@ -25,12 +25,13 @@ function HomeNavbar() {
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
         <a href="#contact" onClick={() => setIsOpen(false)}>تواصل معنا</a>
         <a href="#map" onClick={() => setIsOpen(false)}>الخريطة التفاعلية</a>
+        <a href="#timeline" onClick={() => setIsOpen(false)}>الخط الزمني</a>
         <Link to="/events" onClick={() => setIsOpen(false)}>الأحداث</Link>
         <a href="#home" onClick={() => setIsOpen(false)}>الرئيسية</a>
-        <a href="#" className="lang-link" onClick={() => setIsOpen(false)}>
+        {/* <a href="#" className="lang-link" onClick={() => setIsOpen(false)}>
           <img src={lang} alt="اللغة" className="lang-icon" />
           English
-        </a>
+        </a> */}
       </div>
     </nav>
   );

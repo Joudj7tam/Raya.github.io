@@ -27,13 +27,13 @@ const Navbar = () => {
             <div className={`nav-links2 ${isOpen ? "open" : ""}`}>
                 <Link to="/" state={{ scrollTo: 'contact' }} onClick={() => setIsOpen(false)}>تواصل معنا</Link>
                 <Link to="/" state={{ scrollTo: 'map' }} onClick={() => setIsOpen(false)}>الخريطة التفاعلية</Link>
+                <Link to="/" state={{ scrollTo: 'timeline' }} onClick={() => setIsOpen(false)}>الخط الزمني</Link>
                 <Link to="/events" onClick={() => setIsOpen(false)}>الأحداث</Link>
                 <Link to="/" onClick={() => setIsOpen(false)}>الرئيسية</Link>
-                <a href="#" className="lang-link2" onClick={() => setIsOpen(false)}>
-
+                {/* <a href="#" className="lang-link2" onClick={() => setIsOpen(false)}>
                     <img src={lang} alt="اللغة" className="lang-icon2" />
                     <span> English </span>
-                </a>
+                </a> */}
             </div>
         </nav>
     );
