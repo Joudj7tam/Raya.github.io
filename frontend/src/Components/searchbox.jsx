@@ -1,13 +1,20 @@
 // SearchBox.jsx
 import React from 'react';
 import { IoSearch } from "react-icons/io5";
+import { GrPowerReset } from "react-icons/gr";
 import '../CSS/searchbox.css';
 
-const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
+const SearchBox = ({ searchInput, setSearchInput,
+    handleKeyDown, handleReset,
     sortOrder, setSortOrder,
     selectedEra, setSelectedEra,
     selectedType, setSelectedType,
     selectedResult, setSelectedResult }) => {
+
+    // const [selectedEra, setSelectedEra] = useState('');
+    // const [selectedType, setSelectedType] = useState('');
+    // const [selectedResult, setSelectedResult] = useState('');
+
     return (
         <div className="search-box" dir="rtl">
 
@@ -48,45 +55,58 @@ const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
             </div>
 
             <div className="filters">
+
                 <div className="filter-dropdown">
-                    <button className="filter-button">العهد ⮟ </button>
+                    <button className="filter-button">
+                        {selectedEra ? selectedEra : "العهد ⮟ "}
+                    </button>
                     <div className="dropdown-menu">
-                        <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد</div>
-                        <div onClick={() => setSelectedEra('أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
-                        <div onClick={() => setSelectedEra('عمر بن الخطاب رضي الله عنه')}>عهد الخليفة عمر بن الخطاب</div>
-                        <div onClick={() => setSelectedEra('عثمان بن عفان رضي الله عنه')}>عهد الخليفة عثمان بن عفان</div>
-                        <div onClick={() => setSelectedEra('علي بن أبي طالب رضي الله عنه')}>عهد الخليفة علي بن ابي طالب</div>
+                        <div onClick={() => setSelectedEra(' ⮟ النبي محمد ﷺ')}>عهد النبي محمد ﷺ</div>
+                        <div onClick={() => setSelectedEra('⮟ أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
+                        <div onClick={() => setSelectedEra('⮟ عمر بن الخطاب رضي الله عنه')}>عهد الخليفة عمر بن الخطاب</div>
+                        <div onClick={() => setSelectedEra('⮟ عثمان بن عفان رضي الله عنه')}>عهد الخليفة عثمان بن عفان</div>
+                        <div onClick={() => setSelectedEra('⮟ علي بن أبي طالب رضي الله عنه')}>عهد الخليفة علي بن ابي طالب</div>
                         <div onClick={() => setSelectedEra('')}>إلغاء التصفية</div>
                     </div>
                 </div>
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">نوع الحدث ⮟</button>
+                    <button className="filter-button">
+                        {selectedType ? selectedType : "نوع الحدث ⮟ "}
+                    </button>
                     <div className="dropdown-menu">
-                        <div onClick={() => setSelectedType('فتح')}>فتح</div>
-                        <div onClick={() => setSelectedType('معركة')}>معركة</div>
-                        <div onClick={() => setSelectedType('غزوة')}>غزوة</div>
+                        <div onClick={() => setSelectedType('فتح ⮟')}>فتح</div>
+                        <div onClick={() => setSelectedType('معركة ⮟')}>معركة</div>
+                        <div onClick={() => setSelectedType('غزوة ⮟')}>غزوة</div>
                         <div onClick={() => setSelectedType('')}>إلغاء التصفية</div>
                     </div>
                 </div>
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">نتيجة الحدث ⮟</button>
+                    <button className="filter-button">
+                        {selectedResult ? selectedResult : "نتيجة الحدث ⮟ "}
+                    </button>
                     <div className="dropdown-menu">
-                        <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
-                        <div onClick={() => setSelectedResult('هزيمة')}>هزيمة</div>
-                        <div onClick={() => setSelectedResult('لم يحدث قتال')}>لم يحدث قتال</div>
+                        <div onClick={() => setSelectedResult('انتصار ⮟')}>انتصار</div>
+                        <div onClick={() => setSelectedResult('هزيمة ⮟')}>هزيمة</div>
+                        <div onClick={() => setSelectedResult('لم يحدث قتال ⮟')}>لم يحدث قتال</div>
                         <div onClick={() => setSelectedResult('')}>إلغاء التصفية</div>
                     </div>
                 </div>
             </div>
 
-            <div className="date-range">
+            <div className="reset">
+                <button className="reset-button" onClick={handleReset}>
+                إعادة الضبط
+                <GrPowerReset />
+                </button>
+            </div>
+            {/* <div className="date-range">
                 <span className="label">التاريخ</span>
                 <span>هـ 2</span>
                 <input type="range" min="2" max="39" className="range-slider" />
                 <span>هـ 39</span>
-            </div>
+            </div> */}
 
         </div>
     );

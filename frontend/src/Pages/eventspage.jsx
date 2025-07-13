@@ -62,6 +62,14 @@ const Events = () => {
         }
     };
 
+    const handleReset = () => {
+        setSearchInput('');
+        setSearchValue('');
+        setSelectedEra('');
+        setSelectedType('');
+        setSelectedResult('');
+    };
+
     return (
         <div id="events" className='page'>
             <Navbar />
@@ -69,8 +77,7 @@ const Events = () => {
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 handleKeyDown={handleKeyDown}
-                sortOrder={sortOrder}
-                setSortOrder={setSortOrder}
+                handleReset={handleReset}
                 selectedEra={selectedEra}
                 setSelectedEra={setSelectedEra}
                 selectedType={selectedType}

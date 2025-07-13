@@ -46,6 +46,21 @@
     border-radius: 6px;
     cursor: pointer;
     font-size: 0.9rem;
+    margin-right: 0%;
+}
+
+.reset-button {
+    background-color: transparent;
+    color: #fefae0;
+    padding: 0.4rem 1rem;
+    border: 1px solid #fefae0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.reset {
+    padding: 0.4rem 5rem;
 }
 
 /* القائمة المنسدلة */
