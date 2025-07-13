@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { connectDB } from "./config/db.js";
 import gazwaRouter from "./routers/gazwaRouter.js";
+import contactRouter from "./routers/contactRouter.js";
 
 //app config
 const app = express()
@@ -13,6 +14,7 @@ app.use(cors())
 
 // API routes
 app.use("/api/gazwa", gazwaRouter);
+app.use("/api/contact", contactRouter);
 
 //DB connection
 connectDB();
