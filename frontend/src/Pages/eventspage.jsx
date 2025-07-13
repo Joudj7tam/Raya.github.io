@@ -84,7 +84,10 @@ const Events = () => {
                 setSelectedType={setSelectedType}
                 selectedResult={selectedResult}
                 setSelectedResult={setSelectedResult}
+                sortOrder={sortOrder}
+                setSortOrder={setSortOrder}
             />
+
 
             <div className='body-event'>
                 <div className="events-container">
