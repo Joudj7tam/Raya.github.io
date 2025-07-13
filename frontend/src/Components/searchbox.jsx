@@ -49,7 +49,7 @@ const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
 
             <div className="filters">
                 <div className="filter-dropdown">
-                    <button className="filter-button">العهد الإسلامي</button>
+                    <button className="filter-button">العهد ⮟ </button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد</div>
                         <div onClick={() => setSelectedEra('أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
@@ -61,7 +61,7 @@ const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
                 </div>
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">نوع الحدث</button>
+                    <button className="filter-button">نوع الحدث ⮟</button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedType('فتح')}>فتح</div>
                         <div onClick={() => setSelectedType('معركة')}>معركة</div>
@@ -71,7 +71,7 @@ const SearchBox = ({ searchInput, setSearchInput, handleKeyDown,
                 </div>
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">النتيجة النهائية</button>
+                    <button className="filter-button">نتيجة الحدث ⮟</button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
                         <div onClick={() => setSelectedResult('هزيمة')}>هزيمة</div>

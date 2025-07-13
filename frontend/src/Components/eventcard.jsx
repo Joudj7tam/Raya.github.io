@@ -26,7 +26,7 @@ const EventCard = ({ title, era, id, enableAnimation = true }) => {
                     <h2 className="event-title">{title}</h2>
                     <span className="era-tag">{era}</span>
                 </div>
-                <button className="details-button" onClick={handleClick} >الاطلاع على التفاصيل</button>
+                <button className="details-button" onClick={handleClick} >اطلع على القصة</button>
             </div>
         </div>
     );

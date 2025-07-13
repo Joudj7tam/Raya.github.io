@@ -50,7 +50,6 @@ const StoryPage = () => {
         <div className={`slide-content ${activeTab === 'details' ? 'show' : 'hide-right'}`}>
           <DetailsContent gazwa={gazwa} />
         </div>
-        <h4>المصدر : <span>{gazwa.source}</span></h4>
       </div>
     </div>
   );
