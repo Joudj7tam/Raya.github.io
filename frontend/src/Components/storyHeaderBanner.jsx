@@ -33,7 +33,7 @@ const HeaderBanner = ({ title, showPlayButton, onPlayClick, activeTab, setActive
         </button>
       </div>
 
-      <h1 className="banner-title">{title}</h1>
+      <h2 className="banner-title">{title}</h2>
 
       {showPlayButton && (
         <button className="play-button" onClick={onPlayClick}>
