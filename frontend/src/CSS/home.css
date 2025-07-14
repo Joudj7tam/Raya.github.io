@@ -59,6 +59,36 @@ html {
   font-weight: normal;
 }
 
+.scroll-down {
+  position: absolute; /* أو fixed حسب مكان الزر */
+  bottom: 30px;
+  /* right: 30px; */
+  transform: translateX(-50%);
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  z-index: 1000;
+
+  animation: bounce 0.8s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.arrow {
+  color: white;
+  font-size: 30px;
+}
+
 .about {
   width: 100%;
 }
