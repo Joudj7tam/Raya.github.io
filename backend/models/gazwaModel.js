@@ -20,6 +20,10 @@ const gazwaSchema = new mongoose.Schema({
     country: {type: String}
   }, { collection: "gazwa" } );
 
+gazwaSchema.index({ result: 1 });
+gazwaSchema.index({ type: 1 });
+gazwaSchema.index({ era: 1 });
+
 const gazwaModel = mongoose.models.gazwa || mongoose.model("gazwa", gazwaSchema)
 
 export default gazwaModel;
