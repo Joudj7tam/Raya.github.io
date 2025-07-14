@@ -5,8 +5,7 @@ import { GrPowerReset } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
 import '../CSS/searchbox.css';
 
-const SearchBox = ({ searchInput, setSearchInput,
-    handleKeyDown, handleReset,
+const SearchBox = ({ searchInput, setSearchInput, handleReset,
     sortOrder, setSortOrder,
     selectedEra, setSelectedEra,
     selectedType, setSelectedType,
@@ -22,7 +21,6 @@ const SearchBox = ({ searchInput, setSearchInput,
                         placeholder="البحث عن حدث..."
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
-                        onKeyDown={handleKeyDown}
                     />
                     <IoSearch className="search-icon" />
                 </div>
@@ -55,7 +53,7 @@ const SearchBox = ({ searchInput, setSearchInput,
 
                 <div className="filter-dropdown">
                     <button className="filter-button">
-                        {selectedEra ? selectedEra : "العهد"} <IoIosArrowDown style={{position: "relative", top: "2px", left: "-5px" }} />
+                        {selectedEra ? selectedEra : "العهد"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
                     </button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد ﷺ</div>
@@ -69,7 +67,7 @@ const SearchBox = ({ searchInput, setSearchInput,
 
                 <div className="filter-dropdown">
                     <button className="filter-button">
-                        {selectedType ? selectedType : "نوع الحدث"} <IoIosArrowDown style={{position: "relative", top: "2px", left: "-5px" }} />
+                        {selectedType ? selectedType : "نوع الحدث"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
                     </button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedType('فتح')}>فتح</div>
@@ -81,7 +79,7 @@ const SearchBox = ({ searchInput, setSearchInput,
 
                 <div className="filter-dropdown">
                     <button className="filter-button">
-                        {selectedResult ? selectedResult : "نتيجة الحدث"} <IoIosArrowDown style={{position: "relative", top: "2px", left: "-5px" }} />
+                        {selectedResult ? selectedResult : "نتيجة الحدث"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
                     </button>
                     <div className="dropdown-menu">
                         <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
@@ -90,13 +88,14 @@ const SearchBox = ({ searchInput, setSearchInput,
                         <div onClick={() => setSelectedResult('')}>إلغاء التصفية</div>
                     </div>
                 </div>
-            </div>
 
-            <div className="reset">
-                <button className="reset-button" onClick={handleReset}>
-                إعادة الضبط
-                <GrPowerReset />
-                </button>
+                <div className="reset">
+                    <button className="reset-button" onClick={handleReset}>
+                        إعادة الضبط
+                        <GrPowerReset />
+                    </button>
+                </div>
+
             </div>
             {/* <div className="date-range">
                 <span className="label">التاريخ</span>

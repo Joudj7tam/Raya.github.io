@@ -21,7 +21,7 @@
     display: flex;
     gap: 0.75rem;
     align-items: center;
-
+    justify-self: center;
 }
 
 /* .filters select {
@@ -59,9 +59,9 @@
     font-size: 0.9rem;
 }
 
-.reset {
+/* .reset {
     padding: 0.4rem 5rem;
-}
+} */
 
 /* القائمة المنسدلة */
 .dropdown-menu {
@@ -119,7 +119,7 @@
 
 .search-input {
     position: relative;
-    width: 200px;
+    width: 300px;
 }
 
 .search-input input {
