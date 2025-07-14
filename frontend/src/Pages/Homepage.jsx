@@ -13,6 +13,7 @@ function HomePage() {
   const location = useLocation();
   const contactRef = useRef(null);
   const mapRef = useRef(null);
+  const timelineRef = useRef(null);
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -25,6 +26,8 @@ function HomePage() {
           contactRef.current.scrollIntoView({ behavior: 'smooth' });
         } else if (target === 'map' && mapRef.current) {
           mapRef.current.scrollIntoView({ behavior: 'smooth' });
+        } else if (target === 'timeline' && timelineRef.current) {
+          timelineRef.current.scrollIntoView({ behavior: 'smooth' });
         }
       }, 100); // Small delay to ensure page is loaded
     }
@@ -49,7 +52,7 @@ function HomePage() {
           <img src={camels} alt="الجمال" />
         </section>
 
-        <section className="timeline" data-aos="fade-up">
+        <section id="timeline" className="timeline" data-aos="fade-up" ref={timelineRef}>
           <h2 data-aos="fade-up">استعرض أبرز الغزوات والفتوحات، حسب ترتيبها الزمني</h2>
           <Timeline />
         </section>
