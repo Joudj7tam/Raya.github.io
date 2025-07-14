@@ -13,11 +13,22 @@ const addContact = async (req, res) => {
     });
 
     try {
-        await contact.save();
-        res.json({ success: true, message: "Contact added successfully" });
-    } catch (error) {
-        res.json({ success: false, message: error.message });
+    await contact.save();
+    res.status(200).json({ success: true, message: "تم إرسال الرسالة بنجاح" });
+  } catch (error) {
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map((err) => err.message);
+      return res.status(400).json({
+        success: false,
+        message: messages.join(" | "),
+      });
     }
-}
+
+    res.status(500).json({
+      success: false,
+      message: "حدث خطأ في الخادم، يرجى المحاولة لاحقًا",
+    });
+  }
+};
 
 export { addContact };

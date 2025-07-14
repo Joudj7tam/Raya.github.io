@@ -114,6 +114,12 @@
 .submit-button:hover {
     background-color: #d5c1ae;
 }
+.error {
+  color:  rgb(153, 21, 21);
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+}
 
 @media (max-width: 768px) {
     .contact-form .row {
