@@ -13,27 +13,41 @@ const Events = () => {
     const [selectedEra, setSelectedEra] = useState('');
     const [selectedType, setSelectedType] = useState('');
     const [selectedResult, setSelectedResult] = useState('');
-    const [loading, setLoading] = useState(true); // 👈 Add this
+    const [loading, setLoading] = useState(true);
+
+    const fetchEvents = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/api/gazwa/all');
+            const data = await response.json();
+            if (data.success) {
+                setEvents(data.data);
+            } else {
+                console.error("Error loading events:", data.message);
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+        } finally {
+            setLoading(false); // Set loading to false
+        }
+    };
 
     useEffect(() => {
-        const fetchEvents = async () => {
-            try {
-                const response = await fetch('http://localhost:4000/api/gazwa/all');
-                const data = await response.json();
-                if (data.success) {
-                    setEvents(data.data);
-                } else {
-                    console.error("Error loading events:", data.message);
-                }
-            } catch (error) {
-                console.error("Fetch error:", error);
-            } finally {
-                setLoading(false); //Set loading to false
-            }
-        };
-
         fetchEvents();
     }, []);
+
+    useEffect(() => {
+        const delaySearch = setTimeout(() => {
+            setSearchValue(searchInput);  // Search after 5 seconds
+        }, 5000);
+
+        return () => clearTimeout(delaySearch);
+    }, [
+    searchInput,
+    selectedEra || '',
+    selectedType || '',
+    selectedResult || '',
+    sortOrder || ''
+]);
 
     // فلترة الأحداث حسب الاسم إذا تم إدخال قيمة ويرتبهم حسب الترتيب اللي اختاره
     const filteredEvents = events
@@ -56,11 +70,11 @@ const Events = () => {
         });
 
     //search only when click Enter
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            setSearchValue(searchInput); // فقط عند الضغط على Enter يتم البحث
-        }
-    };
+    // const handleKeyDown = (e) => {
+    //     if (e.key === 'Enter') {
+    //         setSearchValue(searchInput); // فقط عند الضغط على Enter يتم البحث
+    //     }
+    // };
 
     const handleReset = () => {
         setSearchInput('');
@@ -76,8 +90,6 @@ const Events = () => {
             <SearchBox
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
-                handleKeyDown={handleKeyDown}
-                handleReset={handleReset}
                 selectedEra={selectedEra}
                 setSelectedEra={setSelectedEra}
                 selectedType={selectedType}
@@ -86,13 +98,14 @@ const Events = () => {
                 setSelectedResult={setSelectedResult}
                 sortOrder={sortOrder}
                 setSortOrder={setSortOrder}
+                handleReset={handleReset}
             />
 
 
             <div className='body-event'>
                 <div className="events-container">
                     {loading ? (
-                        <div class="loader"></div>
+                        <div className="loader"></div>
                     ) : filteredEvents.length > 0 ? (
                         filteredEvents.map((event) => (
                             <EventCard

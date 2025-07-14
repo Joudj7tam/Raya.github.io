@@ -7,6 +7,7 @@ import HomeNavbar from "../Components/homeNavbar";
 import Timeline from "../Components/timeline";
 import MapView from "../Components/map";
 import Contact from "../Components/contact";
+import { SlArrowDown } from "react-icons/sl";
 import "../CSS/home.css";
 
 function HomePage() {
@@ -33,6 +34,13 @@ function HomePage() {
     }
   }, [location.state]);
 
+  const handleScroll = () => {
+    const nextSection = document.getElementById("next-section");
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <HomeNavbar />
@@ -41,9 +49,14 @@ function HomePage() {
           <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
           <h5>[الصف: 4 - 4]</h5>
         </div>
+        <button className="scroll-down" onClick={handleScroll}>
+          <span className="arrow"><SlArrowDown /></span>
+        </button>
       </section>
 
-      <div className="flex-container">
+      <div className="flex-container" id="next-section">
+
+        <br /><br /><br /><br /><br /><br />
 
         <section className="about">
           <h3 className="about-text" data-aos="fade-up" dir="rtl" lang="ar">
@@ -52,7 +65,10 @@ function HomePage() {
           <img src={camels} alt="الجمال" />
         </section>
 
-        <section id="timeline" className="timeline" data-aos="fade-up" ref={timelineRef}>
+        <div id="timeline" ref={timelineRef}> </div>
+
+        <section className="timeline" data-aos="fade-up">
+          <br /><br />
           <h2 data-aos="fade-up">استعرض أبرز الغزوات والفتوحات، حسب ترتيبها الزمني</h2>
           <Timeline />
         </section>
