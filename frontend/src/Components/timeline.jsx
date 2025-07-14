@@ -20,7 +20,7 @@ export default function Timeline() {
         AOS.init({ duration: 2000 });
     }, []);
 
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(2);
   const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef(null);
 
