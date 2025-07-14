@@ -93,7 +93,6 @@ const getGazwaByYear = async (req, res) => {
 const getAllYears = async (req, res) => {
   try {
     const years = await gazwaModel.distinct("year");
-    console.log("✅ Years found:", years); // ← اضف هذا
     const sortedYears = years.sort((a, b) => a - b);
     res.json({ success: true, data: sortedYears });
   } catch (err) {
