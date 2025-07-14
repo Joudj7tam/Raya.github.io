@@ -71,4 +71,37 @@ const getGazwaByCountry = async (req, res) => {
     }
 };
 
-export { addGazwa, getAllGazwa, getGazwaById, getGazwaByCountry };
+// backend/controllers/gazwaController.js
+const getGazwaByYear = async (req, res) => {
+    try {
+        const year = req.query.year;
+
+        if (!year) {
+            return res.status(400).json({ success: false, message: "year is required in query" });
+        }
+
+        const gazwat = await gazwaModel.find({ year: parseInt(year) });
+        res.json({ success: true, data: gazwat });
+
+    } catch (err) {
+        console.error("❌ Error in getGazwaByYear:", err.message);
+        res.status(500).json({ success: false, message: err.message });
+    }
+};
+
+// Get all unique years
+const getAllYears = async (req, res) => {
+  try {
+    const years = await gazwaModel.distinct("year");
+    console.log("✅ Years found:", years); // ← اضف هذا
+    const sortedYears = years.sort((a, b) => a - b);
+    res.json({ success: true, data: sortedYears });
+  } catch (err) {
+    console.error("❌ Error in getAllYears:", err.message); // ← واضف هذا
+    res.status(500).json({ success: false, message: err.message });
+  }
+};
+
+
+
+export { addGazwa, getAllGazwa, getGazwaById, getGazwaByCountry, getGazwaByYear, getAllYears};

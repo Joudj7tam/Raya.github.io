@@ -3,18 +3,6 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../CSS/timeline.css";
 
-const timelineData = [
-  { year: "2 هـ", title: "عهد عمر بن الخطاب", description: ["غزوة بدر", "غزوة أحد", "غزوة الخندق", "غزوة بني قريظة"] },
-  { year: "3 هـ", title: "عهد أبوبكر الصديق", description: ["غزوة ذي العشيرة", "غزوة بواط", "غزوة سفوان", "غزوة بدر الأولى"] },
-  { year: "4 هـ", title: "عهد عثمان بن عفان", description: ["غزوة بني النضير", "غزوة بدر الآخرة", "غزوة دومة الجندل", "غزوة الخبط"] },
-  { year: "5 هـ", title: "عهد علي بن أبي طالب", description: ["غزوة بني المصطلق", "غزوة الحديبية", "غزوة خيبر", "غزوة ذات الرقاع"] },
-  { year: "6 هـ", title: "عهد النبي محمد", description: ["غزوة مؤتة", "فتح مكة", "غزوة حنين", "غزوة الطائف"] },
-  { year: "7 هـ", title: "عهد عمر بن الخطاب", description: ["غزوة تبوك", "حجة الوداع", "سرية أسامة", "وفاة الرسول"] },
-  { year: "5 هـ", title: "عهد علي بن أبي طالب", description: ["غزوة بني المصطلق", "غزوة الحديبية", "غزوة خيبر", "غزوة ذات الرقاع"] },
-  { year: "6 هـ", title: "عهد النبي محمد", description: ["غزوة مؤتة", "فتح مكة", "غزوة حنين", "غزوة الطائف"] },
-  { year: "7 هـ", title: "عهد عمر بن الخطاب", description: ["غزوة تبوك", "حجة الوداع", "سرية أسامة", "وفاة الرسول"] },
-];
-
 export default function Timeline() {
   useEffect(() => {
         AOS.init({ duration: 2000 });
@@ -23,6 +11,9 @@ export default function Timeline() {
   const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const timelineRef = useRef(null);
+  const [eventsByYear, setEventsByYear] = useState([]);
+  const [timelineData, setTimelineData] = useState([]);
+
 
   const goNext = () => {
     if (!isAnimating && active < timelineData.length - 1) {
@@ -39,6 +30,58 @@ export default function Timeline() {
       setTimeout(() => setIsAnimating(false), 600);
     }
   };
+
+  useEffect(() => {
+  const fetchYears = async () => {
+    try {
+      const response = await fetch("http://localhost:4000/api/gazwa/years");
+      const data = await response.json();
+      if (data.success) {
+        const formatted = data.data.map((year) => ({ year: `${year} هـ` }));
+        setTimelineData(formatted);
+      }
+    } catch (err) {
+      console.error("❌ Error loading years:", err.message);
+    }
+  };
+
+  fetchYears();
+}, []);
+
+ useEffect(() => {
+  const fetchEventsByYear = async () => {
+    if (timelineData.length === 0 || !timelineData[active]) return;
+
+    const selectedYearStr = timelineData[active].year.replace(" هـ", "");
+    const selectedYear = parseInt(selectedYearStr, 10);
+
+    if (isNaN(selectedYear)) {
+      console.error("Invalid year:", timelineData[active].year);
+      setEventsByYear([]);
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:4000/api/gazwa/by-year?year=${selectedYear}`);
+      const data = await response.json();
+
+      if (data.success) {
+        setEventsByYear(data.data);
+      } else {
+        setEventsByYear([]);
+        console.error("❌ Failed:", data.message);
+      }
+    } catch (err) {
+      console.error("🚨 Fetch Error:", err.message);
+      setEventsByYear([]);
+    }
+  };
+
+  fetchEventsByYear();
+}, [active, timelineData]);
+
+
+
 
   return (
     <div className="timeline-wrapper" ref={timelineRef}>
@@ -95,13 +138,22 @@ export default function Timeline() {
                   boxShadow: index === active ? "0 12px 24px rgba(0,0,0,0.3)" : "none",
                 }}
               >
-                <h3>{item.title}</h3>
+                <h3>الغزوات والفتوحات عام {timelineData[active]?.year}</h3>
                 <div className="list">
-                  <ul>
-                    {item.description.map((ghazwa, i) => (
-                      <li key={i}>{ghazwa}</li>
-                    ))}
-                  </ul>
+                  <ul data-aos="fade-up">
+  {eventsByYear.length > 0 ? (
+    eventsByYear.map((event, index) => (
+      <li key={index}>
+        <strong>{event.name}</strong>
+      </li>
+    ))
+  ) : (
+    <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
+      لا توجد أحداث مسجلة في هذه السنة
+    </li>
+  )}
+</ul>
+
                 </div>
               </div>
             );
