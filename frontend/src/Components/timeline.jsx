@@ -148,11 +148,15 @@ export default function Timeline() {
       </li>
     ))
   ) : (
-    <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
-      لا توجد أحداث مسجلة في هذه السنة
-    </li>
+    <>
+      <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
+        لا توجد أحداث مسجلة في هذه السنة
+      </li>
+    </>
   )}
 </ul>
+
+
 
                 </div>
               </div>
@@ -164,6 +168,11 @@ export default function Timeline() {
           ›
         </button>
       </div>
+      {timelineData.length === 0 || eventsByYear.length === 0 ? (
+  <div className="no-results-timeline">لا توجد نتائج</div>
+) : null}
     </div>
+    
   );
+  
 }

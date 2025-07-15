@@ -77,11 +77,8 @@ const Events = () => {
     // };
 
     const handleReset = () => {
-        setSearchInput('');
-        setSearchValue('');
-        setSelectedEra('');
-        setSelectedType('');
-        setSelectedResult('');
+          window.location.reload();
+
     };
 
     return (
