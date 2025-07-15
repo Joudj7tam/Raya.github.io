@@ -3,6 +3,8 @@ import Navbar from '../Components/navbar.jsx'
 import SearchBox from '../Components/Searchbox.jsx'
 import EventCard from '../Components/eventcard.jsx'
 import '../CSS/eventspage.css'
+import Chatbot from "../Components/chatbot";
+
 
 
 const Events = () => {
@@ -119,6 +121,7 @@ const Events = () => {
 
 
             </div>
+            <Chatbot />
         </div>
     );
 }
