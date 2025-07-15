@@ -34,7 +34,7 @@ const addGazwa = async (req, res) => {
 // bring all the gazwat
 const getAllGazwa = async (req, res) => {
     try {
-        const gazwat = await gazwaModel.find({});
+        const gazwat = await gazwaModel.find({},{ story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 });
         res.json({ success: true, data: gazwat });
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
