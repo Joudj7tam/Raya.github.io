@@ -2,6 +2,7 @@ import React from 'react';
 import playButton from '../assets/playButton.png';
 import pauseButton from '../assets/pauseButton.png';
 import islamic_war_video from '../assets/islamic-war.mp4'
+import { FaArrowRight } from "react-icons/fa6"
 import '../CSS/storyHeaderBanner.css';
 
 const HeaderBanner = ({ title, showPlayButton, onPlayClick, isPlaying, activeTab, setActiveTab }) => {
@@ -33,6 +34,10 @@ const HeaderBanner = ({ title, showPlayButton, onPlayClick, isPlaying, activeTab
           تفاصيل القصة
         </button>
       </div>
+
+      <button className="back-button" onClick={() => window.history.back()}>
+        <span className="arrow-icon"><FaArrowRight /></span>
+      </button>
 
       <h2 className="banner-title">{title}</h2>
 

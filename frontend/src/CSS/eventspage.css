@@ -1,31 +1,31 @@
 /* Page wrapper */
 .body-event {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* min-height: 100vh; */
-    padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* min-height: 100vh; */
+  padding-bottom: 40px;
 }
 
 /* Container for all event cards */
 .events-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row-reverse;
-    /* RTL layout */
-    justify-content: center;
-    gap: 50px;
-    margin-top: 100px;
-    width: 100%;
-    max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  /* RTL layout */
+  justify-content: center;
+  gap: 50px;
+  margin-top: 100px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .no-results {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #555;
-    margin-top: 20%;
-    margin-bottom: 20%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #555;
+  margin-top: 20%;
+  margin-bottom: 20%;
 }
 
 /* HTML: <div class="loader"></div> */
@@ -33,13 +33,51 @@
   width: 50px;
   aspect-ratio: 1;
   border-radius: 50%;
-  background: 
-    radial-gradient(farthest-side,#969696 94%,#0000) top/8px 8px no-repeat,
-    conic-gradient(#0000 30%,#969696);
-  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+  background:
+    radial-gradient(farthest-side, #969696 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #969696);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: l13 1s infinite linear;
   margin: 10% 0%;
 }
-@keyframes l13{ 
-  100%{transform: rotate(1turn)}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
+  }
+}
+
+.pagination-controls {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  direction: rtl;
+}
+
+.pagination-controls button {
+  background-color: #654B42;
+  color: #fefae0;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pagination-controls span {
+  font-size: 1rem;
+  color: #654B42;
+  font-weight: 500;
 }
