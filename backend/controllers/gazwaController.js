@@ -31,15 +31,34 @@ const addGazwa = async (req, res) => {
 }
 
 
-// bring all the gazwat
 const getAllGazwa = async (req, res) => {
-    try {
-        const gazwat = await gazwaModel.find({},{ story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 });
-        res.json({ success: true, data: gazwat });
-    } catch (error) {
-        res.status(500).json({ success: false, message: error.message });
-    }
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 12;
+    const skip = (page - 1) * limit;
+
+    const { type, era, result, search } = req.query;
+
+    const filter = {};
+
+    if (type) filter.type = type;
+    if (era) filter.era = era;
+    if (result) filter.result = result;
+    if (search) filter.name = { $regex: search, $options: "i" }; // بحث غير حساس لحالة الأحرف في الاسم
+
+    const gazwat = await gazwaModel
+      .find(filter, { story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await gazwaModel.countDocuments(filter);
+
+    res.json({ success: true, data: gazwat, total, page, limit });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
+
 
 // search for gazwa by id 
 const getGazwaById = async (req, res) => {
