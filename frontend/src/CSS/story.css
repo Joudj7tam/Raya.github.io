@@ -2,7 +2,7 @@ body, html {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 
 .the-story{
@@ -12,7 +12,7 @@ body, html {
     font-weight: 500;
     line-height: 2.3;
     border-radius: 30px;
-    transition: all 0.5s ease; 
+    transition: all 0.5s ease;
     background-size: 200% 200%;
     overflow: hidden;
     position: relative;
@@ -25,7 +25,7 @@ body, html {
     bottom: 10%;
     right: 2%;
     width: 10px;
-    background-color: #654b42a0; 
+    background-color: #654b42a0;
     border-radius: 50px;
 }
 
@@ -34,8 +34,19 @@ body, html {
     box-shadow: 15px 15px 20px #654b428a;
 }
 
-.the-story:hover::before{
-    background-color: #654b42df; 
+.the-story:hover::before {
+    background-color: #654b42df;
+}
+
+#speed {
+    color: #654b42d8;
+    font-weight: 900;
+    padding: 5px 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 /*.the-story::before {

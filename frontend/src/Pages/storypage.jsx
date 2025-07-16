@@ -13,6 +13,8 @@ const StoryPage = () => {
   const { id } = useParams();
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.useRef(null); // <== to control the audio element
+  const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
+  const speedOptions = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
 
   const handlePlayClick = () => {
     if (!audioRef.current) return;
@@ -55,6 +57,18 @@ const StoryPage = () => {
     fetchGazwa();
   }, [id]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.playbackRate = playbackSpeed;
+    }
+  }, [playbackSpeed]);
+
+  const handleSpeedChange = () => {
+    const currentIndex = speedOptions.indexOf(playbackSpeed);
+    const nextIndex = (currentIndex + 1) % speedOptions.length;
+    setPlaybackSpeed(speedOptions[nextIndex]);
+  };
+
   return (
     <div>
       <Navbar />
@@ -83,6 +97,8 @@ const StoryPage = () => {
                 audioRef={audioRef}
                 isPlaying={isPlaying}
                 setIsPlaying={setIsPlaying}
+                playbackSpeed={playbackSpeed}
+                handleSpeedChange={handleSpeedChange}
               />
             </div>
             <div className={`slide-content ${activeTab === 'details' ? 'show' : 'hide-right'}`}>
