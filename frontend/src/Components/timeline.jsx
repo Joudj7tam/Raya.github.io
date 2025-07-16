@@ -6,8 +6,8 @@ import "../CSS/timeline.css";
 
 export default function Timeline() {
   useEffect(() => {
-        AOS.init({ duration: 2000 });
-    }, []);
+    AOS.init({ duration: 2000 });
+  }, []);
 
   const [active, setActive] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -16,9 +16,9 @@ export default function Timeline() {
   const [timelineData, setTimelineData] = useState([]);
   const navigate = useNavigate();
 
-    const handleClick = (id) => {
-  navigate(`/story/${id}`);
-};
+  const handleClick = (id) => {
+    navigate(`/story/${id}`);
+  };
 
 
   const goNext = () => {
@@ -38,53 +38,53 @@ export default function Timeline() {
   };
 
   useEffect(() => {
-  const fetchYears = async () => {
-    try {
-      const response = await fetch("http://localhost:4000/api/gazwa/years");
-      const data = await response.json();
-      if (data.success) {
-        const formatted = data.data.map((year) => ({ year: `${year} هـ` }));
-        setTimelineData(formatted);
+    const fetchYears = async () => {
+      try {
+        const response = await fetch("http://localhost:4000/api/gazwa/years");
+        const data = await response.json();
+        if (data.success) {
+          const formatted = data.data.map((year) => ({ year: `${year} هـ` }));
+          setTimelineData(formatted);
+        }
+      } catch (err) {
+        console.error("❌ Error loading years:", err.message);
       }
-    } catch (err) {
-      console.error("❌ Error loading years:", err.message);
-    }
-  };
+    };
 
-  fetchYears();
-}, []);
+    fetchYears();
+  }, []);
 
- useEffect(() => {
-  const fetchEventsByYear = async () => {
-    if (timelineData.length === 0 || !timelineData[active]) return;
+  useEffect(() => {
+    const fetchEventsByYear = async () => {
+      if (timelineData.length === 0 || !timelineData[active]) return;
 
-    const selectedYearStr = timelineData[active].year.replace(" هـ", "");
-    const selectedYear = parseInt(selectedYearStr, 10);
+      const selectedYearStr = timelineData[active].year.replace(" هـ", "");
+      const selectedYear = parseInt(selectedYearStr, 10);
 
-    if (isNaN(selectedYear)) {
-      console.error("Invalid year:", timelineData[active].year);
-      setEventsByYear([]);
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://localhost:4000/api/gazwa/by-year?year=${selectedYear}`);
-      const data = await response.json();
-
-      if (data.success) {
-        setEventsByYear(data.data);
-      } else {
+      if (isNaN(selectedYear)) {
+        console.error("Invalid year:", timelineData[active].year);
         setEventsByYear([]);
-        console.error("❌ Failed:", data.message);
+        return;
       }
-    } catch (err) {
-      console.error("🚨 Fetch Error:", err.message);
-      setEventsByYear([]);
-    }
-  };
 
-  fetchEventsByYear();
-}, [active, timelineData]);
+      try {
+        const response = await fetch(`http://localhost:4000/api/gazwa/by-year?year=${selectedYear}`);
+        const data = await response.json();
+
+        if (data.success) {
+          setEventsByYear(data.data);
+        } else {
+          setEventsByYear([]);
+          console.error("❌ Failed:", data.message);
+        }
+      } catch (err) {
+        console.error("🚨 Fetch Error:", err.message);
+        setEventsByYear([]);
+      }
+    };
+
+    fetchEventsByYear();
+  }, [active, timelineData]);
 
 
 
@@ -92,29 +92,29 @@ export default function Timeline() {
   return (
     <div className="timeline-wrapper" ref={timelineRef}>
       <div className="years-nav-line" data-aos="slide-left">
-  <div className="years-line"></div>
-  {timelineData.map((item, index) => {
-    const offset = index - active;
-    const absOffset = Math.abs(offset);
-    if (absOffset > 2) return null;
+        <div className="years-line"></div>
+        {timelineData.map((item, index) => {
+          const offset = index - active;
+          const absOffset = Math.abs(offset);
+          if (absOffset > 2) return null;
 
-    return (
-      <div
-        key={index}
-        className={`year-circle ${index === active ? "active" : ""}`}
-        onClick={() => !isAnimating && setActive(index)}
-        style={{
-          transform: `scale(${1 - 0.2 * absOffset})`,
-          opacity: `${1 - 0.3 * absOffset}`,
-          filter: absOffset === 2 ? "blur(1px)" : "none",
-        }}
-      >
-        <div className="year-text">{item.year}</div>
-        <div className="circle"><div className="inside-circle"></div></div>
+          return (
+            <div
+              key={index}
+              className={`year-circle ${index === active ? "active" : ""}`}
+              onClick={() => !isAnimating && setActive(index)}
+              style={{
+                transform: `scale(${1 - 0.2 * absOffset})`,
+                opacity: `${1 - 0.3 * absOffset}`,
+                filter: absOffset === 2 ? "blur(1px)" : "none",
+              }}
+            >
+              <div className="year-text">{item.year}</div>
+              <div className="circle"><div className="inside-circle"></div></div>
+            </div>
+          );
+        })}
       </div>
-    );
-  })}
-</div>
 
 
       <div className="timeline-content" data-aos="fade-up">
@@ -147,21 +147,21 @@ export default function Timeline() {
                 <h3>الغزوات والفتوحات عام {timelineData[active]?.year}</h3>
                 <div className="list">
                   <ul data-aos="fade-up">
-  {eventsByYear.length > 0 ? (
-    eventsByYear.map((event, index) => (
-      <li key={index}>
-        <a className="link"href="#" onClick={() => handleClick(event._id)}>
-        <strong>{event.name}</strong></a>
-      </li>
-    ))
-  ) : (
-    <>
-      <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
-        لا توجد أحداث مسجلة في هذه السنة
-      </li>
-    </>
-  )}
-</ul>
+                    {eventsByYear.length > 0 ? (
+                      eventsByYear.map((event, index) => (
+                        <li key={index}>
+                          <a className="link" href="#" onClick={() => handleClick(event._id)}>
+                            <strong>{event.name}</strong></a>
+                        </li>
+                      ))
+                    ) : (
+                      <>
+                        <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
+                          لا توجد أحداث مسجلة في هذه السنة
+                        </li>
+                      </>
+                    )}
+                  </ul>
 
 
 
@@ -176,10 +176,10 @@ export default function Timeline() {
         </button>
       </div>
       {timelineData.length === 0 || eventsByYear.length === 0 ? (
-  <div className="no-results-timeline">لا توجد نتائج</div>
-) : null}
+        <div className="no-results-timeline">لا توجد نتائج</div>
+      ) : null}
     </div>
-    
+
   );
-  
+
 }

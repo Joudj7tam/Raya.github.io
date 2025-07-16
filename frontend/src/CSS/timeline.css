@@ -143,8 +143,10 @@
 }
 
 .link {
-  text-decoration: none;
+  display: block;
   color: #654B42;
+  text-decoration: none;
+   margin: 12% 0%;
 }
 .link:hover {
   color:#cda400ff;
