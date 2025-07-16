@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import "../CSS/timeline.css";
@@ -13,6 +14,11 @@ export default function Timeline() {
   const timelineRef = useRef(null);
   const [eventsByYear, setEventsByYear] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
+  const navigate = useNavigate();
+
+    const handleClick = (id) => {
+  navigate(`/story/${id}`);
+};
 
 
   const goNext = () => {
@@ -144,7 +150,8 @@ export default function Timeline() {
   {eventsByYear.length > 0 ? (
     eventsByYear.map((event, index) => (
       <li key={index}>
-        <strong>{event.name}</strong>
+        <a className="link"href="#" onClick={() => handleClick(event._id)}>
+        <strong>{event.name}</strong></a>
       </li>
     ))
   ) : (

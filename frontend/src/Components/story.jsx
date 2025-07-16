@@ -3,7 +3,7 @@ import '../CSS/story.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying }) => {
+const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying, playbackSpeed, handleSpeedChange }) => {
     const [currentTime, setCurrentTime] = useState(0);
     const animationRef = useRef(null);
 
@@ -57,6 +57,25 @@ const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying }) => {
                         </span>
                     );
                 })}
+                {/* ✅ Playback Speed Button inside the story container */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
+                    {/* <label htmlFor="speed" style={{ }}>السرعة:</label> */}
+                    <button
+                        id="speed"
+                        onClick={handleSpeedChange}
+                        style={{
+                            fontColor: '#654b42a0',
+                            padding: '5px 10px',
+                            fontSize: '16px',
+                            borderRadius: '8px',
+                            border: '0px',
+                            cursor: 'pointer',
+                            backgroundColor: 'transparent'
+                        }}
+                    >
+                        {playbackSpeed}x
+                    </button>
+                </div>
             </h3>
         </div>
     );

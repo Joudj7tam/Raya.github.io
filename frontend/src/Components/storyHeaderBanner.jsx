@@ -36,7 +36,7 @@ const HeaderBanner = ({ title, showPlayButton, onPlayClick, isPlaying, activeTab
       </div>
 
       <button className="back-button" onClick={() => window.history.back()}>
-        <span className="arrow-icon"><FaArrowRight /></span>
+        <span>عودة إلى السابق</span>
       </button>
 
       <h2 className="banner-title">{title}</h2>
