@@ -12,14 +12,14 @@ const EventCard = ({ title, era, id, enableAnimation = true }) => {
         navigate(`/story/${id}`);
     };
 
-      useEffect(() => {
+    useEffect(() => {
         if (enableAnimation) {
             AOS.init({ duration: 1000 });
         }
     }, [enableAnimation]);
 
     return (
-        <div className="event-card" {...(enableAnimation ? { "data-aos": "fade-up" } : {})}> 
+        <div className="event-card" {...(enableAnimation ? { "data-aos": "fade-up" } : {})}>
             <img src={eventImage} alt={title} className="event-image" />
             <div className="event-content">
                 <div className="event-header">
