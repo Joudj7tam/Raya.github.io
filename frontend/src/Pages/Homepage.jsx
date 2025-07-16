@@ -9,6 +9,7 @@ import MapView from "../Components/map";
 import Contact from "../Components/contact";
 import { SlArrowDown } from "react-icons/sl";
 import "../CSS/home.css";
+import Chatbot from "../Components/chatbot";
 
 function HomePage() {
   const location = useLocation();
@@ -81,6 +82,7 @@ function HomePage() {
         <section id="contact" className="contact" ref={contactRef}>
           <Contact />
         </section>
+        <Chatbot />
       </div>
     </>
   );

@@ -32,6 +32,7 @@ gazwaSchema.index({ result: 1 });
 gazwaSchema.index({ type: 1 });
 gazwaSchema.index({ era: 1 });
 gazwaSchema.index({ year: 1 });
+gazwaSchema.index({ country: 1 });
 
 
 const gazwaModel = mongoose.models.gazwa || mongoose.model("gazwa", gazwaSchema)
