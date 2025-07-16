@@ -1,9 +1,10 @@
 import React from 'react';
 import playButton from '../assets/playButton.png';
+import pauseButton from '../assets/pauseButton.png';
 import islamic_war_video from '../assets/islamic-war.mp4'
 import '../CSS/storyHeaderBanner.css';
 
-const HeaderBanner = ({ title, showPlayButton, onPlayClick, activeTab, setActiveTab }) => {
+const HeaderBanner = ({ title, showPlayButton, onPlayClick, isPlaying, activeTab, setActiveTab }) => {
   return (
     <div className="header-banner">
       {/*
@@ -37,7 +38,10 @@ const HeaderBanner = ({ title, showPlayButton, onPlayClick, activeTab, setActive
 
       {showPlayButton && (
         <button className="play-button" onClick={onPlayClick}>
-          <img src={playButton} alt="Play" className="play-icon" />
+          <img className="play-icon"
+            src={isPlaying ? pauseButton : playButton}
+            alt={isPlaying ? "Pause" : "Play"}
+          />
         </button>
       )}
     </div>

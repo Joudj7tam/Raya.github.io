@@ -11,7 +11,29 @@ const StoryPage = () => {
   const [gazwa, setGazwa] = useState(null);
   const [loading, setLoading] = useState(true); // ✅ new loading state
   const { id } = useParams();
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = React.useRef(null); // <== to control the audio element
 
+  const handlePlayClick = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+
+    setIsPlaying(!isPlaying);
+  };
+
+  // ✅ Reset play icon when audio finishes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.onended = () => setIsPlaying(false);
+    }
+  }, [gazwa]);
+
+  // ✅ Fetch gazwa data
   useEffect(() => {
     const fetchGazwa = async () => {
       try {
@@ -36,10 +58,14 @@ const StoryPage = () => {
   return (
     <div>
       <Navbar />
+      {gazwa?.audioUrl && (
+        <audio ref={audioRef} src={`http://localhost:4000${gazwa.audioUrl}`} />
+      )}
       <StoryHeaderBanner
         title={gazwa ? gazwa.name : '...'}
         showPlayButton={activeTab === 'story'}
-        onPlayClick={() => console.log('Play clicked')}
+        onPlayClick={handlePlayClick}
+        isPlaying={isPlaying} // <== pass state
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
@@ -52,7 +78,12 @@ const StoryPage = () => {
         ) : (
           <>
             <div className={`slide-content ${activeTab === 'story' ? 'show' : 'hide-left'}`}>
-              <StoryContent gazwa={gazwa} />
+              <StoryContent
+                gazwa={gazwa}
+                audioRef={audioRef}
+                isPlaying={isPlaying}
+                setIsPlaying={setIsPlaying}
+              />
             </div>
             <div className={`slide-content ${activeTab === 'details' ? 'show' : 'hide-right'}`}>
               <DetailsContent gazwa={gazwa} />

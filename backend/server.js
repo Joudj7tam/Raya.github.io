@@ -9,6 +9,7 @@ const app = express()
 const port = 4000
 
 //middleware
+app.use("/audios", express.static("stories"));
 app.use(express.json())
 app.use(cors())
 
