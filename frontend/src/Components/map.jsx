@@ -17,6 +17,7 @@ const MapView = () => {
     const [selectedCountry, setSelectedCountry] = useState(null);
     const [eventsByLocation, setEventsByLocation] = useState([]);
     const [eventsByCountry, setEventsByCountry] = useState([]);
+    const[loading, setLoading] = useState(true);
 
     const regionColors = [
         "#b3584a",
@@ -111,6 +112,8 @@ const MapView = () => {
             } catch (err) {
                 console.error("🚨 Fetch Error:", err.message);
                 setEventsByLocation([]);
+            } finally {
+                setLoading(false);
             }
         };
 
@@ -143,7 +146,11 @@ const MapView = () => {
                     <h3 className="map-header">
                         الغزوات والفتوحات في {selectedCountry}
                     </h3>
-                    <ul data-aos="fade-up">
+                    {loading ? (
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+                            <div className="loader"></div>
+                        </div>
+                    ) : <ul data-aos="fade-up">
                         {eventsByLocation.length > 0 ? (
                             eventsByLocation.map((event, index) => (
                                 <li key={index}>
@@ -161,6 +168,7 @@ const MapView = () => {
                             </li>
                         )}
                     </ul>
+                    }
                 </div>
             )}
         </div>

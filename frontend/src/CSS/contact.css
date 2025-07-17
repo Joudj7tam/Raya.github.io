@@ -1,9 +1,10 @@
 .contact-section {
-    background-color: #654B42;
+    background-color: #654b42e7;
     /* background of page */
     padding: 60px 20px;
     display: flex;
     justify-content: center;
+    margin-bottom: -60px;
 }
 
 .contact-container {

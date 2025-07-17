@@ -146,7 +146,7 @@ html {
 .map {
   width: 100%;
   text-align: right;
-  padding: 60px 0;
+  padding: 40px 0px 0px 0px;
 }
 
 .map h2 {
@@ -173,6 +173,25 @@ html {
   width: 100%;
   z-index: 50;
   transition: all 0.3s ease-in-out;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(farthest-side, #969696 94%, #0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, #969696);
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: l13 1s infinite linear;
+  margin: 10% 0%;
+}
+
+@keyframes l13 {
+  100% {
+    transform: rotate(1turn)
+  }
 }
 
 

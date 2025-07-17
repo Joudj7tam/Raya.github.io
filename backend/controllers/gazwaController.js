@@ -37,7 +37,7 @@ const getAllGazwa = async (req, res) => {
         const limit = parseInt(req.query.limit) || 12;
         const skip = (page - 1) * limit;
 
-        const { type, era, result, search, sortOrder } = req.query;
+        const { type, era, result, search, year, sortOrder } = req.query;
         const sortDirection = sortOrder === 'desc' ? -1 : 1;
 
         const filter = {};
@@ -46,6 +46,13 @@ const getAllGazwa = async (req, res) => {
         if (era) filter.era = era;
         if (result) filter.result = result;
         if (search) filter.name = { $regex: search, $options: "i" }; // بحث غير حساس لحالة الأحرف في الاسم
+        if (year !== undefined && year !== '') {
+            const parsedYear = parseInt(year);
+            if (!isNaN(parsedYear)) {
+                filter.year = parsedYear;
+            }
+        }
+
 
         const gazwat = await gazwaModel
             .find(filter, { story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 })

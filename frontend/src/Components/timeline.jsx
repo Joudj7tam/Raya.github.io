@@ -15,6 +15,7 @@ export default function Timeline() {
   const [eventsByYear, setEventsByYear] = useState([]);
   const [timelineData, setTimelineData] = useState([]);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const handleClick = (id) => {
     navigate(`/story/${id}`);
@@ -80,6 +81,8 @@ export default function Timeline() {
       } catch (err) {
         console.error("🚨 Fetch Error:", err.message);
         setEventsByYear([]);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -123,7 +126,11 @@ export default function Timeline() {
         </button>
 
         <div className="slider">
-          {timelineData.map((item, index) => {
+          {loading ? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+            <div className="loader"></div>
+          </div>
+        ) : timelineData.map((item, index) => {
             const offset = index - active;
             const absOffset = Math.abs(offset);
             const translateX = offset * -120;
@@ -169,13 +176,14 @@ export default function Timeline() {
               </div>
             );
           })}
+          
         </div>
 
         <button className="arrow right" onClick={goNext} disabled={active === timelineData.length - 1 || isAnimating}>
           ›
         </button>
       </div>
-      {timelineData.length === 0 || eventsByYear.length === 0 ? (
+      { !loading && (timelineData.length === 0 || eventsByYear.length === 0) ? (
         <div className="no-results-timeline">لا توجد نتائج</div>
       ) : null}
     </div>
