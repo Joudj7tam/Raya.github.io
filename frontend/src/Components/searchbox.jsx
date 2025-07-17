@@ -97,13 +97,6 @@ const SearchBox = ({ searchInput, setSearchInput, handleReset,
                 </div>
 
             </div>
-            {/* <div className="date-range">
-                <span className="label">التاريخ</span>
-                <span>هـ 2</span>
-                <input type="range" min="2" max="39" className="range-slider" />
-                <span>هـ 39</span>
-            </div> */}
-
         </div>
     );
 };

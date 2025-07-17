@@ -32,31 +32,33 @@ const addGazwa = async (req, res) => {
 
 
 const getAllGazwa = async (req, res) => {
-  try {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 12;
-    const skip = (page - 1) * limit;
+    try {
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 12;
+        const skip = (page - 1) * limit;
 
-    const { type, era, result, search } = req.query;
+        const { type, era, result, search, sortOrder } = req.query;
+        const sortDirection = sortOrder === 'desc' ? -1 : 1;
 
-    const filter = {};
+        const filter = {};
 
-    if (type) filter.type = type;
-    if (era) filter.era = era;
-    if (result) filter.result = result;
-    if (search) filter.name = { $regex: search, $options: "i" }; // بحث غير حساس لحالة الأحرف في الاسم
+        if (type) filter.type = type;
+        if (era) filter.era = era;
+        if (result) filter.result = result;
+        if (search) filter.name = { $regex: search, $options: "i" }; // بحث غير حساس لحالة الأحرف في الاسم
 
-    const gazwat = await gazwaModel
-      .find(filter, { story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 })
-      .skip(skip)
-      .limit(limit);
+        const gazwat = await gazwaModel
+            .find(filter, { story: 0, cause: 0, effect: 0, source: 0, country: 0, area_to_open: 0, leader_of_muslims: 0, location: 0, number_of_muslims: 0, enemy: 0, number_of_enemy: 0, leader_of_enemy: 0 })
+            .sort({ year: sortDirection }) //  الترتيب حسب السنة
+            .skip(skip)
+            .limit(limit);
 
-    const total = await gazwaModel.countDocuments(filter);
+        const total = await gazwaModel.countDocuments(filter);
 
-    res.json({ success: true, data: gazwat, total, page, limit });
-  } catch (error) {
-    res.status(500).json({ success: false, message: error.message });
-  }
+        res.json({ success: true, data: gazwat, total, page, limit });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
 };
 
 
@@ -110,16 +112,16 @@ const getGazwaByYear = async (req, res) => {
 
 // Get all unique years
 const getAllYears = async (req, res) => {
-  try {
-    const years = await gazwaModel.distinct("year");
-    const sortedYears = years.sort((a, b) => a - b);
-    res.json({ success: true, data: sortedYears });
-  } catch (err) {
-    console.error("❌ Error in getAllYears:", err.message); // ← واضف هذا
-    res.status(500).json({ success: false, message: err.message });
-  }
+    try {
+        const years = await gazwaModel.distinct("year");
+        const sortedYears = years.sort((a, b) => a - b);
+        res.json({ success: true, data: sortedYears });
+    } catch (err) {
+        console.error("❌ Error in getAllYears:", err.message); // ← واضف هذا
+        res.status(500).json({ success: false, message: err.message });
+    }
 };
 
 
 
-export { addGazwa, getAllGazwa, getGazwaById, getGazwaByCountry, getGazwaByYear, getAllYears};
+export { addGazwa, getAllGazwa, getGazwaById, getGazwaByCountry, getGazwaByYear, getAllYears };
