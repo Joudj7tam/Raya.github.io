@@ -81,3 +81,15 @@
   color: #654B42;
   font-weight: 500;
 }
+
+.results-count {
+  position: relative;
+  top: 70px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: right;
+  padding-right: 50px;
+  direction: rtl;
+  width: 100%;
+  box-sizing: border-box;
+}
