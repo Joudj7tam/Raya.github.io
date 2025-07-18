@@ -14,14 +14,18 @@ const Events = () => {
   const [selectedType, setSelectedType] = useState('');
   const [selectedResult, setSelectedResult] = useState('');
   const [loading, setLoading] = useState(true);
+  const [showResults, setShowResults] = useState(false);
+  const [totalResults, setTotalResults] = useState(0);
 
-  //pagination
+  // pagination
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const limit = 12;
 
   const fetchEvents = async () => {
     setLoading(true);
+    setShowResults(false);
+
     try {
       const params = new URLSearchParams();
 
@@ -38,40 +42,46 @@ const Events = () => {
 
       if (data.success) {
         setEvents(data.data);
-        // number of pages
+        setTotalResults(data.total || data.data.length);
         const total = data.total || data.data.length;
         setTotalPages(Math.ceil(total / limit));
       } else {
-        console.error("Error loading events:", data.message);
         setEvents([]);
         setTotalPages(1);
+        console.error("Error loading events:", data.message);
       }
+
     } catch (error) {
       console.error("Fetch error:", error);
       setEvents([]);
       setTotalPages(1);
     } finally {
       setLoading(false);
+      setShowResults(true);
     }
   };
 
+  // Delay search input before applying searchValue
   useEffect(() => {
     const delay = setTimeout(() => {
-      setSearchValue(searchInput);
-      setPage(1);
-    }, 500);
-
+      if (searchInput !== searchValue) {
+        setSearchValue(searchInput);
+        setPage(1); // Reset page when search changes
+      }
+    }, 500); // reduced delay to half second
     return () => clearTimeout(delay);
   }, [searchInput]);
 
+  // Fetch data when anything changes
   useEffect(() => {
     fetchEvents();
-  }, [searchValue, selectedEra, selectedType, selectedResult, sortOrder, page]);
+  }, [page, searchValue, selectedEra, selectedType, selectedResult, sortOrder]);
 
-  // Reset page to 1 when filters change
-  useEffect(() => {
+  // helper to reset filters and page then fetch
+  const resetAndFetch = (setter, value) => {
     setPage(1);
-  }, [selectedEra, selectedType, selectedResult, sortOrder]);
+    setter(value);
+  };
 
   const handleReset = () => {
     setSearchInput('');
@@ -90,21 +100,28 @@ const Events = () => {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
         selectedEra={selectedEra}
-        setSelectedEra={setSelectedEra}
+        setSelectedEra={(val) => resetAndFetch(setSelectedEra, val)}
         selectedType={selectedType}
-        setSelectedType={setSelectedType}
+        setSelectedType={(val) => resetAndFetch(setSelectedType, val)}
         selectedResult={selectedResult}
-        setSelectedResult={setSelectedResult}
+        setSelectedResult={(val) => resetAndFetch(setSelectedResult, val)}
         sortOrder={sortOrder}
-        setSortOrder={setSortOrder}
+        setSortOrder={(val) => resetAndFetch(setSortOrder, val)}
         handleReset={handleReset}
       />
 
       <div className='body-event'>
+
+        <div className="results-count">
+          عدد النتائج: {totalResults}
+        </div>
+
         <div className="events-container">
           {loading ? (
             <div className="loader"></div>
-          ) : events.length > 0 ? (
+          ) : showResults && events.length === 0 ? (
+            <div className="no-results">لا توجد نتائج</div>
+          ) : (
             events.map((event) => (
               <EventCard
                 key={event._id}
@@ -113,44 +130,16 @@ const Events = () => {
                 era={`عهد ${event.era}`}
               />
             ))
-          ) : (
-            <div className="no-results">لا توجد نتائج</div>
           )}
         </div>
 
-
         <div className="pagination-controls">
-          <button
-            onClick={() => setPage(1)}
-            disabled={page === 1}
-          >
-            ⏮ الأولى
-          </button>
-
-          <button
-            onClick={() => setPage((p) => Math.max(p - 1, 1))}
-            disabled={page === 1}
-          >
-            السابق
-          </button>
-
+          <button onClick={() => setPage(1)} disabled={page === 1}>⏮ الأولى</button>
+          <button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1}>السابق</button>
           <span>صفحة {page} من {totalPages}</span>
-
-          <button
-            onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-            disabled={page === totalPages}
-          >
-            التالي
-          </button>
-
-          <button
-            onClick={() => setPage(totalPages)}
-            disabled={page === totalPages}
-          >
-            الأخيرة ⏭
-          </button>
+          <button onClick={() => setPage((p) => Math.min(p + 1, totalPages))} disabled={page === totalPages}>التالي</button>
+          <button onClick={() => setPage(totalPages)} disabled={page === totalPages}>الأخيرة ⏭</button>
         </div>
-
       </div>
 
       <Chatbot />
