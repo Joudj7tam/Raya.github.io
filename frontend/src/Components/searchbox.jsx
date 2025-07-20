@@ -91,7 +91,7 @@ const SearchBox = ({ searchInput, setSearchInput, handleReset,
 
                 <div className="reset">
                     <button className="reset-button" onClick={handleReset}>
-                        إعادة الضبط
+                        <span>إعادة الضبط</span> 
                         <GrPowerReset />
                     </button>
                 </div>
