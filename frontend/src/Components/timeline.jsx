@@ -40,6 +40,7 @@ export default function Timeline() {
 
   useEffect(() => {
     const fetchYears = async () => {
+      const startTime = performance.now();
       try {
         const response = await fetch("http://localhost:4000/api/gazwa/years");
         const data = await response.json();
@@ -47,6 +48,8 @@ export default function Timeline() {
           const formatted = data.data.map((year) => ({ year: `${year} هـ` }));
           setTimelineData(formatted);
         }
+        const duration = (performance.now() - startTime) / 1000;
+        console.log(`Fetching years took ${duration.toFixed(3)} seconds`);
       } catch (err) {
         console.error("❌ Error loading years:", err.message);
       }
@@ -61,6 +64,7 @@ export default function Timeline() {
 
       const selectedYearStr = timelineData[active].year.replace(" هـ", "");
       const selectedYear = parseInt(selectedYearStr, 10);
+      const startTime = performance.now();
 
       if (isNaN(selectedYear)) {
         console.error("Invalid year:", timelineData[active].year);
@@ -71,6 +75,8 @@ export default function Timeline() {
       try {
         const response = await fetch(`http://localhost:4000/api/gazwa/by-year?year=${selectedYear}`);
         const data = await response.json();
+        const duration = (performance.now() - startTime) / 1000;
+        console.log(`Fetching events for year ${selectedYear} took ${duration.toFixed(3)} seconds`);
 
         if (data.success) {
           setEventsByYear(data.data);
@@ -127,10 +133,10 @@ export default function Timeline() {
 
         <div className="slider">
           {loading ? (
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
-            <div className="loader"></div>
-          </div>
-        ) : timelineData.map((item, index) => {
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '200px' }}>
+              <div className="loader"></div>
+            </div>
+          ) : timelineData.map((item, index) => {
             const offset = index - active;
             const absOffset = Math.abs(offset);
             const translateX = offset * -120;
@@ -157,7 +163,7 @@ export default function Timeline() {
                     {eventsByYear.length > 0 ? (
                       eventsByYear.map((event, index) => (
                         <li key={index}>
-                          <a className="link" href="#" onClick={() => handleClick(event._id)}>
+                          <a className="link" href="#" onClick={(e) => {e.preventDefault(); handleClick(event._id); }}>
                             <strong>{event.name}</strong></a>
                         </li>
                       ))
@@ -176,14 +182,14 @@ export default function Timeline() {
               </div>
             );
           })}
-          
+
         </div>
 
         <button className="arrow right" onClick={goNext} disabled={active === timelineData.length - 1 || isAnimating}>
           ›
         </button>
       </div>
-      { !loading && (timelineData.length === 0 || eventsByYear.length === 0) ? (
+      {!loading && (timelineData.length === 0 || eventsByYear.length === 0) ? (
         <div className="no-results-timeline">لا توجد نتائج</div>
       ) : null}
     </div>
