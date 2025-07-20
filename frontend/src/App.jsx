@@ -5,11 +5,14 @@ import Events from "./Pages/eventspage.jsx"
 import Story from "./Pages/storypage.jsx";
 import Map from "./Components/map.jsx"
 import Contact from "./Components/contact.jsx"
+import ScrollToTop from "./Components/ScrollToTop"; 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<HomeContent />} />
         <Route path="/events" element={<Events />} />
@@ -17,6 +20,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/story/:id" element={<Story />} />
       </Routes>
+
       <Footer />
     </Router>
   );
