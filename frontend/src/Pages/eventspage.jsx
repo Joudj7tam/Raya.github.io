@@ -142,7 +142,6 @@ const Events = () => {
         </div>
       </div>
 
-      <Chatbot />
     </div>
   );
 };

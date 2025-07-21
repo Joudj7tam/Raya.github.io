@@ -36,26 +36,30 @@
 }
 
 .circle {
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
   background-color: #654B42;
   border: 2px solid #FDFDED;
   border-radius: 50%;
   margin: 0.5rem 0;
   transition: transform 0.3s ease;
+  position: relative;
 }
+
 .inside-circle {
   width: 15px;
   height: 15px;
   background-color: #FDFDED;
   border: 3px solid #654B42;
   border-radius: 50%;
-  margin: 0px;
-  transition: transform 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 .year-circle.active .circle,.year-circle:hover .circle {
   transform: scale(1.4);
- 
   background-color: #FDFDED;
 }
 .year-text {
@@ -93,6 +97,7 @@
   transform-origin: center bottom;
   will-change: transform, opacity, filter;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 15px;
 }
 
 .item h3 {
@@ -215,8 +220,11 @@
   
   .item {
     width: 180px;
-    height: 280px;
-    padding: 15px;
+    height: 300px;
+    font-size: 12px;
+  }
+  .item h3 {
+    font-size: 14px;
   }
   
   .timeline-content {

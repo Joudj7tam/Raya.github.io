@@ -48,7 +48,7 @@ function HomePage() {
       <section id="home" className="hero">
         <div className="hero-text" data-aos="fade">
           <h1 dir="rtl" lang="ar">﴿ إِنَّ اللَّهَ يُحِبُّ الَّذينَ يُقاتِلونَ فى سَبيلِهِ صَفًّا كَأَنَّهُم بُنيانٌ مَرصوصٌ ﴾</h1>
-          <h5>[الصف: 4 - 4]</h5>
+          <h5>[الصف: آية 4]</h5>
         </div>
         <button className="scroll-down" onClick={handleScroll}>
           <span className="arrow"><SlArrowDown /></span>
@@ -82,7 +82,6 @@ function HomePage() {
         <section id="contact" className="contact" ref={contactRef}>
           <Contact />
         </section>
-        <Chatbot />
       </div>
     </>
   );
