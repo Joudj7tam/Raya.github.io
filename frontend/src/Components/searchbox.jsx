@@ -52,42 +52,72 @@ const SearchBox = ({ searchInput, setSearchInput, handleReset,
             <div className="filters">
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">
-                        {selectedEra ? selectedEra : "العهد"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
-                    </button>
-                    <div className="dropdown-menu">
-                        <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد ﷺ</div>
-                        <div onClick={() => setSelectedEra('أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
-                        <div onClick={() => setSelectedEra('عمر بن الخطاب رضي الله عنه')}>عهد الخليفة عمر بن الخطاب</div>
-                        <div onClick={() => setSelectedEra('عثمان بن عفان رضي الله عنه')}>عهد الخليفة عثمان بن عفان</div>
-                        <div onClick={() => setSelectedEra('علي بن أبي طالب رضي الله عنه')}>عهد الخليفة علي بن ابي طالب</div>
-                        <div onClick={() => setSelectedEra('')}>إلغاء التصفية</div>
-                    </div>
+                <button className="filter-button">
+                    <span>
+                    {selectedEra || "العهد"}
+                    {selectedEra && (
+                        <span className="clear-filter" onClick={() => setSelectedEra('')}> ✕ </span>
+                    )}
+                    </span>
+                    {!selectedEra && (
+                    <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
+                    )}
+
+                </button>
+                <div className="dropdown-menu">
+                    <div onClick={() => setSelectedEra('النبي محمد ﷺ')}>عهد النبي محمد ﷺ</div>
+                    <div onClick={() => setSelectedEra('أبو بكر الصديق رضي الله عنه')}>عهد الخليفة ابو بكر الصديق</div>
+                    <div onClick={() => setSelectedEra('عمر بن الخطاب رضي الله عنه')}>عهد الخليفة عمر بن الخطاب</div>
+                    <div onClick={() => setSelectedEra('عثمان بن عفان رضي الله عنه')}>عهد الخليفة عثمان بن عفان</div>
+                    <div onClick={() => setSelectedEra('علي بن أبي طالب رضي الله عنه')}>عهد الخليفة علي بن ابي طالب</div>
+                </div>
+                </div>
+
+
+                <div className="filter-dropdown">
+                <button className="filter-button">
+                    <span>
+                    {selectedType || "نوع الحدث"}
+                    {selectedType && (
+                        <span className="clear-filter" onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedType('');
+                        }}> ✕ </span>
+                    )}
+                    </span>
+                    {!selectedType && (
+                    <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
+                    )}
+                </button>
+                <div className="dropdown-menu">
+                    <div onClick={() => setSelectedType('فتح')}>فتح</div>
+                    <div onClick={() => setSelectedType('معركة')}>معركة</div>
+                    <div onClick={() => setSelectedType('غزوة')}>غزوة</div>
+                </div>
                 </div>
 
                 <div className="filter-dropdown">
-                    <button className="filter-button">
-                        {selectedType ? selectedType : "نوع الحدث"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
-                    </button>
-                    <div className="dropdown-menu">
-                        <div onClick={() => setSelectedType('فتح')}>فتح</div>
-                        <div onClick={() => setSelectedType('معركة')}>معركة</div>
-                        <div onClick={() => setSelectedType('غزوة')}>غزوة</div>
-                        <div onClick={() => setSelectedType('')}>إلغاء التصفية</div>
-                    </div>
+                <button className="filter-button">
+                    <span>
+                    {selectedResult || "نتيجة الحدث"}
+                    {selectedResult && (
+                        <span className="clear-filter" onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedResult('');
+                        }}> ✕ </span>
+                    )}
+                    </span>
+                    {!selectedResult && (
+                    <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
+                    )}
+                </button>
+                <div className="dropdown-menu">
+                    <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
+                    <div onClick={() => setSelectedResult('هزيمة')}>هزيمة</div>
+                    <div onClick={() => setSelectedResult('لم يحدث قتال')}>لم يحدث قتال</div>
+                </div>
                 </div>
 
-                <div className="filter-dropdown">
-                    <button className="filter-button">
-                        {selectedResult ? selectedResult : "نتيجة الحدث"} <IoIosArrowDown style={{ position: "relative", top: "2px", left: "-5px" }} />
-                    </button>
-                    <div className="dropdown-menu">
-                        <div onClick={() => setSelectedResult('انتصار')}>انتصار</div>
-                        <div onClick={() => setSelectedResult('هزيمة')}>هزيمة</div>
-                        <div onClick={() => setSelectedResult('لم يحدث قتال')}>لم يحدث قتال</div>
-                        <div onClick={() => setSelectedResult('')}>إلغاء التصفية</div>
-                    </div>
-                </div>
 
                 <div className="reset">
                     <button className="reset-button" onClick={handleReset}>

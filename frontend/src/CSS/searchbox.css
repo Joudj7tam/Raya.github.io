@@ -49,6 +49,10 @@
     margin-right: 0%;
 }
 
+.filter-button span{
+    font-weight: normal;
+}
+
 .reset-button {
     background-color: transparent;
     color: #fefae0;
