@@ -115,8 +115,8 @@
 .chat-body {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    height: 460px;
+    gap: 15px;
+    height: 300px;
     overflow-y: auto;
     margin-bottom: 82px;
     padding: 25px 22px;

@@ -14,7 +14,7 @@ const StoryPage = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = React.useRef(null); // <== to control the audio element
   const [playbackSpeed, setPlaybackSpeed] = useState(1.0);
-  const speedOptions = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0];
+  const speedOptions = [0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5];
 
   const handlePlayClick = () => {
     if (!audioRef.current) return;
