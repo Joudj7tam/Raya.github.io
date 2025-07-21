@@ -82,7 +82,6 @@ function HomePage() {
         <section id="contact" className="contact" ref={contactRef}>
           <Contact />
         </section>
-        <Chatbot />
       </div>
     </>
   );
