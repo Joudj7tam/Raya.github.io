@@ -84,14 +84,26 @@ const Events = () => {
   };
 
   const handleReset = () => {
-    setSearchInput('');
-    setSearchValue('');
-    setSelectedEra('');
-    setSelectedType('');
-    setSelectedResult('');
-    setSortOrder('asc');
-    setPage(1);
-  };
+    
+      const isFiltered =
+        searchInput ||
+        searchValue ||
+        selectedEra ||
+        selectedType ||
+        selectedResult ||
+        sortOrder !== 'asc';
+
+      if (!isFiltered) return;
+
+      setSearchInput('');
+      setSearchValue('');
+      setSelectedEra('');
+      setSelectedType('');
+      setSelectedResult('');
+      setSortOrder('asc');
+      setPage(1);
+    };
+
 
   return (
     <div id="events" className='page'>
