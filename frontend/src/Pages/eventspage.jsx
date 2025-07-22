@@ -77,6 +77,11 @@ const Events = () => {
     fetchEvents();
   }, [page, searchValue, selectedEra, selectedType, selectedResult, sortOrder]);
 
+  // scroll to top on page change
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
+
   // helper to reset filters and page then fetch
   const resetAndFetch = (setter, value) => {
     setPage(1);
@@ -84,25 +89,25 @@ const Events = () => {
   };
 
   const handleReset = () => {
-    
-      const isFiltered =
-        searchInput ||
-        searchValue ||
-        selectedEra ||
-        selectedType ||
-        selectedResult ||
-        sortOrder !== 'asc';
 
-      if (!isFiltered) return;
+    const isFiltered =
+      searchInput ||
+      searchValue ||
+      selectedEra ||
+      selectedType ||
+      selectedResult ||
+      sortOrder !== 'asc';
 
-      setSearchInput('');
-      setSearchValue('');
-      setSelectedEra('');
-      setSelectedType('');
-      setSelectedResult('');
-      setSortOrder('asc');
-      setPage(1);
-    };
+    if (!isFiltered) return;
+
+    setSearchInput('');
+    setSearchValue('');
+    setSelectedEra('');
+    setSelectedType('');
+    setSelectedResult('');
+    setSortOrder('asc');
+    setPage(1);
+  };
 
 
   return (
