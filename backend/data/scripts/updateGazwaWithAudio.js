@@ -10,8 +10,8 @@ dotenv.config();
 const run = async () => {
   await connectDB();
 
-  const jsonFolder = "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend";
-  const mb3Folder = "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend/stories";
+  const jsonFolder = "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend/data";
+  const mb3Folder = "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend/audio";
   const audioFolder = path.join(mb3Folder, "public", "audios");
   const jsonPath = path.join(jsonFolder, "story_time_stamps.json");
 

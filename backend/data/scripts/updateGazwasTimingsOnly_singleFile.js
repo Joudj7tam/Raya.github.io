@@ -12,8 +12,8 @@ const updateTimings = async () => {
     await connectDB();
 
     const jsonFilePath = path.join(
-      "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend",
-      "story_time_stamps.json"
+      "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend/data",
+      "timestamps.json"
     );
 
     const jsonData = JSON.parse(fs.readFileSync(jsonFilePath, "utf-8"));
