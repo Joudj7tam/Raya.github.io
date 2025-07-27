@@ -1,24 +1,28 @@
+/* Contact section wrapper with background and padding */
 .contact-section {
-    background-color: #654b42e7; /* Background color of the section */
-    padding: 60px 20px; /* Space inside the section */
+    background-color: #654b42e7;
+    padding: 60px 20px;
     display: flex;
-    justify-content: center; /* Center the content */
-    margin-bottom: -60px; /* Move the section up a bit */
+    justify-content: center;
+    margin-bottom: -60px;
 }
 
+/* Container with glassmorphism effect, max width, and RTL text */
 .contact-container {
-    background-color: rgba(255, 255, 255, 0.086); /* Light transparent background */
-    backdrop-filter: blur(50px); /* Glass blur effect */
+    background-color: rgba(255, 255, 255, 0.086);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     padding: 40px;
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Box shadow */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     max-width: 600px;
     width: 100%;
-    direction: rtl; /* Right-to-left text */
+    direction: rtl;
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+/* Title centered, larger font, with margin */
 .contact-title {
     text-align: center;
     font-size: 1.8rem;
@@ -26,23 +30,28 @@
     font-weight: 600;
 }
 
+/* Layout rows inside the form with flex and wrapping */
 .contact-form .row {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap; /* Stack on small screens */
+    flex-wrap: wrap;
     margin-bottom: 20px;
 }
 
+/* Group wrapper for label + input/textarea */
 .input-group {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
+/* Label spacing */
 .input-group label {
     margin-bottom: 8px;
+    font-weight: normal;
 }
 
+/* Inputs, selects, textareas styling */
 .input-group input,
 .input-group select,
 .input-group textarea {
@@ -54,35 +63,42 @@
     color: #333;
 }
 
+/* Textarea specific height and resizable vertically */
 .input-group textarea {
     min-height: 100px;
     resize: vertical;
 }
 
+/* Focus outline for accessibility */
 .input-group input:focus,
 .input-group select:focus,
 .input-group textarea:focus {
-    outline: 2px solid #c0a28d; /* Highlight on focus */
+    outline: 2px solid #c0a28d;
 }
 
+/* Phone input container flex with gap */
 .phone-input {
     display: flex;
     gap: 5px;
 }
 
+/* Fixed width for country code select */
 .phone-input select {
     width: 80px;
 }
 
+/* Utility class for full width elements */
 .full-width {
     width: 100%;
 }
 
+/* Red color for required field indicator */
 .required {
-    color: rgb(153, 21, 21); /* Red for required field mark */
+    color: rgb(153, 21, 21);
     margin-right: 4px;
 }
 
+/* Submit button base styling */
 .submit-button {
     background-color: #e6d5c3;
     color: #333;
@@ -95,10 +111,114 @@
     transition: background-color 0.3s ease;
 }
 
+/* Hover effect for submit button */
 .submit-button:hover {
     background-color: #d5c1ae;
 }
 
+/* Error message styling */
 .error {
-    color: rgb(153, 21, 21); /* Error message color */
+    color: rgb(153, 21, 21);
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+}
+
+/* Alert box container with fade-in animation */
+.custom-alert {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+    direction: rtl;
+}
+
+/* Success alert styles */
+.custom-alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Error alert styles */
+.custom-alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Close button for alerts */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: inherit;
+}
+
+/* Fade-in keyframe animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive: stack form rows vertically on tablets and smaller */
+@media (max-width: 768px) {
+    .contact-form .row {
+        flex-direction: column;
+    }
+}
+
+/* Responsive adjustments for small mobile screens */
+@media (max-width: 450px) {
+    .contact-container {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .contact-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .submit-button {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+    }
+
+    .custom-alert {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+
+    .close-btn {
+        font-size: 1rem;
+    }
+
+    .phone-input {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .phone-input select {
+        width: 100%;
+    }
 }
