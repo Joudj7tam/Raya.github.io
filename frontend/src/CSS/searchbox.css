@@ -1,14 +1,16 @@
+/* Apply Lama Sans font globally */
 * {
     font-family: 'Lama Sans', sans-serif;
 }
 
+/* Main search box container with background, padding, flex layout, and RTL */
 .search-box {
     background-color: #654B42;
     color: #fefae0;
     padding: 2rem;
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap;              /* Wrap items on smaller screens */
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
@@ -16,7 +18,7 @@
     margin-top: 115px;
 }
 
-
+/* Container for filter buttons */
 .filters {
     display: flex;
     gap: 0.75rem;
@@ -24,20 +26,12 @@
     justify-self: center;
 }
 
-/* .filters select {
-    background-color: #fefae0;
-    color: #1a1a1a;
-    border: none;
-    padding: 0.4rem 1rem;
-    border-radius: 6px;
-    font-size: 0.9rem;
-    cursor: pointer;
-} */
-
+/* Wrapper for dropdown filters, used for relative positioning */
 .filter-dropdown {
     position: relative;
 }
 
+/* Style for filter buttons */
 .filter-button {
     background-color: #fefae0;
     color: #1a1a1a;
@@ -49,10 +43,12 @@
     margin-right: 0%;
 }
 
-.filter-button span{
+/* Text weight inside filter buttons */
+.filter-button span {
     font-weight: normal;
 }
 
+/* Reset button styling with transparent background and border */
 .reset-button {
     background-color: transparent;
     color: #fefae0;
@@ -62,104 +58,115 @@
     cursor: pointer;
     font-size: 0.9rem;
     position: relative;
-    overflow: hidden;
+    overflow: hidden;            /* Needed for sliding background effect */
     z-index: 1;
     transition: color 0.5s ease;
     display: flex;
-
 }
 
-.reset-button svg{
+/* Icon margin inside reset button */
+.reset-button svg {
     margin-right: 8px;
 }
 
+/* Sliding background effect behind reset button text */
 .reset-button::before {
     content: "";
     position: absolute;
-    top: 100%;
+    top: 100%;                   /* Start hidden below */
     left: 0;
     width: 100%;
     height: 100%;
     background-color: #fefae0;
     transition: top 0.4s;
-    z-index: 0;
+    z-index: 0;                  /* Behind text */
 }
 
+/* Show sliding background on hover */
 .reset-button:hover::before {
     top: 0;
 }
 
-.reset-button>* {
+/* Keep reset button text and icon above sliding background */
+.reset-button > * {
     position: relative;
     z-index: 2;
 }
 
+/* Change text color on hover */
 .reset-button:hover {
     color: #654B42;
 }
 
-/* القائمة المنسدلة */
+/* Dropdown menu container, initially hidden and positioned */
 .dropdown-menu {
     position: absolute;
-    top: 110%;
+    top: 110%;                  /* Below filter button */
     right: 0;
     background-color: #654B42;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     padding: 0.5rem 0;
-    opacity: 0;
+    opacity: 0;                 /* Hidden */
     transform: translateY(10px);
-    pointer-events: none;
+    pointer-events: none;       /* Disable interaction */
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 10;
     min-width: 160px;
 }
 
+/* Individual dropdown items with padding and nowrap */
 .dropdown-menu div {
     padding: 0.5rem 1rem;
     cursor: pointer;
     white-space: nowrap;
 }
 
+/* Highlight dropdown item on hover */
 .dropdown-menu div:hover {
     background-color: #77766a;
 }
 
-/* عند تحويم المستخدم على الفلتر */
+/* Show dropdown on hover of the filter wrapper */
 .filter-dropdown:hover .dropdown-menu {
     opacity: 1;
     transform: translateY(0);
-    pointer-events: auto;
+    pointer-events: auto;       /* Enable interaction */
 }
 
+/* Container for date range inputs */
 .date-range {
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
+/* Style for range slider input */
 .range-slider {
     accent-color: #1f2937;
     height: 3px;
     width: 120px;
 }
 
+/* Container for search input and sorting controls */
 .search-and-sort {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
-    padding-right: 60px;
+    padding-right: 60px;        /* Space from filters */
 }
 
+/* Search input wrapper, for positioning icon */
 .search-input {
     position: relative;
     width: 300px;
 }
 
+/* Styling the actual search input */
 .search-input input {
     width: 100%;
-    padding: 0.4rem 2rem 0.4rem 0.6rem;
+    padding: 0.4rem 2rem 0.4rem 0.6rem; /* Space for icon on right */
     border: none;
     border-radius: 6px;
     background-color: #fefae0;
@@ -167,17 +174,18 @@
     font-size: 0.9rem;
 }
 
+/* Search icon inside input field */
 .search-icon {
     position: absolute;
     right: 0.6rem;
     top: 50%;
     transform: translateY(-55%);
     color: #555;
-    pointer-events: none;
+    pointer-events: none;       /* Icon does not interfere with input */
 }
 
+/* Container for sorting options */
 .sort-options {
-    padding-right: 10px;
     display: flex;
     gap: 1rem;
     align-items: center;
@@ -186,6 +194,7 @@
     padding-right: 0;
 }
 
+/* Label style inside sort options */
 .sort-options label {
     display: flex;
     align-items: center;
@@ -193,17 +202,17 @@
     cursor: pointer;
 }
 
+/* Generic label styling */
 .label {
     font-size: 0.8rem;
     color: #fefae0;
     margin-top: 0.2rem;
 }
 
-/* 1024px and below (tablet landscape) */
+/* Responsive layout for tablets and below */
 @media screen and (max-width: 1170px) {
     .search-box {
         flex-direction: column;
-        /* align-items: flex-start; */
     }
 
     .search-and-sort {
@@ -227,7 +236,7 @@
     }
 }
 
-/* 768px and below (tablet portrait) */
+/* Responsive layout for mobile devices */
 @media screen and (max-width: 768px) {
     .search-box {
         flex-direction: column;

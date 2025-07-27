@@ -4,26 +4,33 @@ import { connectDB } from "./config/db.js";
 import gazwaRouter from "./routers/gazwaRouter.js";
 import contactRouter from "./routers/contactRouter.js";
 
-//app config
-const app = express()
-const port = 4000
+// Initialize Express app
+const app = express();
+const port = 4000;
 
-//middleware
+// Middleware
+// Serve static audio files from 'audio' folder when accessing /audios route
 app.use("/audios", express.static("audio"));
-app.use(express.json())
-app.use(cors())
+
+// Parse incoming JSON requests
+app.use(express.json());
+
+// Enable CORS for cross-origin requests
+app.use(cors());
 
 // API routes
 app.use("/api/gazwa", gazwaRouter);
 app.use("/api/contact", contactRouter);
 
-//DB connection
+// Connect to MongoDB database
 connectDB();
 
-app.get("/", (req,res)=>{
-    res.send("API Working")
-})
+// Basic root route to check API status
+app.get("/", (req, res) => {
+  res.send("API Working");
+});
 
-app.listen(port,(req,res)=>{
-    console.log(`Server started on http://localhost:${port}`)
-})
+// Start server
+app.listen(port, () => {
+  console.log(`Server started on http://localhost:${port}`);
+});

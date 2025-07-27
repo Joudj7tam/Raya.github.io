@@ -1,4 +1,5 @@
 .event-card {
+    /* Main container for event card with rounded corners and shadow */
     position: relative;
     width: 250px;
     height: 320px;
@@ -7,33 +8,33 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    overflow: hidden;
 }
 
 .event-image {
+    /* Image fills the card and adapts to its size */
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: opacity 0.4s ease;
 }
 
-/* Overlay container for text & button */
 .event-content {
+    /* Overlay for title, tag, and button */
     position: absolute;
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
-    /* padding: 0px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(0, 0, 0, 0);
+    background: rgba(0, 0, 0, 0); /* Transparent initially */
     transition: background 0.4s ease;
 }
 
 .event-title {
+    /* Main heading for event */
     color: white;
     font-size: 30px;
     margin: 0;
@@ -44,6 +45,7 @@
 }
 
 .era-tag {
+    /* Optional tag to represent the era */
     background-color: transparent;
     color: #FFFFFF;
     border: 1px solid #FFFFFF;
@@ -53,8 +55,8 @@
     font-weight: 300;
 }
 
-/* Hidden button initially */
 .details-button {
+    /* Hidden action button revealed on hover */
     margin-top: 20px;
     padding: 10px 20px;
     border: 1px solid white;
@@ -68,27 +70,29 @@
     font-weight: 400;
 }
 
-/* Hover Effects */
 .event-card:hover .event-image {
+    /* Keep image visible and sharp on hover */
     opacity: 1;
 }
 
 .event-card:hover {
-    /* transform: translateY(-10px); */
+    /* Slight zoom-in effect on hover */
     transform: scale(1.05);
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-
 .event-card:hover .details-button {
+    /* Reveal button on hover */
     opacity: 1;
 }
 
 .event-card:hover .event-content {
+    /* Add overlay shading when hovered */
     background: #654b426c;
 }
 
 .event-card::before {
+    /* Gradient effect used for diagonal shimmer on hover */
     content: '';
     position: absolute;
     top: -50%;
@@ -109,6 +113,7 @@
     transform: rotate(-45deg) translateY(100%);
 }
 
+/* Responsive adjustments for small screens */
 @media (max-width: 600px) {
     .event-card {
         width: 210px;

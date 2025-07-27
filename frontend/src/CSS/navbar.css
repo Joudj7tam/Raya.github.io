@@ -1,25 +1,25 @@
 .navbar2 {
     width: 100%;
-    position: fixed;
+    position: fixed;           /* Fix navbar at top */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Space between logo and links */
     align-items: center;
     background: white;
     top: 0;
-    z-index: 50;
+    z-index: 50;              /* Make sure navbar is above other elements */
 }
 
 .navbar2 .logo {
     width: 12rem;
     height: auto;
     margin: 1.5rem;
-    min-width: 5rem;
+    min-width: 5rem;          /* Prevent logo from getting too small */
 }
 
 .navbar2 .nav-links2 {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    gap: 4rem;                /* Space between nav links */
     font-size: 1.125rem;
     margin-right: 5rem;
 }
@@ -29,14 +29,15 @@
     font-weight: 400;
     text-decoration: none;
     transition: color 0.3s;
-    position: relative;
+    position: relative;       /* For underline pseudo-elements */
     z-index: 1;
 }
 
 .navbar2 .nav-links2 a:hover {
-    color: #654B42;
+    color: #654B42;           /* Dark brown on hover */
 }
 
+/* Underline animations */
 .navbar2 .nav-links2 a::after,
 .navbar2 .nav-links2 a::before {
     content: '';
@@ -46,9 +47,12 @@
     background-color: #654b42;
     bottom: -5px;
     left: 0;
-    transform: scaleX(0);
-    transform-origin: right;
+    transform: scaleX(0);     /* Initially hidden */
     transition: transform 0.4s ease-out;
+}
+
+.navbar2 .nav-links2 a::after {
+    transform-origin: right;
 }
 
 .navbar2 .nav-links2 a::before {
@@ -58,7 +62,7 @@
 
 .navbar2 .nav-links2 a:hover::after,
 .navbar2 .nav-links2 a:hover::before {
-    transform: scaleX(1);
+    transform: scaleX(1);     /* Show underline on hover */
 }
 
 span {
@@ -76,6 +80,7 @@ span {
     gap: 0.25rem;
 }
 
+/* Hamburger menu button - hidden on desktop */
 .mobile-menu-button2 {
     display: none;
     background: none;
@@ -84,9 +89,10 @@ span {
     font-size: 1.5rem;
     cursor: pointer;
     margin-right: 1rem;
-    z-index: 100;
+    z-index: 100;            /* On top of nav */
 }
 
+/* Adjust nav spacing for tablets and smaller desktops */
 @media screen and (max-width: 1024px) {
     .navbar2 .nav-links2 {
         gap: 2rem;
@@ -94,6 +100,7 @@ span {
     }
 }
 
+/* Mobile styles */
 @media screen and (max-width: 768px) {
     .navbar2 {
         padding: 0.5rem 0;
@@ -105,13 +112,14 @@ span {
     }
 
     .mobile-menu-button2 {
-        display: block;
+        display: block;       /* Show hamburger menu */
     }
 
+    /* Nav links become sidebar menu */
     .nav-links2 {
         position: fixed;
         top: 0;
-        right: -100%;
+        right: -100%;         /* Hidden by default */
         width: 70%;
         height: 100vh;
         background: white;
@@ -125,6 +133,7 @@ span {
         z-index: 1;
     }
 
+    /* Sidebar open */
     .nav-links2.open {
         right: 0;
     }
@@ -133,9 +142,9 @@ span {
         font-size: 1.2rem;
         padding: 0.5rem 0;
     }
-
 }
 
+/* Extra small devices */
 @media screen and (max-width: 480px) {
     .navbar2 .logo {
         width: 6rem;

@@ -28,7 +28,6 @@ const Events = () => {
 
     try {
       const params = new URLSearchParams();
-
       if (searchValue) params.append('search', searchValue);
       if (selectedEra) params.append('era', selectedEra);
       if (selectedType) params.append('type', selectedType);
@@ -42,15 +41,14 @@ const Events = () => {
 
       if (data.success) {
         setEvents(data.data);
-        setTotalResults(data.total || data.data.length);
         const total = data.total || data.data.length;
+        setTotalResults(total);
         setTotalPages(Math.ceil(total / limit));
       } else {
         setEvents([]);
         setTotalPages(1);
         console.error("Error loading events:", data.message);
       }
-
     } catch (error) {
       console.error("Fetch error:", error);
       setEvents([]);
@@ -61,35 +59,33 @@ const Events = () => {
     }
   };
 
-  // Delay search input before applying searchValue
+  // Debounce user input to avoid excessive fetches
   useEffect(() => {
     const delay = setTimeout(() => {
       if (searchInput !== searchValue) {
         setSearchValue(searchInput);
         setPage(1); // Reset page when search changes
       }
-    }, 500); // reduced delay to half second
+    }, 500);
     return () => clearTimeout(delay);
   }, [searchInput]);
 
-  // Fetch data when anything changes
+  // Re-fetch events when filters or pagination change
   useEffect(() => {
     fetchEvents();
   }, [page, searchValue, selectedEra, selectedType, selectedResult, sortOrder]);
 
-  // scroll to top on page change
+  // Scroll to top on page change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [page]);
 
-  // helper to reset filters and page then fetch
   const resetAndFetch = (setter, value) => {
     setPage(1);
     setter(value);
   };
 
   const handleReset = () => {
-
     const isFiltered =
       searchInput ||
       searchValue ||
@@ -109,7 +105,6 @@ const Events = () => {
     setPage(1);
   };
 
-
   return (
     <div id="events" className='page'>
       <Navbar />
@@ -128,7 +123,6 @@ const Events = () => {
       />
 
       <div className='body-event'>
-
         <div className="results-count">
           عدد النتائج: {totalResults}
         </div>
@@ -158,7 +152,6 @@ const Events = () => {
           <button onClick={() => setPage(totalPages)} disabled={page === totalPages}>الأخيرة ⏭</button>
         </div>
       </div>
-
     </div>
   );
 };

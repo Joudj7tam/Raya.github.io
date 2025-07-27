@@ -8,6 +8,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-container">
 
+                {/* Footer sections: Portal info, Support, and Contact */}
                 <div className="footer-sections">
                     <div className="footer-section">
                         <h4>البوابة</h4>
@@ -20,6 +21,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-section">
                         <h4>التواصل</h4>
+                        {/* Social media icons */}
                         <div className="footer-icons">
                             <FaLinkedinIn />
                             <FaInstagram />
@@ -29,11 +31,13 @@ const Footer = () => {
                     </div>
                 </div>
 
+                {/* Footer logo */}
                 <div className="footer-logo">
                     <img src={logo} alt="DDC Logo" />
                 </div>
             </div>
 
+            {/* Separator line */}
             <hr className="footer-line" />
         </footer>
     );

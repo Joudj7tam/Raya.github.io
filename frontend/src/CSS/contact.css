@@ -1,27 +1,22 @@
 .contact-section {
-    background-color: #654b42e7;
-    /* background of page */
-    padding: 60px 20px;
+    background-color: #654b42e7; /* Background color of the section */
+    padding: 60px 20px; /* Space inside the section */
     display: flex;
-    justify-content: center;
-    margin-bottom: -60px;
+    justify-content: center; /* Center the content */
+    margin-bottom: -60px; /* Move the section up a bit */
 }
 
 .contact-container {
-    background-color: rgba(255, 255, 255, 0.086);
-    /* semi-transparent */
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    /* for Safari */
+    background-color: rgba(255, 255, 255, 0.086); /* Light transparent background */
+    backdrop-filter: blur(50px); /* Glass blur effect */
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px; /* Rounded corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Box shadow */
     max-width: 600px;
     width: 100%;
-    direction: rtl;
+    direction: rtl; /* Right-to-left text */
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    /* optional for glass border */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
 }
 
 .contact-title {
@@ -34,7 +29,7 @@
 .contact-form .row {
     display: flex;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Stack on small screens */
     margin-bottom: 20px;
 }
 
@@ -46,7 +41,6 @@
 
 .input-group label {
     margin-bottom: 8px;
-    font-weight: normal;
 }
 
 .input-group input,
@@ -68,7 +62,7 @@
 .input-group input:focus,
 .input-group select:focus,
 .input-group textarea:focus {
-    outline: 2px solid #c0a28d;
+    outline: 2px solid #c0a28d; /* Highlight on focus */
 }
 
 .phone-input {
@@ -85,7 +79,7 @@
 }
 
 .required {
-    color: rgb(153, 21, 21);
+    color: rgb(153, 21, 21); /* Red for required field mark */
     margin-right: 4px;
 }
 
@@ -106,101 +100,5 @@
 }
 
 .error {
-    color: rgb(153, 21, 21);
-    font-size: 0.8rem;
-    margin-top: 4px;
-    display: block;
-}
-
-.custom-alert {
-    margin-top: 20px;
-    padding: 15px 20px;
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    animation: fadeIn 0.5s ease-in-out;
-    direction: rtl;
-}
-
-.custom-alert.success {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.custom-alert.error {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-    color: inherit;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 768px) {
-    .contact-form .row {
-        flex-direction: column;
-    }
-}
-
-@media (max-width: 450px) {
-    .contact-container {
-        padding: 20px;
-        border-radius: 15px;
-    }
-
-    .contact-title {
-        font-size: 1.4rem;
-        margin-bottom: 20px;
-    }
-
-    .input-group input,
-    .input-group select,
-    .input-group textarea {
-        font-size: 0.9rem;
-        padding: 8px;
-    }
-
-    .submit-button {
-        padding: 8px 20px;
-        font-size: 0.9rem;
-    }
-
-    .custom-alert {
-        font-size: 0.9rem;
-        padding: 10px 15px;
-    }
-
-    .close-btn {
-        font-size: 1rem;
-    }
-
-    .phone-input {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .phone-input select {
-        width: 100%;
-    }
+    color: rgb(153, 21, 21); /* Error message color */
 }

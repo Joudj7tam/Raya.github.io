@@ -7,10 +7,12 @@ const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying, playbackSpeed, handle
     const [currentTime, setCurrentTime] = useState(0);
     const animationRef = useRef(null);
 
+    // Initialize animation on scroll
     useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
 
+    // Update currentTime continuously when audio is playing
     useEffect(() => {
         const updateTime = () => {
             if (audioRef.current) {
@@ -33,6 +35,7 @@ const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying, playbackSpeed, handle
     return (
         <div className="story-container" data-aos="fade-right">
             <h3 className="the-story">
+                {/* Render each word with timing interaction */}
                 {gazwa.timings.map((wordObj, index) => {
                     const isActive =
                         isPlaying && currentTime >= wordObj.start && currentTime <= wordObj.end;
@@ -57,9 +60,9 @@ const Story = ({ gazwa, audioRef, isPlaying, setIsPlaying, playbackSpeed, handle
                         </span>
                     );
                 })}
-                {/* ✅ Playback Speed Button inside the story container */}
+
+                {/* Playback speed toggle button */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '20px' }}>
-                    {/* <label htmlFor="speed" style={{ }}>السرعة:</label> */}
                     <button
                         id="speed"
                         onClick={handleSpeedChange}
