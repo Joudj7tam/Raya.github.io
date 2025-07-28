@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
-import gazwaModel from "../models/gazwaModel.js";
-import { connectDB } from "../config/db.js";
+import gazwaModel from "../../models/gazwaModel.js";
+import { connectDB } from "../../config/db.js";
 
 dotenv.config();
 
@@ -11,10 +11,7 @@ const updateAllGazwaTimings = async () => {
   try {
     await connectDB();
 
-    const folderPath = path.join(
-      "C:/Users/joodt/OneDrive/سطح المكتب/university/8Summer Training/Raya.github.io/backend/data/",
-      "ghazawat_time_stamps"
-    );
+    const folderPath = path.resolve(__dirname, "../ghazawat_time_stamps");
 
     const files = fs.readdirSync(folderPath).filter(file => file.endsWith(".json"));
 

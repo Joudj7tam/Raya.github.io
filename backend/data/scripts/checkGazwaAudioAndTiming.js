@@ -3,8 +3,8 @@ import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
 import XLSX from "xlsx";
-import gazwaModel from "../models/gazwaModel.js";
-import { connectDB } from "../config/db.js";
+import gazwaModel from "../../models/gazwaModel.js";
+import { connectDB } from "../../config/db.js";
 
 dotenv.config();
 

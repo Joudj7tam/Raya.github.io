@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
-import gazwaModel from "../models/gazwaModel.js";
-import { connectDB } from "../config/db.js";
+import gazwaModel from "../../models/gazwaModel.js";
+import { connectDB } from "../../config/db.js";
 
 dotenv.config();
 
@@ -12,7 +12,7 @@ const updateTimings = async () => {
     await connectDB();
 
     const jsonFilePath = path.join(
-      "C:/Users/joodt/OneDrive/سطح المكتب/Raya.github.io/backend/data",
+      // your file path ,
       "timestamps.json"
     );
 

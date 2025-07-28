@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import XLSX from "xlsx";
 import fetch from "node-fetch";
-import { connectDB } from "../config/db.js";
+import { connectDB } from "../../config/db.js";
 
 // The base URL to add gazwa
 const API_URL = "http://localhost:4000/api/gazwa/add";
@@ -10,7 +10,7 @@ const run = async () => {
   try {
     await connectDB();
 
-    const workbook = XLSX.readFile("الغزوات.xlsx");
+    const workbook = XLSX.readFile("../الغزوات.xlsx");
     const sheetName = workbook.SheetNames[0];
     const rawData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
