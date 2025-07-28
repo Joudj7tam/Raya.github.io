@@ -1,51 +1,56 @@
+/* Main wrapper for the timeline section */
 .timeline-wrapper {
   padding: 3%;
-  color: #FDFDED;
-  direction: rtl;
+  color: #FDFDED; /* light cream text */
+  direction: rtl; /* right to left */
   text-align: center;
   font-family: 'Lama Sans', sans-serif;
   overflow: hidden;
 }
 
+/* Container for the years navigation line */
 .years-nav-line {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center; 
-  gap: 10rem;
+  gap: 10rem; /* large gaps between year circles */
   margin-bottom: 2rem;
 }
 
-
+/* The horizontal line under the years */
 .years-line {
   position: absolute;
-  top: 65%;
+  top: 65%; /* slightly below center */
   left: 0;
   right: 0;
   height: 2px;
   background-color: #FDFDED;
-  z-index: 0;
+  z-index: 0; /* below the circles */
 }
 
+/* Each year circle container */
 .year-circle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 1;
+  z-index: 1; /* above the years-line */
   cursor: pointer;
 }
 
+/* Outer circle for each year */
 .circle {
   width: 17px;
   height: 17px;
-  background-color: #654B42;
-  border: 2px solid #FDFDED;
+  background-color: #654B42; /* dark brown */
+  border: 2px solid #FDFDED; /* light cream border */
   border-radius: 50%;
   margin: 0.5rem 0;
   transition: transform 0.3s ease;
   position: relative;
 }
 
+/* Inner smaller circle inside each year circle */
 .inside-circle {
   width: 15px;
   height: 15px;
@@ -58,15 +63,20 @@
   transform: translate(-50%, -50%);
 }
 
-.year-circle.active .circle,.year-circle:hover .circle {
+/* Hover and active effect: scale up and change color */
+.year-circle.active .circle,
+.year-circle:hover .circle {
   transform: scale(1.4);
   background-color: #FDFDED;
 }
+
+/* Year label text */
 .year-text {
   font-size: 1.25rem;
   transition: all 0.3s ease;
 }
 
+/* Container for timeline content cards and arrows */
 .timeline-content {
   display: flex;
   align-items: center;
@@ -75,13 +85,15 @@
   position: relative;
 }
 
+/* The 3D slider container */
 .slider {
   position: relative;
   width: 100%;
   height: 370px;
-  perspective: 1000px;
+  perspective: 1000px; /* for 3D effect */
 }
 
+/* Each timeline item (card) */
 .item {
   position: absolute;
   width: 220px;
@@ -91,7 +103,7 @@
   border-radius: 10px;
   padding: 20px;
   transition: all 0.6s cubic-bezier(0.17, 0.67, 0.12, 0.99);
-  left: calc(50% - 110px);
+  left: calc(50% - 110px); /* center horizontally */
   top: 0;
   color: #654B42;
   transform-origin: center bottom;
@@ -100,18 +112,21 @@
   font-size: 15px;
 }
 
+/* Headings inside each item */
 .item h3 {
   font-size: 17px;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
 
+/* List styles inside items */
 .list ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
+/* List items hidden initially, slide in on active */
 .list ul li {
   margin-top: 12px;
   text-align: center;
@@ -120,33 +135,35 @@
   opacity: 0;
 }
 
+/* When item is active, list items slide and fade in */
 .item.active .list ul li {
   transform: translateY(0);
   opacity: 1;
 }
 
+/* Scrollable list container */
 .list {
   max-height: 220px;       
   overflow-y: auto;        
   padding-right: 10px;
   margin-top: 1rem;
-   direction: ltr;
+  direction: ltr; /* left to right for list content */
 }
 
+/* Custom scrollbar styles */
 .list::-webkit-scrollbar {
   width: 8px;
 }
-
 .list::-webkit-scrollbar-thumb {
   background: rgba(101, 75, 66, 0.6);
   border-radius: 4px;
 }
-
 .list {
   scrollbar-width: thin;
   scrollbar-color: rgba(101, 75, 66, 0.6) transparent;
 }
 
+/* Link style inside items */
 .link {
   display: block;
   color: #654B42;
@@ -155,13 +172,16 @@
   transition: all 0.2s ease;
 }
 .link:hover {
-  color:#cda400ff;
+  color: #cda400ff;
 }
+
+/* Staggered animation delays for list items */
 .item.active .list ul li:nth-child(1) { transition-delay: 0.1s; }
 .item.active .list ul li:nth-child(2) { transition-delay: 0.2s; }
 .item.active .list ul li:nth-child(3) { transition-delay: 0.3s; }
 .item.active .list ul li:nth-child(4) { transition-delay: 0.4s; }
 
+/* Arrow buttons for navigation */
 .arrow {
   font-size: 2rem;
   background: none;
@@ -178,26 +198,26 @@
   border-radius: 50%;
   z-index: 10;
 }
-
 .arrow:hover:not(:disabled) {
   opacity: 1;
   background-color: rgba(253, 253, 237, 0.1);
   transform: scale(1.2);
 }
-
 .arrow:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
+
+/* Message shown when no timeline results found */
 .no-results-timeline {
-    text-align: center;
-    font-size: 1.5rem;
-    color: #FDFDED;
-    position: relative;
-    bottom: 35%;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #FDFDED;
+  position: relative;
+  bottom: 35%;
 }
 
-/* HTML: <div class="loader"></div> */
+/* Loader spinner style */
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -209,10 +229,13 @@
   animation: l13 1s infinite linear;
   margin: 10% 0%;
 }
-@keyframes l13{ 
-  100%{transform: rotate(1turn)}
+
+/* Loader spin animation */
+@keyframes l13 { 
+  100% { transform: rotate(1turn) }
 }
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .years-nav-line {
     gap: 2rem;
@@ -223,6 +246,7 @@
     height: 300px;
     font-size: 12px;
   }
+  
   .item h3 {
     font-size: 14px;
   }

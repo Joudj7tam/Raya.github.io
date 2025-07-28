@@ -6,21 +6,20 @@ import "../CSS/timeline.css";
 
 export default function Timeline() {
   useEffect(() => {
-    AOS.init({ duration: 2000 });
+    AOS.init({ duration: 2000 }); // Initialize AOS animations
   }, []);
 
-  const [active, setActive] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
+  const [active, setActive] = useState(0); // Active year index
+  const [isAnimating, setIsAnimating] = useState(false); // Prevent rapid navigation
   const timelineRef = useRef(null);
-  const [eventsByYear, setEventsByYear] = useState([]);
-  const [timelineData, setTimelineData] = useState([]);
+  const [eventsByYear, setEventsByYear] = useState([]); // Events for the selected year
+  const [timelineData, setTimelineData] = useState([]); // All available years
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
 
   const handleClick = (id) => {
-    navigate(`/story/${id}`);
+    navigate(`/story/${id}`); // Navigate to event details
   };
-
 
   const goNext = () => {
     if (!isAnimating && active < timelineData.length - 1) {
@@ -38,6 +37,7 @@ export default function Timeline() {
     }
   };
 
+  // Fetch all available Hijri years
   useEffect(() => {
     const fetchYears = async () => {
       const startTime = performance.now();
@@ -58,6 +58,7 @@ export default function Timeline() {
     fetchYears();
   }, []);
 
+  // Fetch events for the currently active year
   useEffect(() => {
     const fetchEventsByYear = async () => {
       if (timelineData.length === 0 || !timelineData[active]) return;
@@ -95,17 +96,15 @@ export default function Timeline() {
     fetchEventsByYear();
   }, [active, timelineData]);
 
-
-
-
   return (
     <div className="timeline-wrapper" ref={timelineRef}>
+      {/* Year selector with animated scale & blur */}
       <div className="years-nav-line" data-aos="slide-left">
         <div className="years-line"></div>
         {timelineData.map((item, index) => {
           const offset = index - active;
           const absOffset = Math.abs(offset);
-          if (absOffset > 2) return null;
+          if (absOffset > 2) return null; // Hide far-away years
 
           return (
             <div
@@ -125,7 +124,7 @@ export default function Timeline() {
         })}
       </div>
 
-
+      {/* Main timeline content */}
       <div className="timeline-content" data-aos="fade-up">
         <button className="arrow left" onClick={goPrev} disabled={active === 0 || isAnimating}>
           ‹
@@ -163,37 +162,43 @@ export default function Timeline() {
                     {eventsByYear.length > 0 ? (
                       eventsByYear.map((event, index) => (
                         <li key={index}>
-                          <a className="link" href="#" onClick={(e) => {e.preventDefault(); handleClick(event._id); }}>
-                            <strong>{event.name}</strong></a>
+                          <a
+                            className="link"
+                            href="#"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleClick(event._id);
+                            }}
+                          >
+                            <strong>{event.name}</strong>
+                          </a>
                         </li>
                       ))
                     ) : (
-                      <>
-                        <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
-                          لا توجد أحداث مسجلة في هذه السنة
-                        </li>
-                      </>
+                      <li style={{ textAlign: 'center', color: '#fff', fontSize: '1.2rem' }}>
+                        لا توجد أحداث مسجلة في هذه السنة
+                      </li>
                     )}
                   </ul>
-
-
-
                 </div>
               </div>
             );
           })}
-
         </div>
 
-        <button className="arrow right" onClick={goNext} disabled={active === timelineData.length - 1 || isAnimating}>
+        <button
+          className="arrow right"
+          onClick={goNext}
+          disabled={active === timelineData.length - 1 || isAnimating}
+        >
           ›
         </button>
       </div>
+
+      {/* Fallback if no data */}
       {!loading && (timelineData.length === 0 || eventsByYear.length === 0) ? (
         <div className="no-results-timeline">لا توجد نتائج</div>
       ) : null}
     </div>
-
   );
-
 }

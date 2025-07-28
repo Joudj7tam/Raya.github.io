@@ -1,32 +1,42 @@
-.body{
+.body {
+    /* Flex layout for centering and wrapping */
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    /* Transparent background with custom shadow and rounded corners */
     background-color: #654b4200;
     width: 80%;
     border-radius: 50px;
     box-shadow: 8px 8px 13px 0px #654b4286;
+
+    /* Vertical margin */
     margin: 5% 0% 5% 0%;
 }
 
 .page-content-container {
+    /* Responsive grid layout */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+
+    /* Layout and spacing */
     min-width: 85%;
     margin: 0 auto;
     padding: 2rem;
+
+    /* Ensure visibility above backgrounds or pseudo-elements */
     overflow: visible;
     position: relative;
     z-index: 1;
 }
 
-.result{
+.result {
     font-size: 130%;
 }
 
-.result img{
-    width: 50px;
+.result img {
+    width: 50px; /* Set icon/image width in result */
 }

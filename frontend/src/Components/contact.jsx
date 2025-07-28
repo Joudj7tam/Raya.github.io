@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../CSS/contact.css";
 
 function Contact() {
+    // Form input states
     const [fname, setFname] = useState("");
     const [lname, setLname] = useState("");
     const [email, setEmail] = useState("");
@@ -10,15 +11,20 @@ function Contact() {
     const [subject, setSubject] = useState("");
     const [help, setHelp] = useState("");
 
+    // Validation error messages
     const [errors, setErrors] = useState({});
+
+    // Alert message and type ("success" or "error") and visibility flag
     const [alertMessage, setAlertMessage] = useState("");
-    const [alertType, setAlertType] = useState(""); // "success" or "error"
+    const [alertType, setAlertType] = useState("");
     const [showAlert, setShowAlert] = useState(false);
 
+    // Regex patterns for validation
     const emailPattern = /^[^@]+@[^@]+\.[a-zA-Z]{2,6}$/;
     const phonePattern = /^[0-9]{9}$/;
-    const namePattern = /^[A-Za-z\u0600-\u06FF\s]+$/;
+    const namePattern = /^[A-Za-z\u0600-\u06FF\s]+$/; // Arabic and English letters + spaces
 
+    // Clear error alert if it is currently shown
     const clearErrorAlert = () => {
         if (alertType === "error") {
             setShowAlert(false);
@@ -27,8 +33,8 @@ function Contact() {
         }
     };
 
+    // Validate form inputs and return true if valid
     const validate = () => {
-
         const newErrors = {};
 
         if (!fname.trim()) {
@@ -36,6 +42,7 @@ function Contact() {
         } else if (!namePattern.test(fname)) {
             newErrors.fname = "الاسم يجب أن يحتوي على أحرف فقط (عربي أو إنجليزي)";
         }
+
         if (!lname.trim()) {
             newErrors.lname = "الاسم الأخير مطلوب";
         } else if (!namePattern.test(lname)) {
@@ -44,20 +51,29 @@ function Contact() {
 
         if (!email.trim()) newErrors.email = "البريد الإلكتروني مطلوب";
         else if (!emailPattern.test(email)) newErrors.email = "صيغة البريد الإلكتروني غير صحيحة";
+
         if (!phone.trim()) newErrors.phone = "رقم الجوال مطلوب";
         else if (!phonePattern.test(phone)) newErrors.phone = "صيغة رقم الجوال غير صحيحة";
+
         if (!help.trim()) newErrors.help = "يرجى كتابة رسالتك(20 حرف على الأقل)";
         else if (help.length < 20) newErrors.help = "الرسالة قصيرة جدًا";
 
+        // Update errors state
         setErrors(newErrors);
+
+        // Return whether the form is valid
         return Object.keys(newErrors).length === 0;
     };
 
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Validate inputs before submitting
         if (!validate()) return;
 
         try {
+            // Send form data to backend API
             const response = await fetch('http://localhost:4000/api/contact/add', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -67,29 +83,41 @@ function Contact() {
             const data = await response.json();
 
             if (data.success) {
+                // Show success alert and reset form
                 setAlertType("success");
                 setAlertMessage("تم استلام ردك بنجاح");
                 setShowAlert(true);
-                setFname(""); setLname(""); setEmail(""); setPhone(""); setCategory(""); setSubject(""); setHelp("");
+
+                setFname("");
+                setLname("");
+                setEmail("");
+                setPhone("");
+                setCategory("");
+                setSubject("");
+                setHelp("");
                 setErrors({});
 
+                // Hide alert after 3 seconds
                 setTimeout(() => {
                     setShowAlert(false);
                     setAlertMessage("");
                     setAlertType("");
                 }, 3000);
             } else {
+                // Show error alert from server response
                 setAlertType("error");
                 setAlertMessage(`حدث خطأ: ${data.message}`);
                 setShowAlert(true);
             }
         } catch (err) {
+            // Show network/fetch error alert
             setAlertType("error");
             setAlertMessage("تعذر إرسال النموذج. حاول مرة أخرى لاحقًا.");
             setShowAlert(true);
         }
     };
 
+    // Alert component to display messages
     function Alert({ type, message, onClose }) {
         return (
             <div className={`custom-alert ${type}`}>
@@ -104,6 +132,8 @@ function Contact() {
             <div className="contact-container">
                 <h2 className="contact-title">تواصل معنا</h2>
                 <form className="contact-form" onSubmit={handleSubmit}>
+
+                    {/* First and Last Name Inputs */}
                     <div className="row">
                         <div className="input-group">
                             <label>الاسم الأول<span className="required">*</span></label>
@@ -144,6 +174,7 @@ function Contact() {
                         </div>
                     </div>
 
+                    {/* Email and Phone Inputs */}
                     <div className="row">
                         <div className="input-group">
                             <label>البريد الإلكتروني<span className="required">*</span></label>
@@ -194,6 +225,7 @@ function Contact() {
                         </div>
                     </div>
 
+                    {/* Category and Subject Inputs */}
                     <div className="row">
                         <div className="input-group">
                             <label>الفئة</label>
@@ -222,6 +254,7 @@ function Contact() {
                         </div>
                     </div>
 
+                    {/* Help / Message Textarea */}
                     <div className="input-group full-width">
                         <label>كيف يمكننا المساعدة؟</label>
                         <textarea
@@ -241,9 +274,11 @@ function Contact() {
                         {errors.help && <small className="error">{errors.help}</small>}
                     </div>
 
+                    {/* Submit Button */}
                     <button type="submit" className="submit-button">إرسال</button>
                 </form>
 
+                {/* Alert message component */}
                 {showAlert && (
                     <Alert
                         type={alertType}

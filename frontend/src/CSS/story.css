@@ -1,3 +1,4 @@
+/* Remove default margin/padding, full width, and disable horizontal scroll */
 body, html {
     margin: 0;
     padding: 0;
@@ -5,19 +6,21 @@ body, html {
     overflow-x: hidden;
 }
 
-.the-story{
-    margin: 7% 8%;
-    padding: 2% 5%;
-    text-align: right;
+/* Main container for story text */
+.the-story {
+    margin: 7% 8%;                   /* Outer spacing */
+    padding: 2% 5%;                 /* Inner spacing */
+    text-align: right;              /* Right aligned text */
     font-weight: 500;
-    line-height: 2.3;
-    border-radius: 30px;
-    transition: all 0.5s ease;
-    background-size: 200% 200%;
+    line-height: 2.3;               /* Comfortable line height */
+    border-radius: 30px;            /* Rounded corners */
+    transition: all 0.5s ease;      /* Smooth hover transitions */
+    background-size: 200% 200%;     /* For potential gradient effects */
     overflow: hidden;
-    position: relative;
+    position: relative;             /* For pseudo element positioning */
 }
 
+/* Decorative vertical bar on the right */
 .the-story::before {
     content: '';
     position: absolute;
@@ -25,30 +28,38 @@ body, html {
     bottom: 10%;
     right: 2%;
     width: 10px;
-    background-color: #654b42a0;
+    background-color: #654b42a0;    /* Semi-transparent brown */
     border-radius: 50px;
 }
 
+/* Hover effect: subtle movement and shadow */
 .the-story:hover {
     transform: scale(1.00) translate(-1.5%, -1.5%);
-    box-shadow: 15px 15px 20px #654b428a;
+    box-shadow: 15px 15px 20px #654b428a; /* Shadow with brown tint */
 }
 
+/* Darken the vertical bar on hover */
 .the-story:hover::before {
-    background-color: #654b42df;
+    background-color: #654b42df;    /* More opaque */
 }
 
+/* Style for the #speed button */
 #speed {
-    color: #654b42d8;
+    color: #654b42d8;               /* Brown with some transparency */
     font-weight: 900;
     padding: 5px 10px;
     font-size: 16px;
     border-radius: 8px;
-    border: 0px;
+    border: 0;
     cursor: pointer;
     background-color: transparent;
 }
 
+/* 
+ Alternative ::before styling (commented out):
+ - Larger gradient background rotated
+ - Shows on hover with fade and translate effect 
+*/
 /*.the-story::before {
     content: '';
     position: absolute;

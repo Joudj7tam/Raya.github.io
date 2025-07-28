@@ -1,19 +1,22 @@
+/* Set base font and background for body */
 body {
   font-family: 'Lama Sans', sans-serif;
   background: url(../assets/background.png);
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Background stays fixed on scroll */
   color: #293242;
   text-align: center;
   margin: 0;
   padding: 0;
-  min-height: 100vh;
+  min-height: 100vh; /* Ensure full viewport height */
 }
 
+/* Smooth scrolling behavior for anchor links */
 html {
   scroll-behavior: smooth;
 }
 
+/* Flex container centered vertically and horizontally */
 .flex-container {
   display: flex;
   flex-direction: column;
@@ -22,6 +25,7 @@ html {
   width: 100%;
 }
 
+/* Hero section full viewport height with background image */
 .hero {
   width: 100%;
   height: 100vh;
@@ -31,39 +35,41 @@ html {
   background-image: url("../assets/hero.png");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  background-attachment: fixed; /* Fixed background for parallax effect */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
+/* Text container inside hero section */
 .hero-text {
   position: absolute;
   color: #FDFDED;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6); /* Readable text over image */
   width: 90%;
   max-width: 1000px;
   padding: 0 20px;
 }
 
+/* Main hero heading */
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size */
   line-height: 1.6;
   font-weight: bold;
   margin-bottom: 1rem;
 }
 
+/* Subheading under hero heading */
 .hero h5 {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   font-weight: normal;
 }
 
+/* Scroll down button styling and animation */
 .scroll-down {
   position: absolute;
-  /* أو fixed حسب مكان الزر */
   bottom: 30px;
-  /* right: 30px; */
   transform: translateX(-50%);
   background: transparent;
   border: 2px solid white;
@@ -72,31 +78,31 @@ html {
   cursor: pointer;
   transition: background 0.3s ease;
   z-index: 1000;
-
   animation: bounce 0.8s infinite;
 }
 
+/* Bounce animation keyframes */
 @keyframes bounce {
-
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0);
   }
-
   50% {
     transform: translateY(-8px);
   }
 }
 
+/* Icon inside scroll button */
 .arrow {
   color: white;
   font-size: 30px;
 }
 
+/* About section full width */
 .about {
   width: 100%;
 }
 
+/* Text inside about section with responsive font size */
 .about-text {
   font-size: clamp(1.1rem, 2vw, 1.5rem);
   font-weight: bold;
@@ -105,6 +111,7 @@ html {
   padding: 0 10px;
 }
 
+/* About image responsive sizing */
 .about img {
   width: 100%;
   height: auto;
@@ -113,24 +120,27 @@ html {
   margin: 30px auto 0;
 }
 
+/* Timeline section styling with background and rounded corners */
 .timeline {
   width: 90%;
   text-align: right;
   background-color: #654b42e7;
   color: white;
-  padding: 10px 0px 10px 0px;
+  padding: 10px 0;
   margin-top: 5%;
   border-radius: 30px;
   box-shadow: 15px 15px 20px #654b42b4;
 }
 
+/* Timeline header */
 .timeline h2 {
   margin-right: 5%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   padding: 0 15px;
-  position: relative
+  position: relative;
 }
 
+/* Vertical bar decoration on timeline header */
 .timeline h2::before {
   content: '';
   position: absolute;
@@ -140,33 +150,37 @@ html {
   width: 7px;
   background-color: white;
   border-radius: 2px;
-
 }
 
+/* Map section full width, right aligned text */
 .map {
   width: 100%;
   text-align: right;
-  padding: 40px 0px 0px 0px;
+  padding: 40px 0 0 0;
 }
 
+/* Map section header */
 .map h2 {
   margin-right: 5%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   padding: 0 15px;
 }
 
+/* Contact section full width with padding */
 .contact {
   width: 100%;
   text-align: right;
   padding: 60px 0;
 }
 
+/* Contact section header */
 .contact h2 {
   margin-right: 5%;
   font-size: clamp(1.5rem, 3vw, 2rem);
   padding: 0 15px;
 }
 
+/* Fixed navbar styling to stay on top */
 .navbar {
   position: fixed;
   top: 0;
@@ -175,7 +189,7 @@ html {
   transition: all 0.3s ease-in-out;
 }
 
-/* HTML: <div class="loader"></div> */
+/* Loader element: circular animated loader */
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -185,16 +199,17 @@ html {
     conic-gradient(#0000 30%, #969696);
   -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
   animation: l13 1s infinite linear;
-  margin: 10% 0%;
+  margin: 10% 0;
 }
 
+/* Loader rotation animation */
 @keyframes l13 {
   100% {
-    transform: rotate(1turn)
+    transform: rotate(1turn);
   }
 }
 
-
+/* Responsive adjustments for tablets and smaller screens */
 @media (max-width: 1024px) {
   .about-text {
     margin: 7% 5% 0;
@@ -205,11 +220,12 @@ html {
   }
 }
 
+/* Responsive adjustments for smaller tablets and large phones */
 @media (max-width: 768px) {
   .hero {
     height: 70vh;
     min-height: 500px;
-    background-attachment: scroll;
+    background-attachment: scroll; /* Disable fixed background for performance */
   }
 
   .about-text {
@@ -223,12 +239,12 @@ html {
   }
 }
 
+/* Responsive adjustments for small mobile devices */
 @media (max-width: 480px) {
   .hero {
     height: 5vh;
     min-height: 300px;
-    background-attachment: scroll;
-    /* لتحسين الأداء على الجوالات */
+    background-attachment: scroll; /* Improve performance on mobile */
     padding: 20px 10px;
   }
 
@@ -243,7 +259,7 @@ html {
   }
 
   br {
-    display: none;
+    display: none; /* Hide line breaks to save space */
   }
 
   .timeline h2,
@@ -267,6 +283,6 @@ html {
   }
 
   .scroll-down {
-    display: none;
+    display: none; /* Hide scroll button on small devices */
   }
 }

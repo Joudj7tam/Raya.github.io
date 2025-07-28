@@ -4,51 +4,56 @@
   position: relative;
   width: 100%;
   height: auto;
-  overflow: hidden;
-  direction: rtl;
+  overflow: hidden;  /* Hide overflowing slides */
+  direction: rtl;    /* Right-to-left text direction */
 }
 
 .slide-content {
-  position: absolute;
+  position: absolute;      /* All slides stacked on top */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   top: 0;
   left: 0;
-  opacity: 0;
-  transform: translateX(100%);
+  opacity: 0;              /* Hidden by default */
+  transform: translateX(100%);  /* Positioned offscreen to the right */
   transition: all 0.5s ease;
 }
 
+/* When slide is active (shown) */
 .slide-content.show {
   opacity: 1;
-  transform: translateX(0%);
-  position: relative;
-  z-index: 2;
+  transform: translateX(0%); /* Slide into view */
+  position: relative;        /* Taken out of stacking context */
+  z-index: 2;                /* Above hidden slides */
 }
 
+/* Slide moves left and fades out */
 .slide-content.hide-left {
   transform: translateX(-100%);
   opacity: 0;
   z-index: 1;
 }
 
+/* Slide moves right and fades out */
 .slide-content.hide-right {
   transform: translateX(100%);
   opacity: 0;
   z-index: 1;
 }
 
-.slide-container h4{
+/* Headings inside the container */
+.slide-container h4 {
   margin-bottom: 3%;
 }
 
-.slide-container span{
+/* Normal font weight for spans */
+.slide-container span {
   font-weight: 400;
 }
 
-/* HTML: <div class="loader"></div> */
+/* Loader spinner */
 .loader {
   width: 50px;
   aspect-ratio: 1;
@@ -60,6 +65,7 @@
   animation: l13 1s infinite linear;
   margin: 10% 0%;
 }
-@keyframes l13{ 
-  100%{transform: rotate(1turn)}
+
+@keyframes l13 { 
+  100% { transform: rotate(1turn); }
 }

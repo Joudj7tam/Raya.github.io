@@ -1,60 +1,66 @@
-.header-banner{
-    background-image: url(../assets/islamic-war.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 240px;
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    position: relative;
-    flex-direction: row-reverse;
-    align-items: center;
-    overflow: hidden;
-    margin-top: 110px;
+/* Banner container with background image and flex layout */
+.header-banner {
+  background-image: url(../assets/islamic-war.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 240px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  position: relative; /* for absolutely positioned children */
+  flex-direction: row-reverse; /* right-to-left flex order */
+  align-items: center;
+  overflow: hidden; /* clips overflowing video */
+  margin-top: 110px;
 }
 
+/* Video fills banner and is centered absolutely behind content */
 .header-video {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  min-width: 100%;
-  min-height: 100%;
+  min-width: 100%; /* cover full width */
+  min-height: 100%; /* cover full height */
   width: auto;
   height: auto;
-  z-index: -1;
-  object-fit: cover;
+  z-index: -1; /* behind all other elements */
+  object-fit: cover; /* cover container without distortion */
 }
 
-.banner-title{
-    z-index: 1;
-    color: white;
-    margin: 0% 5% 0% 3%;
-    font-size: 3vmax;
+/* Title text on banner with white color and margin */
+.banner-title {
+  z-index: 1; /* above video */
+  color: white;
+  margin: 0% 5% 0% 3%;
+  font-size: 3vmax;
 }
 
-.play-button{
-    width: fit-content;
-    height: fit-content;
-    background-color: transparent;
-    border: none;
-    z-index: 1;
-    cursor: pointer;
+/* Transparent button for play with pointer cursor */
+.play-button {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  z-index: 1;
+  cursor: pointer;
 }
 
-.play-icon{
-    width: 5vmax;
-    z-index: 1;
+/* Icon inside the play button */
+.play-icon {
+  width: 5vmax;
+  z-index: 1;
 }
 
+/* Back button positioned top-right */
 .back-button {
   position: absolute;
   top: 20px;
-  right: 30px; /* لو تبيها يمين استخدم right: 20px; */
+  right: 30px; /* adjust to position from right */
   background-color: transparent;
-  color: #f2f2f2; /* لون أيقونة السهم */
+  color: #f2f2f2; /* light icon color */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,38 +70,40 @@
   z-index: 0;
 }
 
+/* Back button hover color */
 .back-button:hover {
   color: #cda400ff;
 }
-.back-button span{
+
+/* Styling for text inside back button */
+.back-button span {
   font-weight: normal;
   font-size: medium;
 }
 
-
-/* Add these styles to your existing CSS */
+/* Segmented control container at bottom left of banner */
 .segmented-control {
   position: absolute;
   bottom: 20px;
   left: 30px;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1); /* translucent */
   border-radius: 20px;
   padding: 4px;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px); /* blur behind control */
   border: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
-  z-index: 5;
+  z-index: 5; /* above everything else */
 }
 
-/* Sliding background */
+/* Sliding background highlight for active segment */
 .segmented-control::before {
   content: '';
   position: absolute;
   top: 4px;
   bottom: 4px;
   left: 4px;
-  width: calc(50% - 4px);
+  width: calc(50% - 4px); /* covers half minus padding */
   border-radius: 16px;
   background-color: white;
   z-index: 0;
@@ -103,14 +111,15 @@
   transform: translateX(0%);
 }
 
-/* Move to second tab */
+/* Slide background moves to second tab when active */
 .segmented-control[data-active='details']::before {
   transform: translateX(100%);
 }
 
+/* Each segment button */
 .segment {
   position: relative;
-  z-index: 1;
+  z-index: 1; /* above sliding bg */
   padding: 8px 16px;
   background-color: transparent;
   color: white;
@@ -122,12 +131,13 @@
   cursor: pointer;
 }
 
+/* Active segment styles */
 .segment.active {
   color: black;
   font-weight: 500;
 }
 
+/* Hover effect on non-active segments */
 .segment:not(.active):hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
-

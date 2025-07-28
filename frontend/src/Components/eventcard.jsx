@@ -8,10 +8,12 @@ import 'aos/dist/aos.css';
 const EventCard = ({ title, era, id, enableAnimation = true }) => {
     const navigate = useNavigate();
 
+    // Navigate to story page on button click
     const handleClick = () => {
         navigate(`/story/${id}`);
     };
 
+    // Initialize AOS animation if enabled
     useEffect(() => {
         if (enableAnimation) {
             AOS.init({ duration: 1000 });
@@ -26,11 +28,10 @@ const EventCard = ({ title, era, id, enableAnimation = true }) => {
                     <h2 className="event-title">{title}</h2>
                     <span className="era-tag">{era}</span>
                 </div>
-                <button className="details-button" onClick={handleClick} >اطلع على القصة</button>
+                <button className="details-button" onClick={handleClick}>اطلع على القصة</button>
             </div>
         </div>
     );
 };
 
 export default EventCard;
-

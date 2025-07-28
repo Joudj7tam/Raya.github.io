@@ -1,56 +1,64 @@
+/* Navbar container styling */
 .navbar {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Space out logo and nav links */
   align-items: center;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent); /* Gradient background */
   position: absolute;
   top: 0;
-  z-index: 50;
+  z-index: 50;                    /* Make sure navbar is on top */
   color: white;
   font-family: 'Lama Sans', sans-serif;
   padding: 1rem 0;
 }
 
+/* Logo styling */
 .navbar .logo {
   width: 12rem;
   height: auto;
   margin-left: 1.5rem;
   min-width: 5rem;
-  transition: width 0.3s ease;
+  transition: width 0.3s ease;    /* Smooth resize on smaller screens */
 }
 
+/* Navigation links container */
 .navbar .nav-links {
   display: flex;
   align-items: center;
-  gap: 4rem;
+  gap: 4rem;                     /* Space between links */
   font-size: 1.125rem;
   margin-right: 5rem;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease;     /* Smooth adjustments */
 }
 
+/* Individual nav links */
 .navbar .nav-links a {
-  color: #FDFDED;
+  color: #FDFDED;                /* Off-white color */
   text-decoration: none;
   transition: color 0.3s;
-  white-space: nowrap;
+  white-space: nowrap;           /* Prevent links from wrapping */
 }
 
+/* Hover effect on nav links */
 .navbar .nav-links a:hover {
-  color: #facc15;
+  color: #facc15;                /* Yellow highlight on hover */
 }
 
+/* Language icon size */
 .navbar .lang-icon {
   width: 1.25rem;
   height: 1.25rem;
 }
 
+/* Language link container */
 .lang-link {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.25rem;                 /* Small space between icon and text */
 }
 
+/* Mobile menu button (hamburger) - hidden by default */
 .mobile-menu-button {
   display: none;
   background: none;
@@ -59,71 +67,78 @@
   font-size: 1.5rem;
   cursor: pointer;
   margin-right: 1rem;
-  z-index: 100;
+  z-index: 100;                 /* Above other elements */
 }
 
+/* Margin for map element */
 .map {
   margin-top: 20px;
 }
 
+/* Medium screen adjustments (tablets, small desktops) */
 @media screen and (max-width: 1024px) {
   .navbar .nav-links {
-    gap: 2rem;
+    gap: 2rem;                  /* Reduce space between links */
     margin-right: 2rem;
   }
 }
 
+/* Small screen adjustments (mobile devices) */
 @media screen and (max-width: 768px) {
   .navbar {
-    padding: 0.5rem 0;
+    padding: 0.5rem 0;          /* Smaller vertical padding */
   }
 
   .navbar .logo {
-    width: 8rem;
+    width: 8rem;                /* Smaller logo */
     margin-left: 1rem;
   }
 
   .mobile-menu-button {
-    display: block;
+    display: block;             /* Show hamburger menu */
   }
 
+  /* Navigation links become a vertical, off-canvas sidebar */
   .nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -100%;               /* Hidden off-screen to the right */
     width: 70%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.9); /* Dark transparent background */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
     margin: 0;
     padding: 0;
-    transition: right 0.3s ease;
+    transition: right 0.3s ease; /* Smooth slide-in/out */
   }
 
+  /* Open state - slide sidebar into view */
   .nav-links.open {
     right: 0;
   }
 
+  /* Larger font and spacing for links in sidebar */
   .nav-links a {
     font-size: 1.2rem;
     padding: 0.5rem 0;
   }
 }
 
+/* Extra small screen adjustments (small phones) */
 @media screen and (max-width: 480px) {
   .navbar .logo {
-    width: 6rem;
+    width: 6rem;                /* Even smaller logo */
   }
 
   .nav-links {
-    width: 80%;
+    width: 80%;                 /* Slightly wider sidebar */
   }
 
   .nav-links a {
-    font-size: 1rem;
+    font-size: 1rem;            /* Slightly smaller font */
   }
 
   .lang-link {
@@ -131,6 +146,6 @@
   }
 
   .mobile-menu-button {
-    font-size: 1.2rem;
+    font-size: 1.2rem;          /* Smaller hamburger icon */
   }
 }
